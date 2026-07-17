@@ -1,0 +1,513 @@
+/* ============================================================
+   Hero — faithful pixel recreation of the flyer layout
+   ============================================================ */
+
+.hero {
+  background: #fff;
+  width: 100%;
+  border-bottom: 1px solid #eee;
+  position: relative;
+  padding-top: 95px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SPONSOR BAR  (3 columns: BRICS | QT Center | Vallas)
+   ═══════════════════════════════════════════════════════════ */
+.sponsorBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 48px 12px;
+  max-width: 1400px;
+  margin: 0 auto;
+  gap: 60px; /* 4 logos — reduced gap */
+  order: 1; /* logos first on desktop */
+  width: 100%;
+}
+
+.sponsorSide {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Ensure contents are centered within the column */
+  gap: 5px;
+}
+
+.sponsorLabel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-primary);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #111; /* Darker to match the image */
+  margin-bottom: 8px; /* space between label and logo */
+}
+
+.dotTeal {
+  color: #00B4C8;
+  margin: 0 2px;
+}
+
+.dotPink {
+  color: #E83472;
+  margin: 0 2px;
+}
+
+.sponsorImg {
+  object-fit: contain;
+  max-width: 380px;
+  height: 160px; /* Adjusted down slightly */
+  mix-blend-mode: multiply;
+  transform: scale(1.35); 
+  position: relative;
+  z-index: 10;
+}
+
+/* Center — QT logo stacked */
+.sponsorCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.qtLogoImg {
+  height: 220px; /* Adjusted down slightly */
+  width: auto;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  transform: scale(1.35);
+  position: relative;
+  z-index: 10;
+}
+
+.vallasBarImg {
+  object-fit: contain;
+  max-width: 380px;
+  height: 160px;
+  margin-top: 15px;
+  mix-blend-mode: multiply;
+  transform: scale(1.35);
+  position: relative;
+  z-index: 10;
+}
+
+/* IKON inside sponsor bar */
+.ikonBarImg {
+  height: 160px;
+  width: auto;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  transform: scale(1.1);
+  position: relative;
+  z-index: 10;
+}
+
+.presentsLabel {
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: #999;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   TITLE BLOCK — Centered standalone
+   ═══════════════════════════════════════════════════════════ */
+/* .titleZone no longer used — kept for backward compat */
+.titleZone { display: none; }
+
+/* IKON below title — centered */
+.ikonBlock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 8px auto 0;
+  width: 100%;
+}
+
+.ikonImg {
+  width: 260px;
+  height: auto;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  position: relative;
+  z-index: 10;
+}
+
+/* ─── Title Block — standalone centered ─── */
+.titleBlock {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  position: relative;
+  padding: 0 24px;
+  width: 100%;
+  order: 2; /* title second on desktop */
+}
+
+.mainTitleWrapper {
+  position: relative;
+  display: inline-block;
+  margin-top: 25px; /* give enough space for THE */
+}
+
+.theTag {
+  position: absolute;
+  top: -22px;
+  left: -50px;
+  display: inline-block;
+  background: #F5D13B;    /* vibrant yellow from the image */
+  color: #111;
+  font-family: var(--font-primary);
+  font-weight: 900;
+  font-style: italic;
+  font-size: 1.4rem;
+  padding: 4px 18px;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+  transform: rotate(-8deg);
+  box-shadow: 2px 4px 10px rgba(0,0,0,0.15);
+}
+
+/* FUTURE SKILLS — massive black */
+.mainTitle {
+  font-family: var(--font-primary);
+  font-weight: 900;
+  font-size: clamp(3rem, 6.5vw, 5.5rem);
+  color: #111;
+  text-transform: uppercase;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+/* SUMMIT & AWARDS — massive teal */
+.mainTitleTeal {
+  font-family: var(--font-primary);
+  font-weight: 900;
+  font-size: clamp(2.4rem, 5.5vw, 4.4rem);
+  color: #00B4C8;
+  text-transform: uppercase;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin: 0 0 8px;
+  text-shadow: 0px 4px 15px rgba(0, 180, 200, 0.3); /* Subtle 3D glow */
+}
+
+/* Tagline */
+.subtitle {
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  color: #444;
+  font-weight: 500;
+  line-height: 1.55;
+  margin-top: 4px;
+}
+
+.subtitleDivider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.divLinePink {
+  width: 30px;
+  height: 2px;
+  background-color: #E83472;
+  border-radius: 2px;
+}
+
+.divLineTeal {
+  width: 30px;
+  height: 2px;
+  background-color: #00B4C8;
+  border-radius: 2px;
+}
+
+.divDot {
+  width: 6px;
+  height: 6px;
+  background-color: #00B4C8;
+  border-radius: 50%;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   INFO ROW  (Date | Venue | Register)
+   ═══════════════════════════════════════════════════════════ */
+.infoRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap; 
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 100px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 12px 20px;
+  width: fit-content;
+  margin: 0 auto 40px; 
+  gap: 10px;
+  order: 3; /* always below title */
+}
+
+.infoCell {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 16px; /* Optimized padding for the pill */
+}
+
+.iconBox {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.iconBoxBlue {
+  background: #E8F8FA;
+  color: #00B4C8;
+}
+
+.iconBoxPink {
+  background: #FDE8F1;
+  color: #E83472;
+}
+
+.iconBoxPurple {
+  background: #F0E6FA;
+  color: #8A34E8;
+}
+
+.infoDay {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #999;
+  line-height: 1;
+  margin-bottom: 2px;
+}
+
+.infoDate {
+  font-family: var(--font-primary);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #1a1a24;
+  line-height: 1.2;
+}
+
+.infoVenue {
+  font-family: var(--font-primary);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #1a1a24;
+  line-height: 1;
+  margin-bottom: 2px;
+}
+
+.infoCity {
+  font-size: 0.8rem;
+  color: #777;
+  font-weight: 600;
+}
+
+.infoSep {
+  width: 1px;
+  height: 36px;
+  background: #e0e0e0; /* Softer separator line */
+  flex-shrink: 0;
+}
+
+.regLabel {
+  font-family: var(--font-primary);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #E83472;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.regNums {
+  font-family: var(--font-primary);
+  font-size: 1.05rem;
+  font-weight: 900;
+  color: #1a1a24;
+  letter-spacing: 0.01em;
+}
+
+.infoRowCta {
+  background: linear-gradient(135deg, #FF6B35 0%, #E83472 100%);
+  color: var(--color-white);
+  border: none;
+  padding: 6px 6px 6px 20px;
+  border-radius: 50px;
+  font-family: var(--font-primary);
+  font-weight: 800;
+  font-size: 0.85rem;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 4px 15px rgba(232, 52, 114, 0.3);
+}
+
+.infoRowCta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(232, 52, 114, 0.4);
+}
+
+.ctaIconBox {
+  width: 32px;
+  height: 32px;
+  background: white;
+  color: #E83472;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE — Tablet (max 1024px)
+   ═══════════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .sponsorBar {
+    gap: 60px;
+    padding: 16px 32px 12px;
+  }
+  .sponsorImg { max-width: 280px; height: 120px; }
+  .qtLogoImg { height: 170px; }
+  .vallasBarImg { max-width: 280px; height: 120px; }
+
+  .titleZone {
+    grid-template-columns: 1fr;
+    padding: 8px 32px 16px;
+    margin: -20px auto 0;
+    gap: 12px;
+  }
+  .ikonBlock { justify-content: center; margin-left: 0; }
+  .ikonImg { width: 300px; transform: scale(1.2); }
+
+  .mainTitle { font-size: clamp(2.4rem, 5vw, 4.5rem); }
+  .mainTitleTeal { font-size: clamp(2rem, 4vw, 3.6rem); }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE — Mobile (max 768px)
+   ═══════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 80px;
+  }
+
+  /* ── REORDER: title → register pill → logos on mobile ── */
+  .titleBlock { order: 1; padding: 12px 20px 8px; }
+  .infoRow    { order: 2; }
+  .sponsorBar { order: 3; }
+
+  /* Sponsor bar: stack vertically, centered */
+  .sponsorBar {
+    flex-direction: column;
+    gap: 20px;
+    padding: 16px 20px 8px;
+    align-items: center;
+  }
+  .sponsorSide { align-items: center; }
+  .sponsorCenter { order: unset; }
+  .sponsorImg {
+    max-width: 200px;
+    height: 80px;
+    transform: scale(1);
+  }
+  .qtLogoImg {
+    height: 110px;
+    transform: scale(1);
+  }
+  .ikonBarImg {
+    height: 110px;
+    transform: scale(1);
+  }
+  .vallasBarImg {
+    max-width: 200px;
+    height: 80px;
+    transform: scale(1);
+    margin-top: 0;
+  }
+  .sponsorLabel { font-size: 0.6rem; }
+
+  /* Title block centered */
+  .titleBlock { padding-top: 0; }
+  .mainTitleWrapper { margin-top: 16px; }
+  .theTag { font-size: 1rem; top: -18px; left: -30px; }
+  .mainTitle { font-size: clamp(1.8rem, 8vw, 3rem); }
+  .mainTitleTeal { font-size: clamp(1.5rem, 6.5vw, 2.4rem); }
+  .subtitle { font-size: clamp(0.85rem, 2.5vw, 1.1rem); }
+
+  /* Info row: vertical pill */
+  .infoRow {
+    flex-direction: column;
+    align-items: stretch;
+    border-radius: 20px;
+    padding: 16px 20px;
+    margin: 16px 16px 32px;
+    width: auto;
+    gap: 12px;
+  }
+  .infoSep { display: none; }
+  .infoCell {
+    padding: 0;
+    gap: 12px;
+  }
+  .iconBox { width: 42px; height: 42px; }
+  .infoDate { font-size: 0.95rem; }
+  .infoVenue { font-size: 0.95rem; }
+  .infoRowCta {
+    justify-content: center;
+    border-radius: 14px;
+    padding: 12px 20px;
+  }
+  .ctaIconBox { width: 28px; height: 28px; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE — Small Mobile (max 480px)
+   ═══════════════════════════════════════════════════════════ */
+@media (max-width: 480px) {
+  .hero { padding-top: 72px; }
+
+  .sponsorBar {
+    gap: 16px;
+    padding: 12px 16px 8px;
+  }
+  .sponsorImg { max-width: 180px; height: 75px; }
+  .qtLogoImg { height: 110px; }
+  .vallasBarImg { max-width: 180px; height: 75px; }
+
+  .titleZone { padding: 10px 16px; }
+  .ikonImg { width: 180px; }
+  .theTag { font-size: 0.85rem; top: -16px; left: -20px; }
+  .mainTitle { font-size: clamp(1.5rem, 9vw, 2.4rem); }
+  .mainTitleTeal { font-size: clamp(1.2rem, 7.5vw, 2rem); }
+
+  .infoRow { margin: 12px 12px 28px; }
+}
+

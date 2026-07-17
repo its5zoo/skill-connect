@@ -1,0 +1,125 @@
+/* ============================================================
+   Speakers Section — Light, Premium, Reference-faithful — Full Responsive
+   ============================================================ */
+
+.section {
+  padding: 80px 24px 80px;
+  background: #f7f8fc;
+  position: relative;
+  overflow: hidden;
+  scroll-margin-top: 90px;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Section Header ─── */
+.header {
+  margin-bottom: 60px;
+}
+
+.sectionTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #00B4C8;
+  color: #fff;
+  font-family: var(--font-primary);
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 4px 14px;
+  border-radius: 20px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.sectionTitle {
+  font-family: var(--font-primary);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 900;
+  color: #111;
+  margin-bottom: 8px;
+  line-height: 1.1;
+}
+
+.sectionSubtitle {
+  font-size: 0.9rem;
+  color: #777;
+  font-weight: 400;
+}
+
+/* ─── Seesaw Wave Keyframes ─── */
+/* Odd cards: start UP → drift DOWN → hold → return UP */
+@keyframes waveDown {
+  0%,  15% { transform: translateY(0px); }         /* hold at top    */
+  40%, 60% { transform: translateY(60px); }         /* hold at bottom */
+  85%,100% { transform: translateY(0px); }          /* hold at top    */
+}
+/* Even cards: start DOWN → drift UP → hold → return DOWN */
+@keyframes waveUp {
+  0%,  15% { transform: translateY(60px); }         /* hold at bottom */
+  40%, 60% { transform: translateY(0px); }          /* hold at top    */
+  85%,100% { transform: translateY(60px); }         /* hold at bottom */
+}
+
+/* ─── Speakers Grid — Staggered Up/Down Layout ─── */
+.speakersGrid {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 24px;
+  flex-wrap: wrap;
+  position: relative;
+  padding-bottom: 60px; /* space for down-shifted cards */
+}
+
+/* Odd wrappers: start up → wave down */
+.cardWrapper:nth-child(odd) {
+  animation: waveDown 6s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+
+/* Even wrappers: start down → wave up (perfect seesaw sync) */
+.cardWrapper:nth-child(even) {
+  animation: waveUp 6s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+
+/* ─── Tablet ─── */
+@media (max-width: 1024px) {
+  .section { padding: 64px 24px 64px; }
+  .header { margin-bottom: 40px; }
+  .speakersGrid { gap: 20px; }
+}
+
+/* ─── Mobile ─── */
+@media (max-width: 768px) {
+  .section { padding: 52px 16px 52px; scroll-margin-top: 80px; }
+  .container { max-width: 100%; }
+  .header { margin-bottom: 28px; text-align: center; }
+
+  .sectionTitle { font-size: clamp(1.5rem, 6vw, 2rem); }
+  .sectionSubtitle { font-size: 0.82rem; }
+
+  /* Remove stagger on mobile — reset inline margin-top */
+  .cardWrapper {
+    margin-top: 0 !important;
+  }
+
+  .speakersGrid {
+    gap: 16px 12px;
+    justify-content: center;
+    align-items: flex-start;
+  }
+}
+
+/* ─── Small Mobile ─── */
+@media (max-width: 480px) {
+  .section { padding: 40px 12px 40px; }
+  .header { margin-bottom: 24px; }
+  .sectionTitle { font-size: clamp(1.3rem, 7vw, 1.7rem); }
+  .speakersGrid { gap: 12px 10px; }
+}

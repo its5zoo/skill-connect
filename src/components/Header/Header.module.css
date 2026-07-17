@@ -1,0 +1,273 @@
+/* ============================================================
+   Header Component Styles — Hamburger on Small Screens
+   ============================================================ */
+
+.header {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  width: fit-content;
+  max-width: 96%;
+  border-radius: 50px;
+  transition: border-radius 0.2s ease;
+}
+
+/* When menu is open, flatten bottom radius */
+.headerOpen {
+  border-radius: 24px;
+}
+
+.headerInner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px 8px 32px;
+  gap: 16px;
+}
+
+.navMenu {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.navLink {
+  background: none;
+  border: none;
+  font-family: var(--font-primary);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #333;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 6px;
+  position: relative;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.navLink:hover {
+  color: #E83472;
+}
+
+/* Active — blue dash + teal text */
+.navLinkActive {
+  color: #00B4C8;
+}
+
+.navLinkActive::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px;
+  height: 3px;
+  background-color: #00B4C8;
+  border-radius: 2px;
+}
+
+.headerCta {
+  background: linear-gradient(135deg, #FF6B35 0%, #E83472 100%);
+  color: var(--color-white);
+  border: none;
+  padding: 6px 6px 6px 20px;
+  border-radius: 30px;
+  font-family: var(--font-primary);
+  font-weight: 800;
+  font-size: 0.75rem;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 4px 15px rgba(232, 52, 114, 0.3);
+}
+
+.headerCta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(232, 52, 114, 0.4);
+}
+
+.ctaIconBox {
+  width: 28px;
+  height: 28px;
+  background: white;
+  color: #E83472;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ─── Hamburger button (hidden on desktop) ─── */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px 8px;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.hamburger:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2.5px;
+  background: #333;
+  border-radius: 3px;
+  transition: all 0.28s ease;
+}
+
+.hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+  background: #E83472;
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+  background: #E83472;
+}
+
+/* ─── Mobile Dropdown Menu ─── */
+.mobileMenu {
+  display: none;
+  flex-direction: column;
+  padding: 8px 12px 16px;
+  gap: 2px;
+  border-top: 1px solid rgba(0,0,0,0.07);
+  animation: menuSlide 0.22s ease forwards;
+}
+
+.mobileMenu.open {
+  display: flex;
+}
+
+@keyframes menuSlide {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.mobileNavLink {
+  background: none;
+  border: none;
+  font-family: var(--font-primary);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #222;
+  cursor: pointer;
+  padding: 11px 16px;
+  border-radius: 12px;
+  text-align: left;
+  width: 100%;
+  transition: background 0.15s, color 0.15s;
+}
+
+.mobileNavLink:hover {
+  background: #f4f4f6;
+  color: #E83472;
+}
+
+/* Mobile active — teal text + blue left dash */
+.mobileNavLinkActive {
+  color: #00B4C8 !important;
+  background: rgba(0, 180, 200, 0.08) !important;
+  border-left: 3px solid #00B4C8;
+  padding-left: 13px;
+  font-weight: 700;
+}
+
+.mobileCta {
+  margin-top: 6px;
+  background: linear-gradient(135deg, #FF6B35 0%, #E83472 100%);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 24px;
+  font-family: var(--font-primary);
+  font-weight: 800;
+  font-size: 0.82rem;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(232, 52, 114, 0.3);
+  transition: all 0.2s;
+}
+
+.mobileCta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(232, 52, 114, 0.4);
+}
+
+/* ─── Tablet: shrink nav slightly ─── */
+@media (max-width: 960px) {
+  .navLink { font-size: 0.82rem; padding: 7px 9px; }
+  .headerCta { font-size: 0.7rem; padding: 5px 5px 5px 16px; gap: 8px; }
+  .ctaIconBox { width: 24px; height: 24px; }
+  .headerInner { gap: 10px; padding: 7px 10px 7px 24px; }
+}
+
+/* ─── Small tablet ─── */
+@media (max-width: 780px) {
+  .navLink { font-size: 0.76rem; padding: 6px 7px; }
+  .headerCta { font-size: 0.68rem; padding: 5px 5px 5px 12px; gap: 6px; }
+  .headerInner { gap: 8px; }
+}
+
+/* ─── Mobile: show hamburger, hide desktop nav ─── */
+@media (max-width: 620px) {
+  .header {
+    top: 10px;
+    width: calc(100% - 24px);
+    max-width: calc(100% - 24px);
+    border-radius: 20px;
+  }
+  .headerOpen {
+    border-radius: 20px;
+  }
+
+  .headerInner {
+    padding: 10px 16px;
+    justify-content: space-between;
+    gap: 0;
+  }
+
+  /* Hide desktop nav and CTA */
+  .navMenu,
+  .headerCta {
+    display: none;
+  }
+
+  /* Show hamburger */
+  .hamburger {
+    display: flex;
+  }
+}
+
+@media (max-width: 380px) {
+  .header { width: calc(100% - 16px); top: 8px; }
+  .headerInner { padding: 9px 12px; }
+}

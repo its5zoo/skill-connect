@@ -1,0 +1,335 @@
+/* ============================================================
+   Speaker Card — CRAZY Animations + Premium Hover Effects
+   ============================================================ */
+
+/* ── Keyframes ─────────────────────────────────────────────── */
+
+/* Entrance: spring up with 3D flip */
+@keyframes cardEntrance {
+  0%   { opacity: 0; transform: translateY(60px) rotateX(20deg) scale(0.88); filter: blur(6px); }
+  60%  { opacity: 1; transform: translateY(-8px) rotateX(-4deg) scale(1.02); filter: blur(0); }
+  80%  { transform: translateY(4px) rotateX(2deg) scale(0.99); }
+  100% { opacity: 1; transform: translateY(0) rotateX(0deg) scale(1); filter: blur(0); }
+}
+
+/* Color-specific glow pulses */
+@keyframes glowYellow {
+  0%, 100% { box-shadow: 0 0 22px 6px rgba(245, 197, 24, 0.45), 0 20px 60px rgba(0,0,0,0.22); }
+  50%       { box-shadow: 0 0 40px 14px rgba(245, 197, 24, 0.75), 0 24px 70px rgba(0,0,0,0.28); }
+}
+@keyframes glowTeal {
+  0%, 100% { box-shadow: 0 0 22px 6px rgba(0, 201, 222, 0.45), 0 20px 60px rgba(0,0,0,0.22); }
+  50%       { box-shadow: 0 0 40px 14px rgba(0, 201, 222, 0.75), 0 24px 70px rgba(0,0,0,0.28); }
+}
+@keyframes glowPink {
+  0%, 100% { box-shadow: 0 0 22px 6px rgba(232, 52, 114, 0.45), 0 20px 60px rgba(0,0,0,0.22); }
+  50%       { box-shadow: 0 0 40px 14px rgba(232, 52, 114, 0.75), 0 24px 70px rgba(0,0,0,0.28); }
+}
+@keyframes glowGray {
+  0%, 100% { box-shadow: 0 0 22px 6px rgba(126, 144, 154, 0.45), 0 20px 60px rgba(0,0,0,0.22); }
+  50%       { box-shadow: 0 0 40px 14px rgba(126, 144, 154, 0.75), 0 24px 70px rgba(0,0,0,0.28); }
+}
+
+/* Light sweep / shine across photo */
+@keyframes shineSweep {
+  0%   { transform: translateX(-150%) skewX(-20deg); opacity: 0; }
+  30%  { opacity: 1; }
+  100% { transform: translateX(250%) skewX(-20deg); opacity: 0; }
+}
+
+/* Glow pulse on hover */
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 20px 4px rgba(0, 200, 222, 0.4), 0 20px 60px rgba(0,0,0,0.25); }
+  50%       { box-shadow: 0 0 35px 10px rgba(0, 200, 222, 0.65), 0 24px 70px rgba(0,0,0,0.3); }
+}
+
+/* Name gradient shimmer on hover */
+@keyframes nameShimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* Floating idle animation */
+@keyframes floatIdle {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-5px); }
+}
+
+/* ── Card base ──────────────────────────────────────────────── */
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  width: 210px;
+  flex-shrink: 0;
+  cursor: pointer;
+  perspective: 800px;
+
+  /* Start invisible — triggered by .visible */
+  opacity: 0;
+  transform: translateY(60px) rotateX(20deg) scale(0.88);
+  filter: blur(6px);
+  transition:
+    transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity   0.4s ease,
+    filter    0.4s ease;
+}
+
+/* Entrance animation fires when .visible added */
+.card:global(.visible) {
+  animation: cardEntrance 0.75s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Stagger via inline animationDelay (set from TSX) */
+.card:nth-child(1):global(.visible) { animation-delay: 0.05s; }
+.card:nth-child(2):global(.visible) { animation-delay: 0.15s; }
+.card:nth-child(3):global(.visible) { animation-delay: 0.25s; }
+.card:nth-child(4):global(.visible) { animation-delay: 0.35s; }
+.card:nth-child(5):global(.visible) { animation-delay: 0.45s; }
+.card:nth-child(6):global(.visible) { animation-delay: 0.55s; }
+
+/* ── Hover: 3D lift + glow ──────────────────────────────────── */
+.card:hover {
+  transform: translateY(-14px) scale(1.04) rotateX(4deg);
+}
+
+/* Glow ring — color matches card background */
+.card:hover .photoWrapper {
+  border-radius: 24px;
+  transform: scale(1.02);
+}
+.card:hover .photoWrapper--yellow { animation: glowYellow 1.8s ease-in-out infinite; }
+.card:hover .photoWrapper--teal   { animation: glowTeal   1.8s ease-in-out infinite; }
+.card:hover .photoWrapper--pink   { animation: glowPink   1.8s ease-in-out infinite; }
+.card:hover .photoWrapper--gray   { animation: glowGray   1.8s ease-in-out infinite; }
+
+/* Photo zoom in */
+.card:hover .speakerPhoto {
+  transform: scale(1.08);
+}
+
+/* Name shimmer — color matches card */
+.card:hover .photoWrapper--yellow ~ * .name,
+.card:hover .name { 
+  background: linear-gradient(90deg, #00C9DE 0%, #0057ff 30%, #00C9DE 60%, #00f0d0 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: nameShimmer 1.5s linear infinite;
+}
+
+/* Title slides up subtly */
+.card:hover .title {
+  transform: translateY(-2px);
+  color: #333;
+}
+
+/* Org text fades in stronger */
+.card:hover .org {
+  color: #444;
+}
+
+/* Active: press-down spring */
+.card:active {
+  transform: translateY(-6px) scale(0.98) rotateX(2deg);
+  transition-duration: 0.1s;
+}
+
+/* ── Photo wrapper ──────────────────────────────────────────── */
+.photoWrapper {
+  width: 210px;
+  height: 300px;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  z-index: 0;
+  flex-shrink: 0;
+  margin-bottom: 18px;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.18),
+    0 4px 12px rgba(0, 0, 0, 0.10),
+    inset 0 1px 0 rgba(255,255,255,0.2);
+  transition:
+    box-shadow 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+    transform  0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+    border-radius 0.3s ease,
+    border-color 0.3s ease;
+}
+
+/* Color tints per card */
+.photoWrapper--yellow { background: linear-gradient(160deg, #FFD700 0%, #F5A623 50%, #d4a800 100%); }
+.photoWrapper--teal   { background: linear-gradient(160deg, #00E5FF 0%, #00C9DE 50%, #00869A 100%); }
+.photoWrapper--pink   { background: linear-gradient(160deg, #FF4DB8 0%, #E83472 50%, #C0195A 100%); }
+.photoWrapper--gray   { background: linear-gradient(160deg, #9AB0BB 0%, #7E909A 50%, #5A6A74 100%); }
+
+/* ── Shine sweep overlay ────────────────────────────────────── */
+.photoWrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.45) 50%,
+    rgba(255,255,255,0) 100%
+  );
+  transform: translateX(-150%) skewX(-20deg);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.card:hover .photoWrapper::before {
+  animation: shineSweep 0.7s ease forwards;
+}
+
+/* ── Bottom gradient overlay ────────────────────────────────── */
+.photoWrapper::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 42%;
+  background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 100%);
+  pointer-events: none;
+  transition: height 0.35s ease;
+  z-index: 2;
+}
+
+.card:hover .photoWrapper::after {
+  height: 60%;
+}
+
+/* Photo image */
+.speakerPhoto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Avatar placeholder ─────────────────────────────────────── */
+.avatarPlaceholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.avatarSilhouette {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 160px;
+  opacity: 0.25;
+}
+
+.avatarInitials {
+  font-family: var(--font-primary);
+  font-weight: 900;
+  font-size: 3.2rem;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 4px 20px rgba(0,0,0,0.25);
+  letter-spacing: -0.02em;
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Info below the card ────────────────────────────────────── */
+.info {
+  padding: 0 4px;
+  width: 210px;
+}
+
+.name {
+  font-family: var(--font-primary);
+  font-weight: 900;
+  font-size: 0.9rem;
+  color: #111;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1.3;
+  margin-bottom: 5px;
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+  display: block;
+}
+
+.title {
+  font-size: 0.8rem;
+  color: #555;
+  font-weight: 400;
+  line-height: 1.45;
+  margin-bottom: 2px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.org {
+  font-size: 0.8rem;
+  color: #666;
+  font-weight: 400;
+  line-height: 1.35;
+  transition: color 0.3s ease;
+}
+
+/* ─── Tablet ─── */
+@media (max-width: 1024px) {
+  .card { width: 180px; }
+  .photoWrapper { width: 180px; height: 260px; }
+  .info { width: 180px; }
+}
+
+/* ─── Mobile ─── */
+@media (max-width: 768px) {
+  .card {
+    width: 160px;
+    align-items: flex-start;
+  }
+  .card:hover { transform: translateY(-8px) scale(1.03); }
+
+  .photoWrapper {
+    width: 160px;
+    height: 220px;
+    border-radius: 16px;
+    margin-bottom: 12px;
+  }
+
+  .info { width: 160px; }
+  .name { font-size: 0.78rem; }
+  .title { font-size: 0.72rem; }
+  .org { font-size: 0.72rem; }
+  .avatarInitials { font-size: 2.6rem; }
+}
+
+/* ─── Small Mobile ─── */
+@media (max-width: 480px) {
+  .card { width: 140px; }
+  .photoWrapper {
+    width: 140px;
+    height: 195px;
+    border-radius: 14px;
+    margin-bottom: 10px;
+  }
+  .info { width: 140px; }
+  .name { font-size: 0.72rem; }
+  .title { font-size: 0.68rem; }
+  .org { font-size: 0.68rem; }
+  .avatarInitials { font-size: 2.2rem; }
+  .avatarSilhouette { width: 90px; height: 120px; }
+}
