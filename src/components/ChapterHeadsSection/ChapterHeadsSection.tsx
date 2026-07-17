@@ -49,6 +49,8 @@ const ChapterGroupSection: React.FC<GroupSectionProps> = ({ id, speakers, showHe
             <div
               key={head.id}
               className={styles.cardWrapper}
+              data-card-reveal
+              data-card-index={idx}
             >
               <SpeakerCard
                 speaker={head}

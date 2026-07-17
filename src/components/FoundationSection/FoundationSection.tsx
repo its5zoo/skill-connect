@@ -42,6 +42,8 @@ const FoundationSection: React.FC = () => {
             <div 
               key={member.id}
               className={styles.cardWrapper}
+              data-card-reveal
+              data-card-index={idx}
             >
               <SpeakerCard speaker={member} animationDelay={`${idx * 100}ms`} />
             </div>

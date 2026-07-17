@@ -4,6 +4,10 @@
 // Right: Event ticket card with date/venue/CTA
 // ============================================================
 import React, { useEffect, useRef } from 'react';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import PhoneIcon from '@mui/icons-material/Phone';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import styles from './Hero.module.css';
 import { eventDetails } from '../../data/eventData';
 
@@ -18,7 +22,6 @@ const Hero: React.FC = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // Add animateIn to the section so .hero.animateIn [data-animate] triggers
             el.classList.add(styles.animateIn);
             observer.disconnect();
           }
@@ -37,7 +40,6 @@ const Hero: React.FC = () => {
       {/* Decorative background shapes */}
       <div className={styles.bgShape1} aria-hidden="true" />
       <div className={styles.bgShape2} aria-hidden="true" />
-      {/* Animated floating orbs */}
       <div className={styles.orb1} aria-hidden="true" />
       <div className={styles.orb2} aria-hidden="true" />
 
@@ -94,17 +96,13 @@ const Hero: React.FC = () => {
             {/* Shimmer effect layer */}
             <div className={styles.cardShimmer} aria-hidden="true" />
 
+            {/* ─ DATE ─ */}
             <div className={styles.ticketRow}>
-              <div className={styles.ticketIcon}>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                  <line x1="16" y1="2" x2="16" y2="6"></line>
-                  <line x1="8" y1="2" x2="8" y2="6"></line>
-                  <line x1="3" y1="10" x2="21" y2="10"></line>
-                </svg>
+              <div className={styles.ticketIconWrap}>
+                <CalendarMonthIcon sx={{ fontSize: 20, color: 'var(--color-teal)' }} />
               </div>
               <div className={styles.ticketContent}>
-                <span className={styles.ticketLabel}>DATE</span>
+                <span className={styles.ticketLabel}>Date</span>
                 <span className={styles.ticketDay}>{eventDetails.day}</span>
                 <span className={styles.ticketDate}>{eventDetails.date}</span>
               </div>
@@ -112,15 +110,13 @@ const Hero: React.FC = () => {
 
             <div className={styles.ticketPerf} aria-hidden="true" />
 
+            {/* ─ VENUE ─ */}
             <div className={styles.ticketRow}>
-              <div className={styles.ticketIcon}>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                  <circle cx="12" cy="10" r="3"></circle>
-                </svg>
+              <div className={styles.ticketIconWrap}>
+                <LocationOnIcon sx={{ fontSize: 20, color: 'var(--color-teal)' }} />
               </div>
               <div className={styles.ticketContent}>
-                <span className={styles.ticketLabel}>VENUE</span>
+                <span className={styles.ticketLabel}>Venue</span>
                 <span className={styles.ticketVenueName}>{eventDetails.venue}</span>
                 <span className={styles.ticketCity}>{eventDetails.city}</span>
               </div>
@@ -128,19 +124,25 @@ const Hero: React.FC = () => {
 
             <div className={styles.ticketPerf} aria-hidden="true" />
 
+            {/* ─ REGISTER / CONTACT ─ */}
             <div className={styles.ticketRow}>
-              <div className={styles.ticketIcon}>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                  <circle cx="12" cy="7" r="4"></circle>
-                </svg>
+              <div className={styles.ticketIconWrap}>
+                <PhoneIcon sx={{ fontSize: 20, color: 'var(--color-teal)' }} />
               </div>
               <div className={styles.ticketContent}>
-                <span className={styles.ticketLabel}>REGISTER</span>
-                <a href={`tel:${eventDetails.phone1}`} className={styles.ticketPhone}>{eventDetails.phone1}</a>
-                <a href={`tel:${eventDetails.phone2}`} className={styles.ticketPhone}>{eventDetails.phone2}</a>
+                <span className={styles.ticketLabel}>Register via Call</span>
+                <div className={styles.phonesGrid}>
+                  <a href={`tel:${eventDetails.phone1}`} className={styles.ticketPhone}>
+                    <span className={styles.phoneNumber}>{eventDetails.phone1}</span>
+                  </a>
+                  <a href={`tel:${eventDetails.phone2}`} className={styles.ticketPhone}>
+                    <span className={styles.phoneNumber}>{eventDetails.phone2}</span>
+                  </a>
+                </div>
               </div>
             </div>
+
+            <div className={styles.ticketPerf} aria-hidden="true" />
 
             <button
               className={styles.ticketCta}
@@ -148,7 +150,7 @@ const Hero: React.FC = () => {
               aria-label="Register for the Future Skills Summit"
             >
               <span>REGISTER NOW</span>
-              <span className={styles.ctaArrow}>→</span>
+              <ArrowForwardIcon sx={{ fontSize: 18 }} />
             </button>
 
           </div>
