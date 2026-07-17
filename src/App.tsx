@@ -34,14 +34,43 @@ const App: React.FC = () => {
 
     // Small delay so DOM is fully painted before observing
     const timer = setTimeout(() => {
+      // ── General section reveals ──
       const targets = document.querySelectorAll('[data-reveal]');
       targets.forEach((el) => {
-        // If already in viewport (above fold), show immediately
         const rect = el.getBoundingClientRect();
         if (rect.top < window.innerHeight) {
           el.classList.add('is-visible');
         } else {
           observer.observe(el);
+        }
+      });
+
+      // ── Card scroll-reveal with stagger ──
+      const cardObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const el = entry.target as HTMLElement;
+              const idx = parseInt(el.dataset.cardIndex ?? '0', 10);
+              // Stagger: each card delays by 70ms per index, max 560ms
+              const delay = Math.min(idx * 70, 560);
+              setTimeout(() => {
+                el.classList.add('card-visible');
+              }, delay);
+              cardObserver.unobserve(el);
+            }
+          });
+        },
+        { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
+      );
+
+      document.querySelectorAll('[data-card-reveal]').forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight) {
+          // Already in view: show immediately
+          (el as HTMLElement).classList.add('card-visible');
+        } else {
+          cardObserver.observe(el);
         }
       });
     }, 50);

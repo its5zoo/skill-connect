@@ -62,14 +62,27 @@ const Hero: React.FC = () => {
             </p>
           </div>
 
-          {/* Sponsor Logos Strip */}
-          <div className={styles.logosStrip} data-animate data-delay="2">
-            <div className={styles.logosLabel}>Presented by</div>
+          {/* Top Sponsor Logos Strip (Moves up on desktop) */}
+          <div className={`${styles.logosStrip} ${styles.topLogos}`} data-animate data-delay="2">
             <div className={styles.logosRow}>
-              <img src="/logos/brics_logo.png" alt="BRICS Culture Media Forum" className={styles.stripLogo} />
-              <img src="/logos/qt_logo.png" alt="Quality Thought" className={styles.stripLogoQT} />
-              <img src="/logos/ikon_logo.png" alt="IKON Foundation" className={styles.stripLogo} />
-              <img src="/logos/vallas_logo.png" alt="Vallas Technology" className={styles.stripLogo} />
+              <div className={styles.logoItem}>
+                <img src="/logos/brics_logo.png" alt="BRICS Culture Media Forum" className={styles.stripLogo} />
+              </div>
+              <div className={styles.logoItem}>
+                <img src="/logos/qt_logo.png" alt="Quality Thought" className={styles.stripLogoQT} />
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Sponsor Logos Strip */}
+          <div className={`${styles.logosStrip} ${styles.bottomLogos}`} data-animate data-delay="2">
+            <div className={styles.logosRow}>
+              <div className={styles.logoItem}>
+                <img src="/logos/ikon_logo.png" alt="IKON Foundation" className={styles.stripLogo} />
+              </div>
+              <div className={styles.logoItem}>
+                <img src="/logos/vallas_logo.png" alt="Vallas Technology" className={styles.stripLogo} />
+              </div>
             </div>
           </div>
         </div>

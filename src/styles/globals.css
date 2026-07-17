@@ -1,9 +1,9 @@
 /* ============================================================
    Global Styles – Future Skills Summit
-   Fonts: Playfair Display (display) · Space Grotesk (accent) · Inter (body)
+   Fonts: Space Grotesk (accent/headings) · Inter (body)
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 /* ─── Design Tokens ─── */
 :root {
@@ -29,8 +29,8 @@
   --card-pink:   #E83472;
   --card-gray:   #7A8A9A;
 
-  /* Typography Scale */
-  --font-display:   'Playfair Display', Georgia, 'Times New Roman', serif;
+  /* Typography — single sans-serif system */
+  --font-display:   'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-primary:   'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-accent:    'Space Grotesk', 'Inter', sans-serif;
   --font-secondary: 'Inter', sans-serif;
@@ -44,14 +44,38 @@
   --fw-extrabold: 800;
   --fw-black:     900;
 
+  /* Spacing Scale — 8px base */
+  --space-1:   8px;
+  --space-2:  16px;
+  --space-3:  24px;
+  --space-4:  32px;
+  --space-5:  48px;
+  --space-6:  64px;
+  --space-7:  80px;
+  --space-8:  96px;
+  --space-9: 128px;
+
   /* Layout */
-  --section-padding: 80px 24px;
+  --section-pad-v: var(--space-8);   /* 96px desktop */
+  --section-pad-h: var(--space-3);   /* 24px horizontal */
+  --section-padding: var(--space-8) var(--space-3);
   --container-max: 1280px;
 
   /* Shadows */
-  --shadow-card:    0 8px 32px rgba(0, 0, 0, 0.08);
+  --shadow-card:    0 2px 16px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.04);
   --shadow-speaker: 0 4px 20px rgba(0, 0, 0, 0.13);
-  --shadow-lift:    0 20px 60px rgba(0, 0, 0, 0.12);
+  --shadow-lift:    0 16px 48px rgba(0, 0, 0, 0.10);
+
+  /* Border Radius */
+  --radius-sm:  8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  /* Transitions */
+  --transition-fast:   0.15s ease;
+  --transition-base:   0.2s ease;
+  --transition-smooth: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* ─── Reset ─── */
@@ -64,12 +88,13 @@
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  font-size: 16px;
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-primary);
   font-weight: 400;
-  font-size: 16px;
+  font-size: 1rem;
   background: var(--color-cream);
   color: var(--color-ink);
   line-height: 1.65;
@@ -83,7 +108,7 @@ body {
 
 /* ─── Scroll Reveal System ─── */
 [data-reveal] {
-  opacity: 0.001; /* near-zero so never truly "missing" if observer fails */
+  opacity: 0.001;
   transform: translateY(18px);
   transition:
     opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
@@ -100,6 +125,13 @@ body {
 [data-reveal-delay="300"] { transition-delay: 0.30s; }
 [data-reveal-delay="400"] { transition-delay: 0.40s; }
 
+/* ─── Accessibility: Focus States ─── */
+:focus-visible {
+  outline: 2px solid var(--color-teal);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
 /* ─── Typography ─── */
 h1, .h1 {
   font-family: var(--font-primary);
@@ -109,16 +141,17 @@ h1, .h1 {
 }
 
 h2, .h2 {
-  font-family: var(--font-display);
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.01em;
+  font-family: var(--font-primary);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
 }
 
 h3, .h3 {
   font-family: var(--font-primary);
   font-weight: 700;
   line-height: 1.25;
+  letter-spacing: -0.01em;
 }
 
 h4, h5, h6 {
@@ -127,14 +160,15 @@ h4, h5, h6 {
 }
 
 p {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-primary);
   font-weight: 400;
   line-height: 1.7;
   color: #3F3F46;
+  max-width: 68ch;
 }
 
 li {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-primary);
   font-weight: 400;
   line-height: 1.65;
 }
@@ -145,7 +179,7 @@ span, div {
 }
 
 small, .text-small {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-primary);
   font-weight: 400;
   font-size: 0.875em;
   line-height: 1.5;
@@ -154,6 +188,12 @@ small, .text-small {
 button, .btn {
   font-family: var(--font-accent);
   font-weight: 600;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
 img { max-width: 100%; display: block; }
@@ -162,7 +202,7 @@ img { max-width: 100%; display: block; }
 .container {
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 var(--space-3);
 }
 
 .section { padding: var(--section-padding); }
@@ -204,9 +244,9 @@ img { max-width: 100%; display: block; }
 /* ─── Section Label (overline tag) ─── */
 .section-label {
   font-family: var(--font-accent);
-  font-size: 0.68rem;
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--color-teal);
 }
@@ -214,7 +254,32 @@ img { max-width: 100%; display: block; }
 /* ─── Gradient Divider ─── */
 .divider {
   height: 1px;
-  background: rgba(0,0,0,0.08);
+  background: rgba(0,0,0,0.07);
   border: none;
   margin: 0;
+}
+
+/* ─── Card Scroll Reveal Animation ─── */
+/* Wrapper starts hidden; .card-visible class triggers the transition */
+[data-card-reveal] {
+  opacity: 0;
+  transform: translateY(36px) scale(0.96);
+  transition:
+    opacity  0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+[data-card-reveal].card-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Reduced-motion: respect user preference */
+@media (prefers-reduced-motion: reduce) {
+  [data-card-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }

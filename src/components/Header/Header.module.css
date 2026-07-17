@@ -79,6 +79,16 @@
   background: rgba(0,0,0,0.04);
 }
 
+.navLink:focus-visible {
+  outline: 2px solid var(--color-teal);
+  outline-offset: 2px;
+}
+
+.navLink:focus-visible {
+  outline: 2px solid var(--color-teal);
+  outline-offset: 2px;
+}
+
 /* Active — filled pill */
 .navLinkActive {
   background: var(--color-ink, #0A0A0F);
@@ -114,6 +124,11 @@
 .headerCta:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(232, 52, 114, 0.38);
+}
+
+.headerCta:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
 }
 
 .ctaIconBox {

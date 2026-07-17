@@ -51,7 +51,12 @@ const SpeakersSection: React.FC<SpeakersSectionProps> = ({ group, groupIndex }) 
         {/* ── Speaker Cards ── */}
         <div className={styles.speakersGrid}>
           {group.speakers.map((speaker, idx) => (
-            <div key={speaker.id} className={styles.cardWrapper}>
+            <div
+              key={speaker.id}
+              className={styles.cardWrapper}
+              data-card-reveal
+              data-card-index={idx}
+            >
               <SpeakerCard speaker={speaker} animationDelay={`${idx * 80}ms`} />
             </div>
           ))}

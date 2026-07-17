@@ -3,9 +3,8 @@
    ============================================================ */
 
 .section {
-  padding: 80px 24px 60px;
+  padding: 96px 24px;
   background: var(--color-white, #ffffff);
-  scroll-margin-top: 90px;
   position: relative;
   overflow: hidden;
 }
@@ -19,11 +18,11 @@
 }
 
 .welcomeText {
-  font-family: 'Playfair Display', serif;
-  font-size: 0.9rem;
-  font-weight: 400;
-  font-style: italic;
-  letter-spacing: 0.02em;
+  font-family: var(--font-accent, sans-serif);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
   color: var(--color-teal);
   text-align: center;
   display: block;
@@ -79,7 +78,7 @@
 
 /* ─── Mobile ─── */
 @media (max-width: 768px) {
-  .section { padding: 52px 16px 52px; scroll-margin-top: 80px; }
+  .section { padding: 52px 16px 52px; }
   .container { padding: 0; }
   .welcomeText { font-size: 1.1rem; margin-bottom: 18px; }
   .qtFoundationLogo { gap: 8px; margin-bottom: 28px; }

@@ -5,8 +5,8 @@
 .section {
   padding: 96px 0 100px;
   background: #FAFAFA;
-  scroll-margin-top: 90px;
   overflow: hidden;
+  width: 100%;
 }
 
 .container {
@@ -21,20 +21,20 @@
 }
 
 .sectionTag {
-  font-family: 'Playfair Display', serif;
-  font-size: 0.9rem;
-  font-weight: 400;
-  font-style: italic;
-  letter-spacing: 0.02em;
+  font-family: var(--font-accent, sans-serif);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
   color: var(--color-teal);
   display: inline-block;
   margin-bottom: 12px;
 }
 
 .title {
-  font-family: var(--font-display, 'Playfair Display', serif);
+  font-family: var(--font-primary, sans-serif);
   font-size: clamp(2.2rem, 4.5vw, 3rem);
-  font-weight: 700;
+  font-weight: 800;
   color: var(--color-ink, #0A0A0F);
   margin-bottom: 10px;
   line-height: 1.1;
@@ -42,7 +42,7 @@
 }
 
 .title em {
-  font-style: italic;
+  font-style: normal;
   color: var(--color-teal);
 }
 
@@ -58,12 +58,13 @@
 }
 
 .categoryLabel {
-  font-family: 'Playfair Display', serif;
-  font-size: 0.88rem;
-  font-weight: 400;
-  font-style: italic;
-  letter-spacing: 0.02em;
+  font-family: var(--font-accent, sans-serif);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
   color: var(--color-muted);
+  text-align: center;
   margin-bottom: 24px;
   display: block;
 }
@@ -74,7 +75,7 @@
 .marqueeWrapper {
   overflow: hidden;
   position: relative;
-  margin: 0 -40px; /* extend full width */
+  width: 100%;
 }
 
 /* Fade edges */
@@ -125,9 +126,9 @@
   background: var(--color-white);
   border-radius: 16px;
   border: 1px solid rgba(0,0,0,0.06);
-  padding: 20px 28px;
-  height: 110px;
-  min-width: 180px;
+  padding: 24px 32px;
+  height: 140px;
+  min-width: 240px;
   flex-shrink: 0;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -138,8 +139,8 @@
 }
 
 .logoImg {
-  max-width: 140px;
-  max-height: 70px;
+  max-width: 180px;
+  max-height: 90px;
   width: auto;
   height: auto;
   object-fit: contain;

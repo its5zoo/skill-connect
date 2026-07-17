@@ -73,9 +73,9 @@
 .hero {
   background: var(--color-white, #FFFFFF);
   width: 100%;
-  min-height: 100svh;
+  min-height: 100dvh;
   position: relative;
-  padding-top: 96px; /* header height */
+  padding-top: 80px;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -137,11 +137,11 @@
 .heroGrid {
   display: grid;
   grid-template-columns: 1fr 380px;
-  gap: 60px;
+  gap: 40px;
   align-items: center;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 40px 60px 60px;
+  padding: 24px 60px 24px;
   width: 100%;
   position: relative;
   z-index: 1;
@@ -153,8 +153,13 @@
 .heroLeft {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 16px;
 }
+
+.titleStack { order: 2; }
+.taglineRow { order: 3; }
+.topLogos { order: 4; }
+.bottomLogos { order: 5; }
 
 /* Overline */
 .overlineRow {
@@ -172,11 +177,11 @@
 }
 
 .overlineText {
-  font-family: 'Playfair Display', serif;
-  font-size: 0.82rem;
-  font-weight: 400;
-  font-style: italic;
-  letter-spacing: 0.03em;
+  font-family: var(--font-accent, 'Space Grotesk', sans-serif);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
   color: var(--color-muted, #6B7280);
 }
 
@@ -195,18 +200,17 @@
 .theTag {
   position: absolute;
   top: -14px;
-  left: -8px;
+  left: -9px;
   display: inline-block;
   background: var(--color-gold, #F5C518);
   color: var(--color-ink, #0A0A0F);
-  font-family: var(--font-display, serif);
-  font-weight: 900;
-  font-style: italic;
-  font-size: 1.2rem;
-  padding: 3px 14px;
-  border-radius: 3px;
+  font-family: var(--font-primary, sans-serif);
+  font-weight: 800;
+  font-size: 1.1rem;
+  padding: 4px 12px;
+  border-radius: 4px;
   letter-spacing: 0.04em;
-  transform: rotate(-5deg);
+  transform: rotate(-30deg);
   box-shadow: 2px 3px 12px rgba(0,0,0,0.12);
   z-index: 2;
 }
@@ -226,13 +230,13 @@
 }
 
 .mainTitleTeal {
-  font-family: var(--font-display, serif);
+  font-family: var(--font-primary, sans-serif);
   font-weight: 900;
-  font-style: italic;
-  font-size: clamp(2rem, 4.2vw, 3.6rem);
+  font-size: clamp(2.5rem, 4.2vw, 3.8rem);
   color: var(--color-teal, #00B4C8);
+  text-transform: uppercase;
   line-height: 1.1;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   margin: 6px 0 0 4px;
 }
 
@@ -266,22 +270,29 @@
 .logosStrip {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+}
+
+.topLogos {
+  margin-top: 12px;
+}
+
+.bottomLogos {
+  margin-top: 12px;
 }
 
 .logosLabel {
-  font-family: 'Playfair Display', serif;
-  font-size: 0.8rem;
-  font-weight: 400;
-  font-style: italic;
-  letter-spacing: 0.02em;
+  font-family: var(--font-accent);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--color-muted);
 }
 
 .logosRow {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 40px 60px;
+  gap: 24px 40px;
   align-items: center;
   justify-content: flex-start;
   justify-items: center;
@@ -290,28 +301,56 @@
 }
 
 .stripLogo {
-  height: 160px;
-  width: 260px;
+  height: 150px;
+  width: 240px;
   object-fit: contain;
   mix-blend-mode: multiply;
-  transition: transform 0.2s ease;
-  transform: scale(1.25);
+  transition: transform var(--transition-smooth, 0.3s);
   position: relative;
   z-index: 10;
+  transform: scale(1.15);
 }
 
 .stripLogoQT {
-  height: 160px;
-  width: 260px;
+  height: 150px;
+  width: 240px;
   object-fit: contain;
   mix-blend-mode: multiply;
-  transition: transform 0.2s ease;
-  transform: scale(1.25);
+  transition: transform var(--transition-smooth, 0.3s);
   position: relative;
   z-index: 10;
+  transform: scale(1.15);
 }
 
-.stripLogo:hover, .stripLogoQT:hover { transform: scale(1.35); }
+.stripLogo:hover  { transform: scale(1.22) translateY(-4px); }
+.stripLogoQT:hover { transform: scale(1.22) translateY(-4px); }
+
+.logoItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 100px;
+}
+
+.logoLabelText {
+  font-family: var(--font-primary, sans-serif);
+  font-weight: 800;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  color: var(--color-ink, #0A0A0F);
+  text-transform: uppercase;
+}
+
+/* Desktop re-ordering */
+@media (min-width: 1024px) {
+  .topLogos {
+    order: 1;
+    margin-top: 0;
+    margin-bottom: 8px;
+  }
+}
 
 
 
@@ -527,13 +566,13 @@
 
 /* Mobile */
 @media (max-width: 520px) {
-  .heroGrid { padding: 24px 20px 40px; gap: 32px; }
-  .mainTitle { font-size: clamp(1.9rem, 10vw, 3rem); white-space: normal; }
-  .mainTitleTeal { font-size: clamp(1.2rem, 7vw, 2rem); }
-  .tagline { font-size: 0.75rem; }
+  .heroGrid { padding: 24px 16px 40px; gap: 32px; }
+  .mainTitle { font-size: clamp(2rem, 10vw, 3rem); white-space: normal; }
+  .mainTitleTeal { font-size: clamp(1.3rem, 7vw, 2rem); }
+  .tagline { font-size: 0.8rem; }
   .theTag { font-size: 0.65rem; padding: 1.5px 8px; top: -8px; left: -4px; border-radius: 2px; }
 
-  .logosRow { gap: 24px 30px; justify-content: center; }
-  .stripLogo { height: 100px; width: 150px; transform: scale(1.1); }
-  .stripLogoQT { height: 100px; width: 150px; transform: scale(1.1); }
+  .logosRow { gap: 16px 24px; justify-content: center; }
+  .stripLogo { height: 80px; width: 130px; }
+  .stripLogoQT { height: 80px; width: 130px; }
 }

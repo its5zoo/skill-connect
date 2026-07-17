@@ -45,7 +45,7 @@ const Header: React.FC = () => {
     if (!el) return;
     const lenis = (window as any).__lenis;
     if (lenis) {
-      lenis.scrollTo(el, { offset: -80, duration: 1.4 });
+      lenis.scrollTo(el, { offset: 0, duration: 1.4 });
     } else {
       el.scrollIntoView({ behavior: 'smooth' });
     }
@@ -56,7 +56,7 @@ const Header: React.FC = () => {
     <header className={`${styles.header} ${menuOpen ? styles.headerOpen : ''}`} id="top">
       <div className={styles.headerInner}>
         {/* Brand wordmark */}
-        <span className={styles.brandMark}>Future <span>Skills</span> Summit</span>
+        <span className={styles.brandMark}>FUTURE <span>SKILLS</span> SUMMIT & AWARDS</span>
 
         {/* Desktop Navigation */}
         <nav className={styles.navMenu}>
