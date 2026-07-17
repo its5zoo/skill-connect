@@ -10,6 +10,7 @@ const NAV_ITEMS = [
   { label: 'QT Foundation', id: 'foundation' },
   { label: 'Chapter Heads', id: 'chapter-heads-ch-group-1' },
   { label: 'Partners',      id: 'partners' },
+  { label: 'Agenda',        id: 'agenda' },
 ];
 
 const Header: React.FC = () => {
@@ -54,6 +55,8 @@ const Header: React.FC = () => {
   return (
     <header className={`${styles.header} ${menuOpen ? styles.headerOpen : ''}`} id="top">
       <div className={styles.headerInner}>
+        {/* Brand wordmark */}
+        <span className={styles.brandMark}>Future <span>Skills</span> Summit</span>
 
         {/* Desktop Navigation */}
         <nav className={styles.navMenu}>

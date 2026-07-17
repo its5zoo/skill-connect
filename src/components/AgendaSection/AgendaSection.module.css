@@ -1,0 +1,357 @@
+/* ============================================================
+   Agenda Section — Horizontal Row List (like Next.js Conf / Vercel events)
+   Reference: nextjs.org/conf sessions page
+   ============================================================ */
+
+/* Type colors — only for the left accent strip */
+.typeCeremony     { --type-color: #F59E0B; }
+.typeKeynote      { --type-color: #6366F1; }
+.typePanel        { --type-color: #10B981; }
+.typePresentation { --type-color: #EC4899; }
+.typeSocial       { --type-color: #94A3B8; }
+.typeAwards       { --type-color: #F97316; }
+.typeClosing      { --type-color: #8B5CF6; }
+
+/* ─── Keyframes ─── */
+@keyframes rowIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Section ─── */
+.section {
+  padding: 100px 24px 120px;
+  background: #fff;
+  scroll-margin-top: 90px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ─── Header ─── */
+.header {
+  margin-bottom: 64px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.headerLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sectionTag { display: none; }
+
+.title {
+  font-family: var(--font-display, 'Playfair Display', serif);
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 700;
+  color: #09090B;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+
+.title em {
+  font-style: italic;
+  color: #6366F1;
+}
+
+.subtitle {
+  font-size: 0.93rem;
+  color: #71717A;
+  font-weight: 400;
+  max-width: 400px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ─── Legend — plain text list ─── */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+}
+
+.legendItem {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--type-color);
+  background: none;
+  border: none;
+  padding: 0;
+  position: relative;
+  padding-left: 10px;
+}
+
+/* tiny dot before each legend entry */
+.legendItem::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--type-color);
+}
+
+/* ─── Timeline — flat list, no dots, no line ─── */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid #E4E4E7;
+}
+
+/* ─── Each row ─── */
+.timelineItem {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 0;
+  align-items: stretch;
+  border-bottom: 1px solid #E4E4E7;
+  position: relative;
+  opacity: 0;
+  animation: rowIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  cursor: default;
+  /* Left accent strip on hover */
+  transition: background 0.2s ease;
+}
+
+.timelineItem:hover {
+  background: #FAFAFA;
+}
+
+/* Colored left accent bar */
+.timelineItem::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--type-color, #6366F1);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  border-radius: 0 2px 2px 0;
+}
+
+.timelineItem:hover::before {
+  opacity: 1;
+}
+
+/* Stagger delays */
+.timelineItem:nth-child(1)  { animation-delay: 0.04s; }
+.timelineItem:nth-child(2)  { animation-delay: 0.08s; }
+.timelineItem:nth-child(3)  { animation-delay: 0.12s; }
+.timelineItem:nth-child(4)  { animation-delay: 0.16s; }
+.timelineItem:nth-child(5)  { animation-delay: 0.20s; }
+.timelineItem:nth-child(6)  { animation-delay: 0.24s; }
+.timelineItem:nth-child(7)  { animation-delay: 0.28s; }
+.timelineItem:nth-child(8)  { animation-delay: 0.32s; }
+.timelineItem:nth-child(9)  { animation-delay: 0.36s; }
+.timelineItem:nth-child(10) { animation-delay: 0.40s; }
+.timelineItem:nth-child(11) { animation-delay: 0.44s; }
+.timelineItem:nth-child(12) { animation-delay: 0.48s; }
+
+/* ─── Time column ─── */
+.timeCol {
+  display: flex;
+  align-items: flex-start;
+  padding: 22px 20px 22px 18px;
+  border-right: 1px solid #E4E4E7;
+  flex-shrink: 0;
+}
+
+.time {
+  font-family: 'Space Grotesk', monospace, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #A1A1AA;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.timelineItem:hover .time {
+  color: #52525B;
+}
+
+/* ─── Connector — hidden, we use row layout instead ─── */
+.connector { display: none; }
+.dot { display: none; }
+.line { display: none; }
+
+/* ─── Content / card ─── */
+.card {
+  padding: 20px 24px 22px 24px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  flex-grow: 1;
+  position: relative;
+}
+
+/* ─── Badge ─── */
+.badge {
+  display: inline-block;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.72rem;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0.04em;
+  color: var(--type-color, #6366F1);
+  margin-bottom: 6px;
+}
+
+.itemTitle {
+  font-family: 'Inter', var(--font-primary), sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #09090B;
+  margin: 0 0 5px;
+  line-height: 1.38;
+  transition: color 0.2s ease;
+}
+
+.timelineItem:hover .itemTitle {
+  color: #3F3F46;
+}
+
+.itemSubtitle {
+  font-size: 0.86rem;
+  font-weight: 400;
+  color: #71717A;
+  margin: 0 0 8px;
+  line-height: 1.55;
+}
+
+.detailsList {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.detailsList li {
+  font-size: 0.83rem;
+  color: #A1A1AA;
+  padding-left: 14px;
+  position: relative;
+  line-height: 1.5;
+}
+
+.detailsList li::before {
+  content: '–';
+  position: absolute;
+  left: 0;
+  color: #D4D4D8;
+}
+
+/* ─── Closing item ─── */
+.closingItem {
+  background: #09090B;
+}
+
+.closingItem:hover {
+  background: #18181B;
+}
+
+.closingItem .timeCol {
+  border-right-color: #27272A;
+}
+
+.closingItem .time {
+  color: #52525B;
+}
+
+.closingItem:hover .time {
+  color: #A1A1AA;
+}
+
+.closingItem .itemTitle {
+  color: #F4F4F5;
+  font-style: italic;
+}
+
+.closingItem:hover .itemTitle {
+  color: #ffffff;
+}
+
+.closingItem .itemSubtitle,
+.closingItem .detailsList li {
+  color: #71717A;
+}
+
+.closingItem::before {
+  background: #8B5CF6;
+}
+
+/* ─── Tablet ─── */
+@media (max-width: 768px) {
+  .section { padding: 72px 20px 80px; }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 40px;
+    gap: 16px;
+  }
+
+  .legend {
+    gap: 12px;
+  }
+
+  .timelineItem {
+    grid-template-columns: 76px 1fr;
+  }
+
+  .timeCol {
+    padding: 16px 12px 16px 12px;
+  }
+
+  .time { font-size: 0.72rem; }
+
+  .card {
+    padding: 16px 18px 18px 18px;
+  }
+}
+
+/* ─── Mobile ─── */
+@media (max-width: 480px) {
+  .section { padding: 56px 0 64px; }
+  .container { padding: 0; }
+  .header { padding: 0 16px; margin-bottom: 32px; }
+
+  .title { font-size: clamp(1.9rem, 8vw, 2.4rem); }
+
+  .timelineItem {
+    grid-template-columns: 1fr;
+  }
+
+  .timeCol {
+    padding: 14px 16px 6px;
+    border-right: none;
+    border-bottom: none;
+  }
+
+  .card {
+    padding: 0 16px 16px;
+  }
+
+  .itemTitle { font-size: 0.92rem; }
+  .detailsList li { font-size: 0.78rem; }
+}

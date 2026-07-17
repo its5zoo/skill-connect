@@ -1,5 +1,5 @@
 // ============================================================
-// Speakers Section Component — Light, Staggered Layout
+// Speakers Section — Editorial layout with alternating backgrounds
 // ============================================================
 import React from 'react';
 import type { SpeakerGroup } from '../../types';
@@ -24,33 +24,35 @@ const groupSubtitles: Record<number, string> = {
 };
 
 const SpeakersSection: React.FC<SpeakersSectionProps> = ({ group, groupIndex }) => {
-  const titleData = groupTitles[groupIndex];
+  const titleData  = groupTitles[groupIndex];
+  const subtitle   = groupSubtitles[groupIndex];
+  // Alternate cream/white backgrounds
+  const bgClass = groupIndex % 2 === 0 ? styles.sectionCream : styles.sectionWhite;
 
   return (
     <section
-      className={styles.section}
+      className={`${styles.section} ${bgClass}`}
       id={`speakers-group-${groupIndex + 1}`}
       aria-label={`${titleData.line1} ${titleData.line2 ?? ''}`}
     >
       <div className={styles.container}>
         {/* ── Header ── */}
-        <div className={styles.header}>
-          <span className={styles.sectionTag}>Speakers</span>
-          <h2 className={styles.sectionTitle}>
-            {titleData.line1}{' '}
-            {titleData.line2 ?? ''}
-          </h2>
-          <p className={styles.sectionSubtitle}>{groupSubtitles[groupIndex]}</p>
+        <div className={styles.header} data-reveal>
+          <div className={styles.headerContent}>
+            <span className={styles.sectionTag}>Speakers</span>
+            <h2 className={styles.sectionTitle}>
+              {titleData.line1}{' '}{titleData.line2 ?? ''}
+            </h2>
+            <p className={styles.sectionSubtitle}>{subtitle}</p>
+          </div>
+          <div className={styles.headerAccent} aria-hidden="true" />
         </div>
 
-        {/* ── Speaker Cards — alternating up/down offset (desktop only) ── */}
+        {/* ── Speaker Cards ── */}
         <div className={styles.speakersGrid}>
           {group.speakers.map((speaker, idx) => (
-            <div
-              key={speaker.id}
-              className={styles.cardWrapper}
-            >
-              <SpeakerCard speaker={speaker} animationDelay={`${idx * 100}ms`} />
+            <div key={speaker.id} className={styles.cardWrapper}>
+              <SpeakerCard speaker={speaker} animationDelay={`${idx * 80}ms`} />
             </div>
           ))}
         </div>

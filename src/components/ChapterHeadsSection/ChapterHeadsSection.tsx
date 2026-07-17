@@ -65,12 +65,12 @@ const ChapterGroupSection: React.FC<GroupSectionProps> = ({ id, speakers, showHe
 // ── Main export ────────────────────────────────────────────────
 const ChapterHeadsSection: React.FC = () => (
   <>
-    {chapterHeadGroups.map((group, i) => (
+    {chapterHeadGroups.map((group) => (
       <ChapterGroupSection
         key={group.id}
         id={group.id}
         speakers={group.speakers}
-        showHeader={i === 0}
+        showHeader={true}
       />
     ))}
   </>

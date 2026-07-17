@@ -1,168 +1,201 @@
 /* ============================================================
-   Footer Styles — Full Mobile Responsive
+   Footer — Dark Editorial Design
    ============================================================ */
 
 .footer {
-  background: var(--color-black);
+  background: var(--color-ink, #0A0A0F);
   color: var(--color-white);
-  padding: 48px 24px 32px;
+  position: relative;
+}
+
+/* Clean single-line top divider */
+.topDivider {
+  height: 1px;
+  background: rgba(255,255,255,0.06);
 }
 
 .inner {
-  max-width: var(--container-max);
+  max-width: 1100px;
   margin: 0 auto;
+  padding: 80px 40px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
 }
 
-.registerBlock {
+/* ─── CTA Block ─── */
+.ctaBlock {
+  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 40px;
-  text-align: center;
+  gap: 16px;
 }
 
-.registerLabel {
-  font-family: var(--font-primary);
-  font-size: 0.7rem;
-  font-weight: 800;
+.ctaOverline {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.9rem;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  color: var(--color-teal);
+}
+
+.ctaHeading {
+  font-family: var(--font-display, 'Playfair Display', serif);
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 900;
+  font-style: italic;
+  color: var(--color-white);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.ctaSub {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.5);
+  font-weight: 400;
+  line-height: 1.65;
+  max-width: 480px;
+}
+
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: #ffffff;
+  color: #09090B;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-family: var(--font-accent);
+  font-weight: 700;
+  font-size: 0.88rem;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: transform 0.25s ease, background 0.2s ease;
+  margin-top: 8px;
+}
+
+.ctaBtn:hover {
+  transform: translateY(-2px);
+  background: #F4F4F5;
+}
+
+.ctaBtnArrow {
+  font-size: 1.1rem;
+  transition: transform 0.2s ease;
+}
+.ctaBtn:hover .ctaBtnArrow { transform: translateX(4px); }
+
+/* ─── Info Columns ─── */
+.infoColumns {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: wrap;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 20px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.02);
+}
+
+.infoCol {
+  flex: 1;
+  min-width: 160px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 32px 40px;
+}
+
+.colLabel {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.58rem;
+  font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--color-teal);
+  color: rgba(255,255,255,0.3);
+  margin-bottom: 4px;
 }
 
-.registerNumbers {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.colValue {
   font-family: var(--font-primary);
-  font-size: 1.5rem;
-  font-weight: 900;
+  font-size: 1.05rem;
+  font-weight: 700;
   color: var(--color-white);
-  letter-spacing: 0.04em;
-  flex-wrap: wrap;
-  justify-content: center;
+  line-height: 1.3;
 }
 
-.registerDivider {
-  color: var(--color-teal);
-  font-weight: 300;
-}
-
-.registerBtn {
-  margin-top: 8px;
-  background: var(--color-orange);
-  color: white;
-  border: none;
-  padding: 12px 36px;
-  border-radius: 32px;
+.colSub {
   font-family: var(--font-primary);
-  font-weight: 800;
   font-size: 0.85rem;
-  cursor: pointer;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  transition: background 0.2s, transform 0.18s;
+  color: rgba(255,255,255,0.45);
+  font-weight: 400;
 }
 
-.registerBtn:hover {
-  background: #c94e1a;
-  transform: translateY(-2px);
+.colPhone {
+  font-family: var(--font-accent);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-teal);
+  text-decoration: none;
+  transition: color 0.2s;
+  line-height: 1.6;
+}
+.colPhone:hover { color: var(--color-white); }
+
+.colDivider {
+  width: 1px;
+  background: rgba(255,255,255,0.06);
+  align-self: stretch;
 }
 
-.eventSummary {
-  display: flex;
-  justify-content: center;
-  gap: 48px;
-  padding: 24px 0;
-  border-top: 1px solid rgba(255,255,255,0.1);
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-  margin-bottom: 24px;
-  flex-wrap: wrap;
-}
-
-.summaryItem {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.summaryIcon {
-  font-size: 1.4rem;
-}
-
-.summaryText {
+/* ─── Bottom Bar ─── */
+.bottomBar {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding-top: 0;
 }
 
-.summaryLabel {
-  font-size: 0.6rem;
-  color: rgba(255,255,255,0.5);
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.summaryValue {
-  font-family: var(--font-primary);
-  font-size: 0.88rem;
-  font-weight: 800;
-  color: white;
-}
-
-.summaryValueSub {
-  font-size: 0.72rem;
-  color: rgba(255,255,255,0.7);
-  font-weight: 500;
+.bottomGradient {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(255,255,255,0.1) 30%,
+    rgba(255,255,255,0.1) 70%,
+    transparent
+  );
 }
 
 .copyright {
+  font-family: var(--font-primary);
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.25);
   text-align: center;
-  font-size: 0.7rem;
-  color: rgba(255,255,255,0.35);
-  margin-top: 8px;
+  line-height: 1.5;
 }
 
-/* ─── Tablet ─── */
-@media (max-width: 1024px) {
-  .footer { padding: 40px 20px 28px; }
-  .eventSummary { gap: 32px; }
-}
-
-/* ─── Mobile ─── */
+/* ─── Responsive ─── */
 @media (max-width: 768px) {
-  .footer { padding: 36px 16px 24px; }
+  .inner { padding: 60px 24px 36px; gap: 48px; }
 
-  .registerBlock { margin-bottom: 28px; gap: 6px; }
-  .registerLabel { font-size: 0.65rem; }
-  .registerNumbers {
-    font-size: 1.2rem;
-    gap: 8px;
-    flex-direction: column;
-    gap: 4px;
-  }
-  .registerDivider { display: none; }
-  .registerBtn {
-    padding: 10px 28px;
-    font-size: 0.8rem;
-  }
+  .ctaHeading { font-size: clamp(2.2rem, 8vw, 3.5rem); }
+  .ctaSub { font-size: 0.9rem; }
 
-  .eventSummary {
-    flex-direction: column;
-    gap: 16px;
-    align-items: center;
-    padding: 20px 0;
-  }
-
-  .summaryItem { gap: 10px; }
-  .summaryIcon { font-size: 1.2rem; }
-  .summaryValue { font-size: 0.82rem; }
+  .infoColumns { flex-direction: column; border-radius: 16px; }
+  .colDivider { width: auto; height: 1px; background: rgba(255,255,255,0.06); }
+  .infoCol { padding: 24px 28px; }
 }
 
-/* ─── Small Mobile ─── */
 @media (max-width: 480px) {
-  .footer { padding: 28px 12px 20px; }
-  .registerNumbers { font-size: 1rem; }
-  .summaryItem { flex-direction: column; align-items: center; gap: 4px; text-align: center; }
+  .inner { padding: 48px 20px 28px; gap: 36px; }
+  .ctaHeading { font-size: clamp(1.9rem, 9vw, 2.8rem); }
+  .ctaBtn { font-size: 0.82rem; padding: 14px 24px; }
+  .infoCol { padding: 20px 24px; }
 }

@@ -1,52 +1,70 @@
 // ============================================================
 // App.tsx – Root Application Component
-// Single-page layout assembling all sections
 // ============================================================
-import React from 'react';
+import React, { useEffect } from 'react';
 import './styles/globals.css';
 
-// Components
 import Header from './components/Header/Header';
 import Hero from './components/Hero/Hero';
 import SpeakersSection from './components/SpeakersSection/SpeakersSection';
 import FoundationSection from './components/FoundationSection/FoundationSection';
 import ChapterHeadsSection from './components/ChapterHeadsSection/ChapterHeadsSection';
 import PartnersSection from './components/PartnersSection/PartnersSection';
+import AgendaSection from './components/AgendaSection/AgendaSection';
 import Footer from './components/Footer/Footer';
 
-// Data
 import { speakerGroups } from './data/eventData';
 
 const App: React.FC = () => {
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.05,          // trigger as soon as 5% is visible
+        rootMargin: '0px 0px -20px 0px'  // generous margin
+      }
+    );
+
+    // Small delay so DOM is fully painted before observing
+    const timer = setTimeout(() => {
+      const targets = document.querySelectorAll('[data-reveal]');
+      targets.forEach((el) => {
+        // If already in viewport (above fold), show immediately
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight) {
+          el.classList.add('is-visible');
+        } else {
+          observer.observe(el);
+        }
+      });
+    }, 50);
+
+    return () => {
+      clearTimeout(timer);
+      observer.disconnect();
+    };
+  }, []);
+
   return (
     <>
-      {/* ── Sticky Navigation Header ── */}
       <Header />
-
       <main>
-        {/* ── Section 1: Hero / Event Banner (image 1 top) ── */}
         <Hero />
-
-        {/* ── Section 2–4: Speaker Groups (images 1, 2, 3) ── */}
         {speakerGroups.map((group, index) => (
-          <SpeakersSection
-            key={group.id}
-            group={group}
-            groupIndex={index}
-          />
+          <SpeakersSection key={group.id} group={group} groupIndex={index} />
         ))}
-
-        {/* ── Section 5: QT Foundation Launch (image 4) ── */}
         <FoundationSection />
-
-        {/* ── Section 6: Chapter Heads (image 5) ── */}
         <ChapterHeadsSection />
-
-        {/* ── Section 7: Partners & Sponsors (image 1 bottom) ── */}
         <PartnersSection />
+        <AgendaSection />
       </main>
-
-      {/* ── Footer with Register CTA ── */}
       <Footer />
     </>
   );

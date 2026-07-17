@@ -1,25 +1,29 @@
 /* ============================================================
-   Foundation Section Styles (image 4) — Full Mobile Responsive
+   Foundation Section — Warm Golden Background, Editorial Header
    ============================================================ */
 
 .section {
-  padding: 50px 24px 60px;
-  background: #F7FAFA;
+  padding: 80px 24px 60px;
+  background: var(--color-white, #ffffff);
   scroll-margin-top: 90px;
+  position: relative;
+  overflow: hidden;
 }
 
 .container {
-  max-width: var(--container-max);
+  max-width: var(--container-max, 1280px);
   margin: 0 auto;
   padding: 0;
+  position: relative;
+  z-index: 1;
 }
 
 .welcomeText {
-  font-family: var(--font-primary);
-  font-size: 1.25rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.9rem;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0.02em;
   color: var(--color-teal);
   text-align: center;
   display: block;
@@ -35,7 +39,6 @@
   margin-bottom: 0;
 }
 
-/* Generated image logo */
 .qtLogoImg {
   height: 160px;
   width: auto;
@@ -43,7 +46,6 @@
   mix-blend-mode: multiply;
 }
 
-/* Subtitle text beside logo */
 .qtLogoText {
   display: flex;
   flex-direction: column;
@@ -57,18 +59,6 @@
   line-height: 1.3;
 }
 
-/* ─── Seesaw Wave Keyframes ─── */
-@keyframes waveDown {
-  0%,  15% { transform: translateY(0px); }
-  40%, 60% { transform: translateY(60px); }
-  85%,100% { transform: translateY(0px); }
-}
-@keyframes waveUp {
-  0%,  15% { transform: translateY(60px); }
-  40%, 60% { transform: translateY(0px); }
-  85%,100% { transform: translateY(60px); }
-}
-
 /* Speakers grid */
 .speakersGrid {
   display: flex;
@@ -80,9 +70,6 @@
   padding-bottom: 60px;
 }
 
-/* Card wrapper wave animation */
-.cardWrapper:nth-child(odd)  { animation: waveDown 6s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite; }
-.cardWrapper:nth-child(even) { animation: waveUp   6s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite; }
 
 /* ─── Tablet ─── */
 @media (max-width: 1024px) {
@@ -95,19 +82,11 @@
   .section { padding: 52px 16px 52px; scroll-margin-top: 80px; }
   .container { padding: 0; }
   .welcomeText { font-size: 1.1rem; margin-bottom: 18px; }
-
   .qtFoundationLogo { gap: 8px; margin-bottom: 28px; }
   .qtLogoImg { height: 42px; }
   .qtLogoSub { font-size: 0.85rem; }
-
-  /* Reset stagger margin on mobile */
   .cardWrapper { margin-top: 0 !important; }
-
-  .speakersGrid {
-    gap: 16px 12px;
-    justify-content: center;
-    align-items: flex-start;
-  }
+  .speakersGrid { gap: 16px 12px; justify-content: center; align-items: flex-start; }
 }
 
 /* ─── Small Mobile ─── */

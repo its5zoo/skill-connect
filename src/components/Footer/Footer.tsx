@@ -1,64 +1,67 @@
 // ============================================================
-// Footer Component
+// Footer — Dark Editorial Design
 // ============================================================
 import React from 'react';
 import { eventDetails } from '../../data/eventData';
 import styles from './Footer.module.css';
 
-const Footer: React.FC = () => {
-  return (
-    <footer className={styles.footer} id="contact" aria-label="Footer">
-      <div className={styles.inner}>
+const Footer: React.FC = () => (
+  <footer className={styles.footer} id="contact" aria-label="Footer">
 
-        {/* Register CTA */}
-        <div className={styles.registerBlock}>
-          <span className={styles.registerLabel}>Register Now</span>
-          <div className={styles.registerNumbers}>
-            <span>{eventDetails.phone1}</span>
-            <span className={styles.registerDivider}>/</span>
-            <span>{eventDetails.phone2}</span>
-          </div>
-          <button
-            className={styles.registerBtn}
-            aria-label="Register for the Future Skills Summit"
-          >
-            Register for Free
-          </button>
+    {/* ── Gradient divider at top ── */}
+    <div className={styles.topDivider} aria-hidden="true" />
+
+    <div className={styles.inner}>
+
+      {/* ── CTA Block ── */}
+      <div className={styles.ctaBlock}>
+        <span className={styles.ctaOverline}>Don't miss out</span>
+        <h2 className={styles.ctaHeading}>Secure Your Seat</h2>
+        <p className={styles.ctaSub}>
+          Join 500+ leaders, innovators &amp; policymakers shaping<br />
+          the future of skills across industries.
+        </p>
+        <button className={styles.ctaBtn} aria-label="Register for the Future Skills Summit">
+          REGISTER NOW
+          <span className={styles.ctaBtnArrow}>→</span>
+        </button>
+      </div>
+
+      {/* ── Info Columns ── */}
+      <div className={styles.infoColumns}>
+        <div className={styles.infoCol}>
+          <span className={styles.colLabel}>Date</span>
+          <span className={styles.colValue}>{eventDetails.day}</span>
+          <span className={styles.colSub}>{eventDetails.date}</span>
         </div>
 
-        {/* Event Summary */}
-        <div className={styles.eventSummary}>
-          <div className={styles.summaryItem}>
-            <span className={styles.summaryIcon} aria-hidden="true">📅</span>
-            <div className={styles.summaryText}>
-              <span className={styles.summaryLabel}>{eventDetails.day}</span>
-              <span className={styles.summaryValue}>{eventDetails.date}</span>
-            </div>
-          </div>
-          <div className={styles.summaryItem}>
-            <span className={styles.summaryIcon} aria-hidden="true">📍</span>
-            <div className={styles.summaryText}>
-              <span className={styles.summaryLabel}>Venue</span>
-              <span className={styles.summaryValue}>{eventDetails.venue}</span>
-              <span className={styles.summaryValueSub}>{eventDetails.city}</span>
-            </div>
-          </div>
-          <div className={styles.summaryItem}>
-            <span className={styles.summaryIcon} aria-hidden="true">🏆</span>
-            <div className={styles.summaryText}>
-              <span className={styles.summaryLabel}>Event</span>
-              <span className={styles.summaryValue}>Future Skills</span>
-              <span className={styles.summaryValueSub}>Summit &amp; Awards</span>
-            </div>
-          </div>
+        <div className={styles.colDivider} />
+
+        <div className={styles.infoCol}>
+          <span className={styles.colLabel}>Venue</span>
+          <span className={styles.colValue}>{eventDetails.venue}</span>
+          <span className={styles.colSub}>{eventDetails.city}</span>
         </div>
 
+        <div className={styles.colDivider} />
+
+        <div className={styles.infoCol}>
+          <span className={styles.colLabel}>Register</span>
+          <a href={`tel:${eventDetails.phone1}`} className={styles.colPhone}>{eventDetails.phone1}</a>
+          <a href={`tel:${eventDetails.phone2}`} className={styles.colPhone}>{eventDetails.phone2}</a>
+        </div>
+      </div>
+
+      {/* ── Bottom Bar ── */}
+      <div className={styles.bottomBar}>
+        <div className={styles.bottomGradient} aria-hidden="true" />
         <p className={styles.copyright}>
-          © 2026 Quality Thought — Future Skills Summit &amp; Awards · All Rights Reserved
+          © 2026 Quality Thought · Future Skills Summit &amp; Awards · All Rights Reserved
         </p>
       </div>
-    </footer>
-  );
-};
+
+    </div>
+  </footer>
+);
 
 export default Footer;

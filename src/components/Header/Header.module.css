@@ -1,25 +1,27 @@
 /* ============================================================
-   Header Component Styles — Hamburger on Small Screens
+   Header — Refined Floating Pill with Filled Active State
    ============================================================ */
 
 .header {
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.94); /* matches new white --color-cream */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   position: fixed;
-  top: 16px;
+  top: 14px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.06),
+    0 1px 4px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.7);
   width: fit-content;
   max-width: 96%;
   border-radius: 50px;
-  transition: border-radius 0.2s ease;
+  transition: border-radius 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* When menu is open, flatten bottom radius */
+/* When mobile menu is open */
 .headerOpen {
   border-radius: 24px;
 }
@@ -28,10 +30,28 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8px 12px 8px 32px;
-  gap: 16px;
+  padding: 7px 10px 7px 24px;
+  gap: 4px;
 }
 
+/* ─── Brand wordmark ─── */
+.brandMark {
+  font-family: var(--font-accent, 'Space Grotesk', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--color-ink, #0A0A0F);
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  padding-right: 12px;
+  border-right: 1px solid rgba(0,0,0,0.1);
+  margin-right: 8px;
+}
+
+.brandMark span {
+  color: var(--color-teal, #00B4C8);
+}
+
+/* ─── Nav Menu ─── */
 .navMenu {
   display: flex;
   align-items: center;
@@ -41,68 +61,65 @@
 .navLink {
   background: none;
   border: none;
-  font-family: var(--font-primary);
-  font-size: 0.92rem;
-  font-weight: 700;
-  color: #333;
+  font-family: var(--font-primary, 'Inter', sans-serif);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #444;
   cursor: pointer;
-  padding: 8px 12px;
-  border-radius: 6px;
+  padding: 7px 12px;
+  border-radius: 30px;
   position: relative;
   transition: all 0.2s ease;
   white-space: nowrap;
+  letter-spacing: -0.01em;
 }
 
 .navLink:hover {
-  color: #E83472;
+  color: var(--color-ink, #0A0A0F);
+  background: rgba(0,0,0,0.04);
 }
 
-/* Active — blue dash + teal text */
+/* Active — filled pill */
 .navLinkActive {
-  color: #00B4C8;
+  background: var(--color-ink, #0A0A0F);
+  color: var(--color-white, #fff) !important;
 }
 
-.navLinkActive::after {
-  content: "";
-  position: absolute;
-  bottom: 2px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 18px;
-  height: 3px;
-  background-color: #00B4C8;
-  border-radius: 2px;
+.navLinkActive:hover {
+  background: #222;
+  color: var(--color-white) !important;
 }
 
+/* ─── CTA Button ─── */
 .headerCta {
-  background: linear-gradient(135deg, #FF6B35 0%, #E83472 100%);
+  background: linear-gradient(135deg, var(--color-coral, #E85D24) 0%, var(--color-pink, #E83472) 100%);
   color: var(--color-white);
   border: none;
-  padding: 6px 6px 6px 20px;
+  padding: 7px 7px 7px 18px;
   border-radius: 30px;
-  font-family: var(--font-primary);
-  font-weight: 800;
-  font-size: 0.75rem;
+  font-family: var(--font-accent, 'Space Grotesk', sans-serif);
+  font-weight: 700;
+  font-size: 0.72rem;
   cursor: pointer;
-  letter-spacing: 0.05em;
-  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  letter-spacing: 0.04em;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
   white-space: nowrap;
   display: flex;
   align-items: center;
-  gap: 12px;
-  box-shadow: 0 4px 15px rgba(232, 52, 114, 0.3);
+  gap: 10px;
+  box-shadow: 0 4px 14px rgba(232, 52, 114, 0.25);
+  margin-left: 4px;
 }
 
 .headerCta:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(232, 52, 114, 0.4);
+  box-shadow: 0 6px 20px rgba(232, 52, 114, 0.38);
 }
 
 .ctaIconBox {
-  width: 28px;
-  height: 28px;
-  background: white;
-  color: #E83472;
+  width: 26px;
+  height: 26px;
+  background: rgba(255,255,255,0.2);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -110,7 +127,7 @@
   flex-shrink: 0;
 }
 
-/* ─── Hamburger button (hidden on desktop) ─── */
+/* ─── Hamburger (hidden on desktop) ─── */
 .hamburger {
   display: none;
   background: none;
@@ -125,22 +142,20 @@
   transition: background 0.2s;
 }
 
-.hamburger:hover {
-  background: rgba(0,0,0,0.05);
-}
+.hamburger:hover { background: rgba(0,0,0,0.05); }
 
 .hamburger span {
   display: block;
   width: 22px;
-  height: 2.5px;
-  background: #333;
+  height: 2px;
+  background: var(--color-ink, #0A0A0F);
   border-radius: 3px;
   transition: all 0.28s ease;
 }
 
 .hamburger.open span:nth-child(1) {
   transform: rotate(45deg) translate(5px, 5px);
-  background: #E83472;
+  background: var(--color-pink);
 }
 .hamburger.open span:nth-child(2) {
   opacity: 0;
@@ -148,22 +163,20 @@
 }
 .hamburger.open span:nth-child(3) {
   transform: rotate(-45deg) translate(5px, -5px);
-  background: #E83472;
+  background: var(--color-pink);
 }
 
-/* ─── Mobile Dropdown Menu ─── */
+/* ─── Mobile Dropdown ─── */
 .mobileMenu {
   display: none;
   flex-direction: column;
   padding: 8px 12px 16px;
   gap: 2px;
-  border-top: 1px solid rgba(0,0,0,0.07);
+  border-top: 1px solid rgba(0,0,0,0.06);
   animation: menuSlide 0.22s ease forwards;
 }
 
-.mobileMenu.open {
-  display: flex;
-}
+.mobileMenu.open { display: flex; }
 
 @keyframes menuSlide {
   from { opacity: 0; transform: translateY(-6px); }
@@ -175,69 +188,68 @@
   border: none;
   font-family: var(--font-primary);
   font-size: 0.88rem;
-  font-weight: 700;
-  color: #222;
+  font-weight: 600;
+  color: #333;
   cursor: pointer;
-  padding: 11px 16px;
-  border-radius: 12px;
+  padding: 10px 16px;
+  border-radius: 10px;
   text-align: left;
   width: 100%;
   transition: background 0.15s, color 0.15s;
 }
 
 .mobileNavLink:hover {
-  background: #f4f4f6;
-  color: #E83472;
+  background: rgba(0,0,0,0.04);
+  color: var(--color-ink);
 }
 
-/* Mobile active — teal text + blue left dash */
 .mobileNavLinkActive {
-  color: #00B4C8 !important;
-  background: rgba(0, 180, 200, 0.08) !important;
-  border-left: 3px solid #00B4C8;
-  padding-left: 13px;
+  background: var(--color-ink) !important;
+  color: var(--color-white) !important;
+  border-radius: 10px;
   font-weight: 700;
 }
 
 .mobileCta {
   margin-top: 6px;
-  background: linear-gradient(135deg, #FF6B35 0%, #E83472 100%);
+  background: linear-gradient(135deg, var(--color-coral) 0%, var(--color-pink) 100%);
   color: white;
   border: none;
   padding: 12px 20px;
   border-radius: 24px;
-  font-family: var(--font-primary);
-  font-weight: 800;
+  font-family: var(--font-accent);
+  font-weight: 700;
   font-size: 0.82rem;
   cursor: pointer;
   letter-spacing: 0.05em;
   width: 100%;
   text-align: center;
-  box-shadow: 0 4px 15px rgba(232, 52, 114, 0.3);
+  box-shadow: 0 4px 15px rgba(232, 52, 114, 0.25);
   transition: all 0.2s;
 }
 
 .mobileCta:hover {
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(232, 52, 114, 0.4);
+  box-shadow: 0 6px 20px rgba(232, 52, 114, 0.38);
 }
 
-/* ─── Tablet: shrink nav slightly ─── */
+/* ─── Tablet ─── */
 @media (max-width: 960px) {
-  .navLink { font-size: 0.82rem; padding: 7px 9px; }
-  .headerCta { font-size: 0.7rem; padding: 5px 5px 5px 16px; gap: 8px; }
-  .ctaIconBox { width: 24px; height: 24px; }
-  .headerInner { gap: 10px; padding: 7px 10px 7px 24px; }
+  .navLink { font-size: 0.78rem; padding: 6px 10px; }
+  .headerCta { font-size: 0.68rem; padding: 6px 6px 6px 14px; gap: 8px; }
+  .ctaIconBox { width: 22px; height: 22px; }
+  .headerInner { gap: 2px; padding: 6px 8px 6px 20px; }
+  .brandMark { font-size: 0.65rem; }
 }
 
-/* ─── Small tablet ─── */
+/* ─── Small Tablet ─── */
 @media (max-width: 780px) {
-  .navLink { font-size: 0.76rem; padding: 6px 7px; }
-  .headerCta { font-size: 0.68rem; padding: 5px 5px 5px 12px; gap: 6px; }
-  .headerInner { gap: 8px; }
+  .navLink { font-size: 0.72rem; padding: 5px 8px; }
+  .headerInner { gap: 2px; }
+  .brandMark { display: none; }
 }
 
-/* ─── Mobile: show hamburger, hide desktop nav ─── */
+/* ─── Mobile: hamburger ─── */
 @media (max-width: 620px) {
   .header {
     top: 10px;
@@ -245,26 +257,11 @@
     max-width: calc(100% - 24px);
     border-radius: 20px;
   }
-  .headerOpen {
-    border-radius: 20px;
-  }
-
-  .headerInner {
-    padding: 10px 16px;
-    justify-content: space-between;
-    gap: 0;
-  }
-
-  /* Hide desktop nav and CTA */
-  .navMenu,
-  .headerCta {
-    display: none;
-  }
-
-  /* Show hamburger */
-  .hamburger {
-    display: flex;
-  }
+  .headerOpen { border-radius: 20px; }
+  .headerInner { padding: 10px 16px; justify-content: space-between; gap: 0; }
+  .navMenu, .headerCta { display: none; }
+  .hamburger { display: flex; }
+  .brandMark { display: block; font-size: 0.7rem; }
 }
 
 @media (max-width: 380px) {

@@ -1,10 +1,9 @@
 // ============================================================
-// Speaker Card Component — Portrait Style + Scroll Animation
+// Speaker Card Component — Clean Editorial Style
 // ============================================================
 import React from 'react';
 import type { Speaker } from '../../types';
 import styles from './SpeakerCard.module.css';
-import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 
 interface SpeakerCardProps {
   speaker: Speaker;
@@ -14,14 +13,10 @@ interface SpeakerCardProps {
 // Generate initials from name
 const getInitials = (name: string): string => {
   const parts = name.replace(/^(DR\.|PROF\.|AMB\.|DR)\s+/i, '').split(' ');
-  return parts
-    .slice(0, 2)
-    .map((p) => p[0])
-    .join('')
-    .toUpperCase();
+  return parts.slice(0, 2).map((p) => p[0]).join('').toUpperCase();
 };
 
-// Simple SVG person silhouette
+// Simple person silhouette SVG
 const PersonSilhouette: React.FC<{ color: string }> = ({ color }) => (
   <svg
     className={styles.avatarSilhouette}
@@ -36,20 +31,18 @@ const PersonSilhouette: React.FC<{ color: string }> = ({ color }) => (
 );
 
 const silhouetteColorMap: Record<Speaker['cardColor'], string> = {
-  yellow: 'rgba(0,0,0,0.18)',
-  teal: 'rgba(255,255,255,0.25)',
-  pink: 'rgba(255,255,255,0.25)',
-  gray: 'rgba(255,255,255,0.20)',
+  yellow: 'rgba(0,0,0,0.12)',
+  teal:   'rgba(255,255,255,0.25)',
+  pink:   'rgba(255,255,255,0.25)',
+  gray:   'rgba(255,255,255,0.20)',
 };
 
 const SpeakerCard: React.FC<SpeakerCardProps> = ({ speaker, animationDelay }) => {
-  const initials  = getInitials(speaker.name);
-  const silColor  = silhouetteColorMap[speaker.cardColor];
-  const cardRef   = useScrollAnimation<HTMLElement>(0.05);
+  const initials = getInitials(speaker.name);
+  const silColor = silhouetteColorMap[speaker.cardColor];
 
   return (
     <article
-      ref={cardRef}
       className={styles.card}
       style={animationDelay ? { animationDelay } : undefined}
     >
