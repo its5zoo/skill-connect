@@ -1,0 +1,6 @@
+/* PageLayout.module.css */
+.pageMain {
+  /* Push content below the fixed header */
+  padding-top: 90px;
+  min-height: 100vh;
+}

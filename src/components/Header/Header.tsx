@@ -1,46 +1,49 @@
 // ============================================================
-// Header Component — Active section highlight with blue dash
+// Header Component — Routing + Active section highlight
+// On Home page (/): scroll spy active, clicking navigates to dedicated page
+// On sub-pages: shows route-based active state
 // ============================================================
 import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import styles from './Header.module.css';
 
 const NAV_ITEMS = [
-  { label: 'Home',          id: 'hero' },
-  { label: 'Speakers',      id: 'speakers-group-1' },
-  { label: 'QT Foundation', id: 'foundation' },
-  { label: 'Chapter Heads', id: 'chapter-heads-ch-group-1' },
-  { label: 'Partners',      id: 'partners' },
-  { label: 'Agenda',        id: 'agenda' },
+  { label: 'Home',          id: 'hero',                       path: '/' },
+  { label: 'Speakers',      id: 'speakers-group-1',           path: '/speakers' },
+  { label: 'QT Foundation', id: 'foundation',                 path: '/qt-foundation' },
+  { label: 'Chapter Heads', id: 'chapter-heads-ch-group-1',   path: '/chapter-heads' },
+  { label: 'Partners',      id: 'partners',                   path: '/partners' },
+  { label: 'Agenda',        id: 'agenda',                     path: '/agenda' },
 ];
 
 const Header: React.FC = () => {
-  const [activeId, setActiveId]   = useState('hero');
+  const navigate   = useNavigate();
+  const location   = useLocation();
+  const isHomePage = location.pathname === '/';
+
+  const [scrollActiveId, setScrollActiveId] = useState('hero');
   const [menuOpen, setMenuOpen]   = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
+  // ── Scrolled state (pill vs full-width) ─────────────────
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // ── Scroll spy via IntersectionObserver ──────────────────
+  // ── Scroll spy — only on Home page ───────────────────────
   useEffect(() => {
-    const sectionIds = NAV_ITEMS.map(n => n.id);
+    if (!isHomePage) return;
 
     const observers: IntersectionObserver[] = [];
 
-    sectionIds.forEach(id => {
+    NAV_ITEMS.forEach(({ id }) => {
       const el = document.getElementById(id);
       if (!el) return;
-
       const obs = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) setActiveId(id);
-        },
+        ([entry]) => { if (entry.isIntersecting) setScrollActiveId(id); },
         { rootMargin: '-40% 0px -55% 0px', threshold: 0 }
       );
       obs.observe(el);
@@ -48,34 +51,52 @@ const Header: React.FC = () => {
     });
 
     return () => observers.forEach(o => o.disconnect());
-  }, []);
+  }, [isHomePage]);
 
-  const scrollTo = (id: string) => {
-    // Remove focus to prevent sticky focus rings
+  // ── Determine which nav item is "active" ─────────────────
+  const getActiveId = () => {
+    if (isHomePage) return scrollActiveId;
+    // Match current route path to nav item
+    const matched = NAV_ITEMS.find(item => item.path === location.pathname);
+    return matched ? matched.id : '';
+  };
+
+  const activeId = getActiveId();
+
+  // ── Navigation handler ────────────────────────────────────
+  const handleNav = (path: string, id: string) => {
     (document.activeElement as HTMLElement)?.blur();
-
-    const el = document.getElementById(id);
-    if (!el) return;
-    const lenis = (window as any).__lenis;
-    if (lenis) {
-      lenis.scrollTo(el, { offset: 0, duration: 1.4 });
-    } else {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
     setMenuOpen(false);
+
+    if (path === '/' && isHomePage) {
+      // Already on home — smooth scroll to hero top
+      const lenis = (window as any).__lenis;
+      if (lenis) {
+        lenis.scrollTo(0, { duration: 1.2 });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      return;
+    }
+
+    // Navigate to the route page
+    navigate(path);
   };
 
   return (
-    <header className={`${styles.header} ${!isScrolled ? styles.headerAtTop : ''} ${menuOpen ? styles.headerOpen : ''}`} id="top">
+    <header
+      className={`${styles.header} ${!isScrolled ? styles.headerAtTop : ''} ${menuOpen ? styles.headerOpen : ''}`}
+      id="top"
+    >
       <div className={styles.headerInner}>
 
         {/* Desktop Navigation */}
         <nav className={styles.navMenu}>
-          {NAV_ITEMS.map(({ label, id }) => (
+          {NAV_ITEMS.map(({ label, id, path }) => (
             <button
               key={id}
               className={`${styles.navLink} ${activeId === id ? styles.navLinkActive : ''}`}
-              onClick={() => scrollTo(id)}
+              onClick={() => handleNav(path, id)}
             >
               {label}
             </button>
@@ -83,7 +104,7 @@ const Header: React.FC = () => {
         </nav>
 
         {/* Desktop CTA */}
-        <button className={styles.headerCta} onClick={() => scrollTo('register')} aria-label="Register">
+        <button className={styles.headerCta} onClick={() => navigate('/')} aria-label="Register">
           <span>REGISTER NOW</span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -105,16 +126,16 @@ const Header: React.FC = () => {
 
       {/* Mobile Dropdown */}
       <div className={`${styles.mobileMenu} ${menuOpen ? styles.open : ''}`}>
-        {NAV_ITEMS.map(({ label, id }) => (
+        {NAV_ITEMS.map(({ label, id, path }) => (
           <button
             key={id}
             className={`${styles.mobileNavLink} ${activeId === id ? styles.mobileNavLinkActive : ''}`}
-            onClick={() => scrollTo(id)}
+            onClick={() => handleNav(path, id)}
           >
             {label}
           </button>
         ))}
-        <button className={styles.mobileCta} onClick={() => scrollTo('register')}>
+        <button className={styles.mobileCta} onClick={() => { navigate('/'); setMenuOpen(false); }}>
           REGISTER NOW →
         </button>
       </div>
