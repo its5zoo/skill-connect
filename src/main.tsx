@@ -7,6 +7,16 @@ import { BrowserRouter } from 'react-router-dom';
 import Lenis from 'lenis';
 import App from './App';
 
+// If the user hard refreshes the page, always send them back to the Home page
+if (window.performance) {
+  const navEntries = window.performance.getEntriesByType('navigation') as PerformanceNavigationTiming[];
+  if (navEntries.length > 0 && navEntries[0].type === 'reload') {
+    if (window.location.pathname !== '/') {
+      window.location.replace('/');
+    }
+  }
+}
+
 // ── Lenis buttery smooth scroll ─────────────────────────────
 const lenis = new Lenis({
   duration: 1.4,

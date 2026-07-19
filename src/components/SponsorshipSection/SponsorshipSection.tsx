@@ -3,6 +3,7 @@
 // ============================================================
 import React, { useRef } from 'react';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
+import PhoneIcon from '@mui/icons-material/Phone';
 import styles from './SponsorshipSection.module.css';
 
 // ─── Data ────────────────────────────────────────────────────
@@ -76,17 +77,13 @@ const SponsorshipSection: React.FC = () => {
           </p>
         </div>
 
-        {/* ── Tier Cards (mobile header) ── */}
-        <div className={styles.tierCards} data-reveal>
-          {TIERS.map(t => (
-            <div key={t.id} className={`${styles.tierCard} ${styles[t.colorClass]}`}>
-              <span className={styles.tierLabel}>{t.label}</span>
-              <span className={styles.tierPrice}>{t.price}</span>
-            </div>
-          ))}
-        </div>
+
 
         {/* ── Comparison Table ── */}
+        <div className={styles.scrollHintMobile} aria-hidden="true">
+          <span>Swipe to compare packages</span>
+          <span className={styles.scrollArrow}>→</span>
+        </div>
         <div className={styles.tableWrap} data-reveal>
           <table className={styles.table}>
             <thead>
@@ -133,10 +130,12 @@ const SponsorshipSection: React.FC = () => {
           <p className={styles.ctaText}>Interested in sponsoring?</p>
           <div className={styles.ctaButtons}>
             <a href="tel:7981532054" className={styles.ctaBtn}>
-              📞 7981532054
+              <PhoneIcon sx={{ fontSize: 20 }} />
+              <span>7981532054</span>
             </a>
             <a href="tel:8297167157" className={styles.ctaBtn}>
-              📞 8297167157
+              <PhoneIcon sx={{ fontSize: 20 }} />
+              <span>8297167157</span>
             </a>
           </div>
         </div>
