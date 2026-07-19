@@ -19,14 +19,15 @@
 
 .welcomeText {
   font-family: var(--font-accent, sans-serif);
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--color-teal);
   text-align: center;
   display: block;
-  margin-bottom: 0;
+  width: 100%;
+  margin: 0 auto 16px auto;
 }
 
 /* QT Foundation Logo row */

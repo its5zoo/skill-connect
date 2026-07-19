@@ -11,6 +11,7 @@ import FoundationPage from './pages/FoundationPage';
 import ChapterHeadsPage from './pages/ChapterHeadsPage';
 import PartnersPage from './pages/PartnersPage';
 import AgendaPage from './pages/AgendaPage';
+import SponsorshipPage from './pages/SponsorshipPage';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -40,6 +41,7 @@ const App: React.FC = () => {
         <Route path="/chapter-heads"  element={<ChapterHeadsPage />} />
         <Route path="/partners"       element={<PartnersPage />} />
         <Route path="/agenda"         element={<AgendaPage />} />
+        <Route path="/sponsorship"    element={<SponsorshipPage />} />
         {/* Fallback to home */}
         <Route path="*"               element={<HomePage />} />
       </Routes>

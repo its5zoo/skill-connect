@@ -13,6 +13,7 @@ const NAV_ITEMS = [
   { label: 'QT Foundation', id: 'foundation',                 path: '/qt-foundation' },
   { label: 'Chapter Heads', id: 'chapter-heads-ch-group-1',   path: '/chapter-heads' },
   { label: 'Partners',      id: 'partners',                   path: '/partners' },
+  { label: 'Sponsor',       id: 'sponsorship',                path: '/sponsorship' },
   { label: 'Agenda',        id: 'agenda',                     path: '/agenda' },
 ];
 

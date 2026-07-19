@@ -8,6 +8,7 @@ import SpeakersSection from '../components/SpeakersSection/SpeakersSection';
 import FoundationSection from '../components/FoundationSection/FoundationSection';
 import ChapterHeadsSection from '../components/ChapterHeadsSection/ChapterHeadsSection';
 import PartnersSection from '../components/PartnersSection/PartnersSection';
+import SponsorshipSection from '../components/SponsorshipSection/SponsorshipSection';
 import AgendaSection from '../components/AgendaSection/AgendaSection';
 import Footer from '../components/Footer/Footer';
 import { speakerGroups } from '../data/eventData';
@@ -81,6 +82,7 @@ const HomePage: React.FC = () => {
         <FoundationSection />
         <ChapterHeadsSection />
         <PartnersSection />
+        <SponsorshipSection />
         <AgendaSection />
       </main>
       <Footer />

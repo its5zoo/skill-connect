@@ -1,0 +1,311 @@
+/* ============================================================
+   SponsorshipSection.module.css — Premium Sponsorship Table
+   ============================================================ */
+
+.section {
+  padding: 100px 24px;
+  background: #0a0a12;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background glow blobs */
+.section::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  left: -200px;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(0,180,200,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.section::after {
+  content: '';
+  position: absolute;
+  bottom: -200px;
+  right: -200px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(232,93,36,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Header ─────────────────────────────────────────────── */
+.header {
+  text-align: center;
+  margin-bottom: 52px;
+}
+
+.eyebrow {
+  font-family: var(--font-accent, sans-serif);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-teal, #00B4C8);
+  margin-bottom: 12px;
+}
+
+.title {
+  font-family: var(--font-primary, sans-serif);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 16px;
+  line-height: 1.15;
+}
+
+.accent {
+  color: var(--color-teal, #00B4C8);
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.7;
+}
+
+/* ── Mobile Tier Cards (hidden on desktop) ─────────────── */
+.tierCards {
+  display: none;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+/* ── Table ───────────────────────────────────────────────── */
+.tableWrap {
+  overflow-x: auto;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 60px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 640px;
+}
+
+/* Column headers */
+.featureHeader {
+  background: #1a1a28;
+  color: rgba(255,255,255,0.5);
+  font-family: var(--font-accent, sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 22px 28px;
+  text-align: left;
+  width: 34%;
+}
+
+.tierHeader {
+  padding: 22px 20px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.tierHeader.platinum { background: linear-gradient(135deg, #2a2a3d 0%, #1e1e30 100%); border-left: 1px solid rgba(192,192,220,0.15); }
+.tierHeader.gold     { background: linear-gradient(135deg, #2a2516 0%, #1e1c10 100%); border-left: 1px solid rgba(220,180,50,0.15); }
+.tierHeader.silver   { background: linear-gradient(135deg, #1a2528 0%, #131d20 100%); border-left: 1px solid rgba(0,180,200,0.15); }
+
+.tierHeaderLabel {
+  display: block;
+  font-family: var(--font-accent, sans-serif);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.tierHeader.platinum .tierHeaderLabel { color: #c8c8e8; }
+.tierHeader.gold     .tierHeaderLabel { color: #f0c040; }
+.tierHeader.silver   .tierHeaderLabel { color: #00C4D8; }
+
+.tierHeaderPrice {
+  display: block;
+  font-size: 1rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+/* Table rows */
+.tableRow {
+  transition: background 0.2s ease;
+}
+.tableRow:hover { background: rgba(255,255,255,0.03); }
+.rowEven { background: rgba(255,255,255,0.015); }
+
+.highlightRow td { background: transparent !important; }
+
+.featureCell {
+  padding: 16px 28px;
+  color: rgba(255,255,255,0.75);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.valueCell {
+  padding: 14px 20px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  border-left: 1px solid rgba(255,255,255,0.04);
+  vertical-align: middle;
+}
+
+/* Highlight row (speaking slot) */
+.highlight_platinum { background: rgba(192,192,220,0.12) !important; }
+.highlight_gold     { background: rgba(232,140,30,0.2) !important; }
+.highlight_silver   { background: rgba(0,180,200,0.12) !important; }
+
+/* Check icon */
+.checkIcon {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+}
+.checkIcon.platinum { color: #a0a0cc; }
+.checkIcon.gold     { color: #f0c040; }
+.checkIcon.silver   { color: #00C4D8; }
+
+/* Cell text */
+.cellText {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.cellDash {
+  color: rgba(255,255,255,0.2);
+  font-size: 1.1rem;
+}
+
+.highlightCell {
+  font-family: var(--font-accent, sans-serif);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ── Partner Section ─────────────────────────────────────── */
+.partnersSection {
+  margin-bottom: 60px;
+}
+
+.partnersTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.9);
+  text-align: center;
+  margin-bottom: 28px;
+  font-family: var(--font-accent, sans-serif);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.partnersGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.partnerCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 18px 24px;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.partnerCard:hover {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(0,180,200,0.3);
+}
+
+.partnerLabel {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-teal, #00B4C8);
+}
+
+.partnerPrice {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+/* ── CTA ─────────────────────────────────────────────────── */
+.cta {
+  text-align: center;
+  padding: 40px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 20px;
+}
+
+.ctaText {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 20px;
+}
+
+.ctaButtons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.ctaBtn {
+  background: linear-gradient(135deg, var(--color-coral, #E85D24) 0%, var(--color-pink, #E83472) 100%);
+  color: #fff;
+  text-decoration: none;
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-family: var(--font-accent, sans-serif);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.ctaBtn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .section { padding: 64px 16px; }
+  .tierCards { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .featureCell { padding: 14px 16px; font-size: 0.75rem; }
+  .valueCell { padding: 12px 12px; }
+  .featureHeader { padding: 18px 16px; }
+  .tierHeaderPrice { font-size: 0.85rem; }
+  .partnersGrid { grid-template-columns: 1fr; }
+  .cta { padding: 28px 20px; }
+  .ctaButtons { flex-direction: column; align-items: center; }
+}
+
+@media (max-width: 480px) {
+  .table { min-width: 520px; }
+  .featureCell { font-size: 0.7rem; padding: 12px 10px; }
+}
