@@ -41,6 +41,9 @@ const Header: React.FC = () => {
   }, []);
 
   const scrollTo = (id: string) => {
+    // Remove focus to prevent sticky focus rings
+    (document.activeElement as HTMLElement)?.blur();
+
     const el = document.getElementById(id);
     if (!el) return;
     const lenis = (window as any).__lenis;

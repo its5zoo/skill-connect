@@ -2,21 +2,23 @@
    Speaker Card — Clean Minimalist Editorial Style
    ============================================================ */
 
-/* ── Keyframes ─────────────────────────────────────────────── */
+/* ── Keyframes ──────────────────────────────────────────────────────── */
 @keyframes cardIn {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(28px) scale(0.94);
+    filter: blur(6px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
+    filter: blur(0);
   }
 }
 
 @keyframes cardShine {
-  0% { left: -100%; }
-  100% { left: 200%; }
+  0%   { transform: translateX(-130%) skewX(-20deg); }
+  100% { transform: translateX(320%) skewX(-20deg); }
 }
 
 /* ── Card base ────────────────────────────────────────────────── */
@@ -33,17 +35,17 @@
   background: transparent;
 }
 
-/* Hover: Lift the photo wrapper */
+/* Hover: Lift the photo wrapper with spring */
 .card:hover .photoWrapper {
-  transform: translateY(-8px);
+  transform: translateY(-10px) scale(1.01);
   box-shadow:
-    0 20px 40px rgba(0, 0, 0, 0.08),
-    0 4px 12px rgba(0, 0, 0, 0.03);
+    0 24px 48px rgba(0, 0, 0, 0.12),
+    0 6px 16px rgba(0, 0, 0, 0.06);
 }
 
 /* Zoom effect on photo */
 .card:hover .speakerPhoto {
-  transform: scale(1.04);
+  transform: scale(1.06);
 }
 
 /* Name color on hover */
@@ -53,7 +55,7 @@
 
 /* Active press */
 .card:active .photoWrapper {
-  transform: translateY(-4px);
+  transform: translateY(-4px) scale(0.99);
 }
 
 /* ── Photo wrapper ──────────────────────────────────────────── */
@@ -68,11 +70,10 @@
   margin-bottom: 14px;
   background: #F3F4F6;
   border: 1px solid rgba(0, 0, 0, 0.04);
-
   will-change: transform, box-shadow;
   transition:
-    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-    transform  0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+    transform  0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* Shine effect on hover */
@@ -80,22 +81,22 @@
   content: '';
   position: absolute;
   top: 0;
-  left: -100%;
-  width: 50%;
+  left: 0;
+  width: 45%;
   height: 100%;
   background: linear-gradient(
     to right,
     rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0.6) 50%,
     rgba(255, 255, 255, 0) 100%
   );
-  transform: skewX(-20deg);
+  transform: translateX(-130%) skewX(-20deg);
   z-index: 3;
   pointer-events: none;
 }
 
 .card:hover .photoWrapper::before {
-  animation: cardShine 0.8s ease-in-out;
+  animation: cardShine 0.75s ease-in-out;
 }
 
 /* Color gradients per card color prop */
@@ -127,7 +128,8 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: top center;
+  /* 20% from top ensures the face is never cropped */
+  object-position: center 20%;
   display: block;
   position: relative;
   z-index: 1;
@@ -207,20 +209,21 @@
 
 /* ─── Mobile ─── */
 @media (max-width: 768px) {
-  .card { width: 160px; }
-  .photoWrapper { height: 210px; border-radius: 12px; margin-bottom: 10px; }
-  .name { font-size: 0.8rem; }
-  .title { font-size: 0.72rem; }
-  .org { font-size: 0.7rem; }
+  /* Fill the grid column — don't constrain by fixed px width */
+  .card { width: 100%; }
+  .photoWrapper { height: 180px; border-radius: 12px; margin-bottom: 10px; }
+  .name { font-size: 0.78rem; }
+  .title { font-size: 0.7rem; }
+  .org { font-size: 0.68rem; }
   .avatarInitials { font-size: 2.2rem; }
 }
 
 /* ─── Small Mobile ─── */
 @media (max-width: 480px) {
-  .card { width: 140px; }
-  .photoWrapper { height: 185px; border-radius: 10px; margin-bottom: 8px; }
-  .name { font-size: 0.74rem; }
-  .title { font-size: 0.68rem; }
-  .org { font-size: 0.66rem; }
-  .avatarSilhouette { width: 85px; height: 110px; }
+  .card { width: 100%; }
+  .photoWrapper { height: 155px; border-radius: 10px; margin-bottom: 8px; }
+  .name { font-size: 0.72rem; }
+  .title { font-size: 0.66rem; }
+  .org { font-size: 0.64rem; }
+  .avatarSilhouette { width: 80px; height: 105px; }
 }

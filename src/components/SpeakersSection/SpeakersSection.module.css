@@ -98,7 +98,14 @@
   .sectionTitle { font-size: clamp(1.5rem, 6vw, 2rem); }
   .sectionSubtitle { font-size: 0.82rem; }
   .cardWrapper { margin-top: 0 !important; }
-  .speakersGrid { gap: 16px 12px; justify-content: center; align-items: flex-start; }
+  /* Strict 2-col grid — last card aligns left, not centered */
+  .speakersGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    justify-content: unset;
+    align-items: unset;
+  }
 }
 
 /* ─── Small Mobile ─── */
@@ -106,5 +113,8 @@
   .section { padding: 40px 12px 40px; }
   .header { margin-bottom: 24px; }
   .sectionTitle { font-size: clamp(1.3rem, 7vw, 1.7rem); }
-  .speakersGrid { gap: 12px 10px; }
+  .speakersGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
 }

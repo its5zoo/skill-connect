@@ -4,70 +4,114 @@
    ============================================================ */
 
 /* ─── KEYFRAMES ─── */
-@keyframes fadeSlideUp {
-  from { opacity: 0; transform: translateY(36px); }
-  to   { opacity: 1; transform: translateY(0); }
+@keyframes heroTitleIn {
+  0%   { opacity: 0; transform: translateY(60px) skewY(3deg); filter: blur(8px); }
+  60%  { filter: blur(0); }
+  100% { opacity: 1; transform: translateY(0) skewY(0deg); filter: blur(0); }
 }
 
-@keyframes fadeSlideRight {
-  from { opacity: 0; transform: translateX(48px); }
-  to   { opacity: 1; transform: translateX(0); }
+@keyframes heroTagIn {
+  0%   { opacity: 0; transform: scale(0.6) rotate(-25deg); }
+  60%  { transform: scale(1.1) rotate(2deg); }
+  100% { opacity: 1; transform: scale(1) rotate(-30deg); }
+}
+
+@keyframes heroCardIn {
+  0%   { opacity: 0; transform: translateX(80px) rotateY(-15deg) scale(0.9); filter: blur(10px); }
+  100% { opacity: 1; transform: translateX(0) rotateY(0deg) scale(1); filter: blur(0); }
 }
 
 @keyframes floatCard {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-12px); }
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  30%       { transform: translateY(-10px) rotate(0.5deg); }
+  70%       { transform: translateY(-6px) rotate(-0.3deg); }
 }
 
 @keyframes orbDrift1 {
   0%   { transform: translate(0, 0) scale(1); }
-  33%  { transform: translate(40px, -30px) scale(1.08); }
-  66%  { transform: translate(-20px, 20px) scale(0.95); }
+  33%  { transform: translate(40px, -30px) scale(1.12); }
+  66%  { transform: translate(-20px, 20px) scale(0.93); }
   100% { transform: translate(0, 0) scale(1); }
 }
 
 @keyframes orbDrift2 {
   0%   { transform: translate(0, 0) scale(1); }
-  40%  { transform: translate(-50px, 30px) scale(1.1); }
-  80%  { transform: translate(20px, -20px) scale(0.92); }
+  40%  { transform: translate(-50px, 30px) scale(1.14); }
+  80%  { transform: translate(20px, -20px) scale(0.9); }
   100% { transform: translate(0, 0) scale(1); }
 }
 
-@keyframes shimmerSweep {
-  0%   { left: -80%; opacity: 0; }
-  20%  { opacity: 0.5; }
-  100% { left: 130%; opacity: 0; }
+@keyframes orbDrift3 {
+  0%   { transform: translate(0, 0) scale(1) rotate(0deg); }
+  50%  { transform: translate(30px, -40px) scale(1.08) rotate(180deg); }
+  100% { transform: translate(0, 0) scale(1) rotate(360deg); }
 }
 
-@keyframes glowPulse {
-  0%, 100% { box-shadow: 0 6px 20px rgba(249, 115, 22, 0.35); }
-  50%       { box-shadow: 0 10px 36px rgba(232, 52, 114, 0.6); }
+@keyframes shimmerSweep {
+  0%   { transform: translateX(-120%) skewX(-12deg); opacity: 0; }
+  20%  { opacity: 0.6; }
+  100% { transform: translateX(320%) skewX(-12deg); opacity: 0; }
+}
+
+@keyframes gradientSlide {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes taglineDashGrow {
+  from { height: 0; opacity: 0; }
+  to   { height: 20px; opacity: 1; }
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.8; }
+  50%       { transform: translateX(-50%) translateY(10px); opacity: 0.3; }
+}
+
+@keyframes particleFloat1 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+  33%       { transform: translate(20px, -25px) scale(1.2); opacity: 0.8; }
+  66%       { transform: translate(-15px, -40px) scale(0.8); opacity: 0.5; }
+}
+@keyframes particleFloat2 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+  40%       { transform: translate(-25px, -30px) scale(1.3); opacity: 0.7; }
+  70%       { transform: translate(10px, -15px) scale(0.9); opacity: 0.5; }
+}
+@keyframes particleFloat3 {
+  0%, 100% { transform: translate(0, 0); opacity: 0.5; }
+  50%       { transform: translate(30px, -50px); opacity: 0.2; }
 }
 
 /* ─── ENTRANCE ANIMATION SYSTEM ─── */
-/* Elements start hidden, scoped strictly to .hero */
 .hero [data-animate] {
   opacity: 0;
-  transform: translateY(36px);
+  transform: translateY(40px);
+  filter: blur(6px);
   transition:
-    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity  0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    filter   0.85s ease;
 }
 
-/* When parent triggers .animateIn, each [data-animate] reveals */
-.hero.animateIn [data-animate] { opacity: 1; transform: translateY(0); }
+.hero.animateIn [data-animate] {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
 
-/* Staggered delays via data-delay */
 .hero.animateIn [data-animate][data-delay="0"] { transition-delay: 0.05s; }
-.hero.animateIn [data-animate][data-delay="1"] { transition-delay: 0.25s; }
-.hero.animateIn [data-animate][data-delay="2"] { transition-delay: 0.45s; }
+.hero.animateIn [data-animate][data-delay="1"] { transition-delay: 0.28s; }
+.hero.animateIn [data-animate][data-delay="2"] { transition-delay: 0.52s; }
 .hero.animateIn [data-animate][data-delay="3"] {
-  transition-delay: 0.15s;
-  /* Card slides in from right */
+  transition-delay: 0.12s;
   transform: translateX(0) !important;
+  filter: blur(0);
 }
 .hero [data-animate][data-delay="3"] {
-  transform: translateX(40px);
+  transform: translateX(60px);
+  filter: blur(8px);
 }
 
 .hero {
@@ -86,24 +130,97 @@
   position: absolute;
   top: -120px;
   right: -80px;
-  width: 600px;
-  height: 600px;
+  width: 700px;
+  height: 700px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(0, 180, 200, 0.06) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(0, 180, 200, 0.08) 0%, transparent 68%);
   pointer-events: none;
   z-index: 0;
+  animation: orbDrift1 20s ease-in-out infinite;
 }
 
 .bgShape2 {
   position: absolute;
   bottom: -100px;
   left: -60px;
-  width: 440px;
-  height: 440px;
+  width: 520px;
+  height: 520px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(245, 197, 24, 0.07) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(245, 197, 24, 0.09) 0%, transparent 68%);
   pointer-events: none;
   z-index: 0;
+  animation: orbDrift2 26s ease-in-out infinite;
+}
+
+/* Extra accent shape */
+.bgShape3 {
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232, 52, 114, 0.04) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  animation: orbDrift3 32s linear infinite;
+}
+
+/* Particle dots */
+.particle1 {
+  position: absolute;
+  top: 20%;
+  left: 8%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-teal);
+  animation: particleFloat1 9s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.45;
+}
+.particle2 {
+  position: absolute;
+  top: 60%;
+  right: 10%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-pink);
+  animation: particleFloat2 12s ease-in-out infinite;
+  animation-delay: 2s;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+}
+.particle3 {
+  position: absolute;
+  top: 35%;
+  right: 28%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  animation: particleFloat3 7s ease-in-out infinite;
+  animation-delay: 1s;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+}
+.particle4 {
+  position: absolute;
+  bottom: 25%;
+  left: 22%;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-coral);
+  animation: particleFloat1 11s ease-in-out infinite;
+  animation-delay: 3.5s;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.35;
 }
 
 /* Slow-drifting ambient orbs */
@@ -111,10 +228,10 @@
   position: absolute;
   top: 10%;
   right: 20%;
-  width: 320px;
-  height: 320px;
+  width: 380px;
+  height: 380px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(0, 180, 200, 0.09) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba(0, 180, 200, 0.11) 0%, transparent 65%);
   animation: orbDrift1 18s ease-in-out infinite;
   pointer-events: none;
   z-index: 0;
@@ -124,10 +241,10 @@
   position: absolute;
   bottom: 15%;
   left: 15%;
-  width: 260px;
-  height: 260px;
+  width: 300px;
+  height: 300px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(232, 52, 114, 0.07) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba(232, 52, 114, 0.09) 0%, transparent 65%);
   animation: orbDrift2 22s ease-in-out infinite;
   pointer-events: none;
   z-index: 0;
@@ -227,13 +344,27 @@
   position: relative;
   z-index: 1;
   white-space: nowrap;
+  /* Subtle text shadow for depth */
+  text-shadow: 0 2px 20px rgba(0,0,0,0.04);
 }
 
 .mainTitleTeal {
   font-family: var(--font-primary, sans-serif);
   font-weight: 900;
   font-size: clamp(2.5rem, 4.2vw, 3.8rem);
-  color: var(--color-teal, #00B4C8);
+  /* Animated gradient on teal title */
+  background: linear-gradient(
+    270deg,
+    #00B4C8 0%,
+    #00D4E8 35%,
+    #00869A 65%,
+    #00B4C8 100%
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 5s ease infinite;
   text-transform: uppercase;
   line-height: 1.1;
   letter-spacing: -0.02em;
@@ -256,6 +387,7 @@
   border-radius: 2px;
   flex-shrink: 0;
   margin-top: 2px;
+  animation: taglineDashGrow 0.6s 1s ease both;
 }
 
 .tagline {
@@ -366,7 +498,7 @@
 .ticketCard {
   background: #FFFFFF;
   color: var(--color-ink);
-  border-radius: 16px;
+  border-radius: 20px;
   padding: 32px 32px 40px 32px;
   width: 100%;
   max-width: 380px;
@@ -377,24 +509,22 @@
   position: relative;
   border: 1px solid rgba(0, 0, 0, 0.07);
   overflow: hidden;
+  transition:
+    transform  0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s ease;
 }
 
-/* Shimmer sweep across card */
+.ticketCard:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.08),
+    0 20px 48px rgba(0, 0, 0, 0.12),
+    0 40px 72px rgba(0, 0, 0, 0.07);
+}
+
+/* Subtle top-edge accent line (no shimmer sweep to avoid visual clutter) */
 .cardShimmer {
-  position: absolute;
-  top: 0;
-  left: -80%;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(
-    105deg,
-    transparent 40%,
-    rgba(255, 255, 255, 0.04) 50%,
-    transparent 60%
-  );
-  animation: shimmerSweep 5s ease-in-out infinite;
-  pointer-events: none;
-  z-index: 1;
+  display: none;
 }
 
 .ticketAccent {
@@ -425,6 +555,13 @@
   justify-content: center;
   flex-shrink: 0;
   margin-top: 2px;
+  transition: background 0.25s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Clean scale — no rotation, no colored bg jump */
+.ticketRow:hover .ticketIconWrap {
+  background: rgba(0, 180, 200, 0.14);
+  transform: scale(1.08);
 }
 
 .ticketContent {
@@ -518,31 +655,70 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  background: linear-gradient(90deg, #F97316 0%, #E83472 100%);
+  /* Gradient shifts smoothly on hover via background-position */
+  background: linear-gradient(90deg, #F97316 0%, #E83472 50%, #C2185B 100%);
+  background-size: 200% 100%;
+  background-position: 0% 50%;
   color: var(--color-white);
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 16px 24px;
   font-family: var(--font-primary);
   font-weight: 700;
   font-size: 0.95rem;
   letter-spacing: 0.05em;
   cursor: pointer;
-  transition: transform 0.25s ease;
-  animation: glowPulse 3s ease-in-out infinite;
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform          0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow         0.3s ease,
+    background-position 0.5s ease;
+  /* Clean dark shadow at rest — no colored glow */
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
 }
 
+/* White shimmer sweep on hover only */
+.ticketCta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(
+    105deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.22) 50%,
+    transparent 80%
+  );
+  transform: translateX(-130%) skewX(-12deg);
+  pointer-events: none;
+}
+
+.ticketCta:hover::before {
+  animation: shimmerSweep 0.6s ease-in-out forwards;
+}
+
+/* Hover: lift + deepen shadow (dark, not colored) */
 .ticketCta:hover {
-  transform: translateY(-2px);
-  animation: none;
-  box-shadow: 0 14px 36px rgba(232, 52, 114, 0.5);
+  transform: translateY(-3px);
+  background-position: 100% 50%;
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.22),
+    0 2px 6px  rgba(0, 0, 0, 0.14);
+}
+
+.ticketCta:active {
+  transform: translateY(0px) scale(0.98);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .ctaArrow {
   font-size: 1.2rem;
-  transition: transform 0.2s ease;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.ticketCta:hover .ctaArrow { transform: translateX(4px); }
+.ticketCta:hover .ctaArrow { transform: translateX(5px); }
 
 /* ════════════════════════════════════════════════
    RESPONSIVE

@@ -2,6 +2,23 @@
    Footer — Dark Editorial Design
    ============================================================ */
 
+/* ─── Keyframes ─── */
+@keyframes footerHeadingShimmer {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes footerCtaShimmer {
+  0%   { transform: translateX(-130%) skewX(-12deg); }
+  100% { transform: translateX(320%) skewX(-12deg); }
+}
+
+@keyframes overlineSlide {
+  from { opacity: 0; transform: translateY(-8px) scaleX(0.85); letter-spacing: 0.05em; }
+  to   { opacity: 1; transform: translateY(0) scaleX(1);    letter-spacing: 0.22em; }
+}
+
 .footer {
   background: var(--color-ink, #0A0A0F);
   color: var(--color-white);
@@ -39,13 +56,27 @@
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--color-teal);
+  animation: overlineSlide 0.6s ease both;
 }
 
 .ctaHeading {
   font-family: var(--font-primary, sans-serif);
   font-size: clamp(2.8rem, 6vw, 5rem);
   font-weight: 900;
-  color: var(--color-white);
+  /* Animated gradient heading */
+  background: linear-gradient(
+    270deg,
+    #ffffff 0%,
+    #a8edff 30%,
+    #ffffff 60%,
+    #ffd6e8 85%,
+    #ffffff 100%
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: footerHeadingShimmer 7s ease infinite;
   line-height: 1.05;
   letter-spacing: -0.02em;
   margin: 0;
@@ -73,13 +104,46 @@
   font-size: 0.88rem;
   letter-spacing: 0.06em;
   cursor: pointer;
-  transition: transform 0.25s ease, background 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.2s ease,
+    box-shadow 0.3s ease;
   margin-top: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.10);
+}
+
+.ctaBtn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(
+    105deg,
+    transparent 20%,
+    rgba(0, 180, 200, 0.18) 50%,
+    transparent 80%
+  );
+  transform: translateX(-130%) skewX(-12deg);
+  pointer-events: none;
+}
+
+.ctaBtn:hover::before {
+  animation: footerCtaShimmer 0.65s ease-in-out;
 }
 
 .ctaBtn:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   background: #F4F4F5;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+}
+
+.ctaBtn:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
 }
 
 .ctaBtn:focus-visible {
@@ -89,9 +153,10 @@
 
 .ctaBtnArrow {
   font-size: 1.1rem;
-  transition: transform 0.2s ease;
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
-.ctaBtn:hover .ctaBtnArrow { transform: translateX(4px); }
+.ctaBtn:hover .ctaBtnArrow { transform: translateX(6px); }
 
 /* ─── Info Columns ─── */
 .infoColumns {
@@ -100,10 +165,15 @@
   justify-content: center;
   gap: 0;
   flex-wrap: wrap;
-  border: 1px solid rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.09);
   border-radius: 20px;
   overflow: hidden;
   background: rgba(255,255,255,0.02);
+  transition: border-color 0.3s ease;
+}
+
+.infoColumns:hover {
+  border-color: rgba(255,255,255,0.16);
 }
 
 .infoCol {
@@ -113,6 +183,11 @@
   flex-direction: column;
   gap: 6px;
   padding: 32px 40px;
+  transition: background 0.3s ease;
+}
+
+.infoCol:hover {
+  background: rgba(255,255,255,0.03);
 }
 
 .colLabel {
@@ -146,10 +221,16 @@
   font-weight: 600;
   color: var(--color-teal);
   text-decoration: none;
-  transition: color 0.2s;
+  transition:
+    color     0.22s ease,
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
   line-height: 1.6;
+  display: inline-block;
 }
-.colPhone:hover { color: var(--color-white); }
+.colPhone:hover {
+  color: #ffffff;
+  transform: translateX(4px);
+}
 
 .colDivider {
   width: 1px;

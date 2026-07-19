@@ -40,8 +40,14 @@ const Hero: React.FC = () => {
       {/* Decorative background shapes */}
       <div className={styles.bgShape1} aria-hidden="true" />
       <div className={styles.bgShape2} aria-hidden="true" />
+      <div className={styles.bgShape3} aria-hidden="true" />
       <div className={styles.orb1} aria-hidden="true" />
       <div className={styles.orb2} aria-hidden="true" />
+      {/* Floating particle dots */}
+      <div className={styles.particle1} aria-hidden="true" />
+      <div className={styles.particle2} aria-hidden="true" />
+      <div className={styles.particle3} aria-hidden="true" />
+      <div className={styles.particle4} aria-hidden="true" />
 
       <div className={styles.heroGrid}>
 

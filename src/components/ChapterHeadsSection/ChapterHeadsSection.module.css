@@ -93,7 +93,15 @@
   .qtLogoImg { height: 58px; }
   .qtLogoSub { font-size: 1.25rem; }
   .cardWrapper { margin-top: 0 !important; }
-  .speakersGrid { gap: 16px 12px; justify-content: center; align-items: flex-start; }
+  /* Strict 2-col grid — consistent with all other sections */
+  .speakersGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    justify-content: unset;
+    align-items: unset;
+    padding-bottom: 32px;
+  }
 }
 
 /* ─── Small Mobile ─── */
@@ -102,5 +110,8 @@
   .welcomeText { font-size: 0.95rem; }
   .qtLogoImg { height: 46px; }
   .qtLogoSub { font-size: 1rem; }
-  .speakersGrid { gap: 12px 10px; }
+  .speakersGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
 }
