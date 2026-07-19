@@ -53,6 +53,8 @@ const SpeakerCard: React.FC<SpeakerCardProps> = ({ speaker, animationDelay }) =>
             src={speaker.image}
             alt={speaker.name}
             className={styles.speakerPhoto}
+            loading="lazy"
+            decoding="async"
           />
         ) : (
           <div className={styles.avatarPlaceholder}>

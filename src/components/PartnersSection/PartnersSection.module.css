@@ -105,6 +105,11 @@
   100% { transform: translateX(-50%); }
 }
 
+@keyframes marqueeScrollReverse {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
 .marqueeTrack {
   display: flex;
   align-items: center;
@@ -112,6 +117,17 @@
   width: max-content;
   animation: marqueeScroll 40s linear infinite;
   padding: 8px 0;
+}
+
+.marqueeTrackReverse {
+  animation: marqueeScrollReverse 40s linear infinite;
+}
+
+.mobileMarquee {
+  display: none;
+}
+.desktopMarquee {
+  display: block;
 }
 
 .marqueeWrapper:hover .marqueeTrack {
@@ -247,11 +263,21 @@
   .section { padding: 72px 0 80px; }
   .container { padding: 0 16px; }
   .marqueeWrapper { margin: 0 -16px; }
+  
+  .desktopMarquee { display: none; }
+  .mobileMarquee { display: flex; flex-direction: column; gap: 16px; }
+  
   /* Smaller marquee cards so 2+ are always fully visible */
   .marqueeCard { min-width: 130px; height: 80px; padding: 12px 16px; }
   .logoImg { max-height: 48px; max-width: 90px; }
   /* 2-col media grid on mobile — not 3, not 1 */
   .mediaGrid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  /* Last card alone — center it */
+  .mediaCard:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc(50% - 6px);
+  }
   .header { margin-bottom: 40px; }
   .categoryBlock { margin-bottom: 40px; }
 }
@@ -264,4 +290,10 @@
   .logoImg { max-height: 40px; max-width: 80px; }
   /* Keep 2-col grid even on small phones — 1-col is too sparse */
   .mediaGrid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  /* Last card alone — center it */
+  .mediaCard:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc(50% - 5px);
+  }
 }

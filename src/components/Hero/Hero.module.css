@@ -422,12 +422,11 @@
 }
 
 .logosRow {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px 60px;
   align-items: center;
   justify-content: flex-start;
-  justify-items: center;
   position: relative;
   z-index: 10;
 }
@@ -764,12 +763,20 @@
     max-width: 100%;
   }
 
-  /* Tagline border should appear on the left for centered text */
+  /* Tagline dash hidden on mobile */
+  .taglineDash {
+    display: none;
+  }
+
+  .taglineRow {
+    justify-content: center;
+    width: 100%;
+  }
+
+  /* Tagline text centered with no borders */
   .tagline {
-    border-left: none;
-    border-top: 2px solid rgba(0,0,0,0.12);
-    padding-left: 0;
-    padding-top: 12px;
+    border: none;
+    padding: 0;
     text-align: center;
   }
 

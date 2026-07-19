@@ -70,7 +70,7 @@
 /* Removed: .headerAccent (gradient line) */
 .headerAccent { display: none; }
 
-/* ─── Speakers Grid — Static Staggered Layout ─── */
+/* ─── Speakers Grid ─── */
 .speakersGrid {
   display: flex;
   justify-content: center;
@@ -81,6 +81,31 @@
   padding-bottom: 60px;
 }
 
+/* ═══ THE ANIMATION ═══
+   One clean, fast reveal. No rotation, no blur, no bounce.
+   The CASCADE stagger (55ms per card) is what makes it premium.
+   Easing: cubic-bezier(0.16,1,0.3,1) = expo-out, used by Framer Motion.
+*/
+@keyframes cardReveal {
+  from {
+    opacity: 0;
+    transform: translateY(36px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hidden by default — animation-fill-mode: backwards keeps it hidden during delay */
+.cardWrapper {
+  opacity: 0;
+}
+
+/* When IntersectionObserver fires, the clean cascade begins */
+.cardWrapper[data-visible="true"] {
+  animation: cardReveal 0.85s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
 
 /* ─── Tablet ─── */
 @media (max-width: 1024px) {
@@ -106,6 +131,12 @@
     justify-content: unset;
     align-items: unset;
   }
+  /* Last card alone — center it */
+  .cardWrapper:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc(50% - 7px);
+  }
 }
 
 /* ─── Small Mobile ─── */
@@ -117,4 +148,11 @@
     grid-template-columns: 1fr 1fr;
     gap: 10px;
   }
+  /* Last card alone — center it */
+  .cardWrapper:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc(50% - 5px);
+  }
 }
+

@@ -1,19 +1,20 @@
 // ============================================================
-// Foundation Section – "Welcome to the Launch of" (image 4)
+// Foundation Section - "Welcome to the Launch of"
 // ============================================================
-import React from 'react';
-import { foundationTeam } from '../../data/eventData';
-import SpeakerCard from '../SpeakerCard/SpeakerCard';
+import React, { useRef } from "react";
+import { foundationTeam } from "../../data/eventData";
+import SpeakerCard from "../SpeakerCard/SpeakerCard";
+import { useScrollReveal } from "../../hooks/useScrollReveal";
+import styles from "./FoundationSection.module.css";
 
-import styles from './FoundationSection.module.css';
-
-// Quality Thought Foundation Logo using generated image
 const QTFoundationLogo: React.FC = () => (
   <div className={styles.qtFoundationLogo}>
     <img
-      src="/logos/qt_logo.png"
+      src="/logos/qt_logo.webp"
       alt="Quality Thought"
       className={styles.qtLogoImg}
+      loading="lazy"
+      decoding="async"
     />
     <div className={styles.qtLogoText}>
       <span className={styles.qtLogoSub}>Future Skills Foundation</span>
@@ -22,30 +23,27 @@ const QTFoundationLogo: React.FC = () => (
 );
 
 const FoundationSection: React.FC = () => {
+  const gridRef = useRef<HTMLDivElement>(null);
+  useScrollReveal(gridRef);
+
   return (
     <section
       className={styles.section}
       id="foundation"
       aria-label="Quality Thought Future Skills Foundation Launch"
     >
-
       <div className={styles.container}>
-        {/* Heading above logo */}
         <p className={styles.welcomeText}>Welcome to the Launch of</p>
-
-        {/* Logo */}
         <QTFoundationLogo />
 
-        {/* Team grid */}
-        <div className={styles.speakersGrid}>
+        <div className={styles.speakersGrid} ref={gridRef}>
           {foundationTeam.map((member, idx) => (
-            <div 
+            <div
               key={member.id}
               className={styles.cardWrapper}
-              data-card-reveal
-              data-card-index={idx}
+              style={{ animationDelay: `${idx * 85}ms` }}
             >
-              <SpeakerCard speaker={member} animationDelay={`${idx * 100}ms`} />
+              <SpeakerCard speaker={member} />
             </div>
           ))}
         </div>
@@ -55,3 +53,6 @@ const FoundationSection: React.FC = () => {
 };
 
 export default FoundationSection;
+
+
+

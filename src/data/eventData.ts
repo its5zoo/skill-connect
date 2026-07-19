@@ -25,7 +25,7 @@ export const speakerGroups: SpeakerGroup[] = [
         title: 'Group CEO to the office of Shaikh Ahmed Bin Faisal al Qassimi',
         organization: '',
         cardColor: 'yellow',
-        image: '/speakers/dunston.png',
+        image: '/speakers/dunston.webp',
       },
       {
         id: 'jaan',
@@ -33,7 +33,7 @@ export const speakerGroups: SpeakerGroup[] = [
         title: 'Global President',
         organization: 'BRICS Culture Media Forum & Head of The Times of Russia–India',
         cardColor: 'teal',
-        image: '/speakers/jaan.png',
+        image: '/speakers/jaan.webp',
       },
       {
         id: 'sergei',
@@ -41,7 +41,7 @@ export const speakerGroups: SpeakerGroup[] = [
         title: 'Vice President & Director Communications',
         organization: 'BRICS Culture Media Forum',
         cardColor: 'pink',
-        image: '/speakers/sergei.png',
+        image: '/speakers/sergei.webp',
       },
       {
         id: 'vladimir',
@@ -49,7 +49,7 @@ export const speakerGroups: SpeakerGroup[] = [
         title: 'Russian Businessman Founder – "Ifree" Company',
         organization: '',
         cardColor: 'teal',
-        image: '/speakers/vladimir.png',
+        image: '/speakers/vladimir.webp',
       },
       {
         id: 'kevin',
@@ -57,7 +57,7 @@ export const speakerGroups: SpeakerGroup[] = [
         title: 'Head South',
         organization: 'OPPO Mobiles',
         cardColor: 'yellow',
-        image: '/speakers/kevin.png',
+        image: '/speakers/kevin.webp',
       },
     ],
   },
@@ -70,7 +70,7 @@ export const speakerGroups: SpeakerGroup[] = [
         title: 'Vice President',
         organization: 'NSDC',
         cardColor: 'yellow',
-        image: '/speakers/rishikesh.png',
+        image: '/speakers/rishikesh.webp',
       },
       {
         id: 'balakista',
@@ -78,7 +78,7 @@ export const speakerGroups: SpeakerGroup[] = [
         title: 'Chairman TSCHE',
         organization: '',
         cardColor: 'teal',
-        image: '/speakers/balakista.png',
+        image: '/speakers/balakista.webp',
       },
       {
         id: 'jagannadha',
@@ -86,7 +86,7 @@ export const speakerGroups: SpeakerGroup[] = [
         title: 'Registrar',
         organization: 'GIET University',
         cardColor: 'pink',
-        image: '/speakers/jagannadha.png',
+        image: '/speakers/jagannadha.webp',
       },
       {
         id: 'nithin',
@@ -94,7 +94,7 @@ export const speakerGroups: SpeakerGroup[] = [
         title: 'CEO',
         organization: 'TASK',
         cardColor: 'teal',
-        image: '/speakers/nithin.png',
+        image: '/speakers/nithin.webp',
       },
       {
         id: 'shreya',
@@ -102,7 +102,7 @@ export const speakerGroups: SpeakerGroup[] = [
         title: 'Advisor',
         organization: 'Indo Japan Connect',
         cardColor: 'yellow',
-        image: '/speakers/shreya.png',
+        image: '/speakers/shreya.webp',
       },
     ],
   },
@@ -115,7 +115,7 @@ export const speakerGroups: SpeakerGroup[] = [
         title: 'DGM',
         organization: 'BSNL',
         cardColor: 'yellow',
-        image: '/speakers/satya.png',
+        image: '/speakers/satya.webp',
       },
       {
         id: 'vinod',
@@ -123,7 +123,7 @@ export const speakerGroups: SpeakerGroup[] = [
         title: 'Founder',
         organization: 'Infipotential',
         cardColor: 'teal',
-        image: '/speakers/vinod.png',
+        image: '/speakers/vinod.webp',
       },
       {
         id: 'inderjeet',
@@ -131,7 +131,7 @@ export const speakerGroups: SpeakerGroup[] = [
         title: 'Global Head Managed Services',
         organization: 'Virtusa',
         cardColor: 'pink',
-        image: '/speakers/inderjeet.png',
+        image: '/speakers/inderjeet.webp',
       },
       {
         id: 'sujit',
@@ -139,7 +139,7 @@ export const speakerGroups: SpeakerGroup[] = [
         title: 'Director',
         organization: 'Founder Institute Inc.',
         cardColor: 'teal',
-        image: '/speakers/sujit.png',
+        image: '/speakers/sujit.webp',
       },
       {
         id: 'ram',
@@ -147,7 +147,7 @@ export const speakerGroups: SpeakerGroup[] = [
         title: 'CEO',
         organization: 'Minds & Dots Consulting',
         cardColor: 'yellow',
-        image: '/speakers/ram.png',
+        image: '/speakers/ram.webp',
       },
     ],
   },
@@ -161,7 +161,7 @@ export const foundationTeam: Speaker[] = [
     title: 'Chairman & Managing Director',
     organization: '',
     cardColor: 'yellow',
-    image: '/speakers/ramana.png',
+    image: '/speakers/ramana.webp',
   },
   {
     id: 'krish',
@@ -169,7 +169,7 @@ export const foundationTeam: Speaker[] = [
     title: 'Chief Executive Officer',
     organization: '',
     cardColor: 'teal',
-    image: '/chapter-heads/krish.png',
+    image: '/chapter-heads/krish.webp',
   },
   {
     id: 'pavani',
@@ -177,7 +177,7 @@ export const foundationTeam: Speaker[] = [
     title: 'Chief Branding Officer',
     organization: '',
     cardColor: 'pink',
-    image: '/chapter-heads/pavani.png',
+    image: '/chapter-heads/pavani.webp',
   },
   {
     id: 'geetha',
@@ -185,7 +185,7 @@ export const foundationTeam: Speaker[] = [
     title: 'Head Human Resource',
     organization: '',
     cardColor: 'teal',
-    image: '/chapter-heads/geetha.png',
+    image: '/chapter-heads/geetha.webp',
   },
   {
     id: 'sashank',
@@ -193,7 +193,7 @@ export const foundationTeam: Speaker[] = [
     title: 'Head Operations',
     organization: '',
     cardColor: 'yellow',
-    image: '/chapter-heads/sashank.png',
+    image: '/chapter-heads/sashank.webp',
   },
 ];
 
@@ -208,7 +208,7 @@ export const chapterHeadGroups: SpeakerGroup[] = [
         title: 'President Delhi Chapter',
         organization: '',
         cardColor: 'yellow',
-        image: '/chapter-heads/vijay.png',
+        image: '/chapter-heads/vijay.webp',
       },
       {
         id: 'mahendra',
@@ -216,7 +216,7 @@ export const chapterHeadGroups: SpeakerGroup[] = [
         title: 'President Mumbai Chapter',
         organization: '',
         cardColor: 'teal',
-        image: '/chapter-heads/mahendra.png',
+        image: '/chapter-heads/mahendra.webp',
       },
       {
         id: 'shiva',
@@ -224,7 +224,7 @@ export const chapterHeadGroups: SpeakerGroup[] = [
         title: 'President PSU Partnerships',
         organization: '',
         cardColor: 'pink',
-        image: '/chapter-heads/shiva.png',
+        image: '/chapter-heads/shiva.webp',
       },
       {
         id: 'arunima',
@@ -232,7 +232,7 @@ export const chapterHeadGroups: SpeakerGroup[] = [
         title: 'President Women Empowerment Wing Maharashtra',
         organization: '',
         cardColor: 'teal',
-        image: '/chapter-heads/arunima.png',
+        image: '/chapter-heads/arunima.webp',
       },
       {
         id: 'rekha',
@@ -240,7 +240,7 @@ export const chapterHeadGroups: SpeakerGroup[] = [
         title: 'President K12 Collaborations',
         organization: '',
         cardColor: 'yellow',
-        image: '/chapter-heads/rekha.png',
+        image: '/chapter-heads/rekha.webp',
       },
     ],
   },
@@ -253,7 +253,7 @@ export const chapterHeadGroups: SpeakerGroup[] = [
         title: 'President Hyderabad Chapter',
         organization: '',
         cardColor: 'yellow',
-        image: '/chapter-heads/arvind.png',
+        image: '/chapter-heads/arvind.webp',
       },
       {
         id: 'viswanadh',
@@ -261,7 +261,7 @@ export const chapterHeadGroups: SpeakerGroup[] = [
         title: 'President Bangalore Chapter',
         organization: '',
         cardColor: 'teal',
-        image: '/chapter-heads/viswanadh.png',
+        image: '/chapter-heads/viswanadh.webp',
       },
       {
         id: 'surendra',
@@ -269,7 +269,7 @@ export const chapterHeadGroups: SpeakerGroup[] = [
         title: 'President Vijayawada Chapter',
         organization: '',
         cardColor: 'pink',
-        image: '/chapter-heads/surendra.png',
+        image: '/chapter-heads/surendra.webp',
       },
       {
         id: 'venkata',
@@ -277,7 +277,7 @@ export const chapterHeadGroups: SpeakerGroup[] = [
         title: 'President University Collaborations',
         organization: '',
         cardColor: 'teal',
-        image: '/chapter-heads/venkata.png',
+        image: '/chapter-heads/venkata.webp',
       },
       {
         id: 'kishan',
@@ -285,7 +285,7 @@ export const chapterHeadGroups: SpeakerGroup[] = [
         title: 'President Visakhapatnam Chapter',
         organization: '',
         cardColor: 'yellow',
-        image: '/chapter-heads/kishan.png',
+        image: '/chapter-heads/kishan.webp',
       },
     ],
   },
@@ -298,7 +298,7 @@ export const chapterHeadGroups: SpeakerGroup[] = [
         title: 'President B School Collaborations',
         organization: '',
         cardColor: 'yellow',
-        image: '/chapter-heads/ramesh.png',
+        image: '/chapter-heads/ramesh.webp',
       },
       {
         id: 'rohit',
@@ -306,7 +306,7 @@ export const chapterHeadGroups: SpeakerGroup[] = [
         title: 'President HR Collaborations',
         organization: '',
         cardColor: 'teal',
-        image: '/chapter-heads/rohit.png',
+        image: '/chapter-heads/rohit.webp',
       },
       {
         id: 'sonia',
@@ -314,7 +314,7 @@ export const chapterHeadGroups: SpeakerGroup[] = [
         title: 'President Corporate Collaborations',
         organization: '',
         cardColor: 'pink',
-        image: '/chapter-heads/sonia.png',
+        image: '/chapter-heads/sonia.webp',
       },
       {
         id: 'surya',
@@ -322,7 +322,7 @@ export const chapterHeadGroups: SpeakerGroup[] = [
         title: 'President Media Collaborations',
         organization: '',
         cardColor: 'teal',
-        image: '/chapter-heads/surya.png',
+        image: '/chapter-heads/surya.webp',
       },
       {
         id: 'seshu',
@@ -330,8 +330,9 @@ export const chapterHeadGroups: SpeakerGroup[] = [
         title: 'President Wellness Collaborations',
         organization: '',
         cardColor: 'gray',
-        image: '/chapter-heads/seshu.png',
+        image: '/chapter-heads/seshu.webp',
       },
     ],
   },
 ];
+

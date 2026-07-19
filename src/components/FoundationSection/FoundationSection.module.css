@@ -69,6 +69,15 @@
   padding-bottom: 60px;
 }
 
+@keyframes cardReveal {
+  from { opacity: 0; transform: translateY(44px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.cardWrapper { opacity: 0; }
+.cardWrapper[data-visible="true"] {
+  animation: cardReveal 0.85s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
 
 /* ─── Tablet ─── */
 @media (max-width: 1024px) {
@@ -81,9 +90,10 @@
   .section { padding: 52px 16px 52px; }
   .container { padding: 0; }
   .welcomeText { font-size: 1.1rem; margin-bottom: 18px; }
-  .qtFoundationLogo { gap: 8px; margin-bottom: 28px; }
-  .qtLogoImg { height: 42px; }
-  .qtLogoSub { font-size: 0.85rem; }
+  .qtFoundationLogo { gap: 10px; margin-bottom: 28px; }
+  /* Logo bigger, heading text smaller */
+  .qtLogoImg { height: 70px; }
+  .qtLogoSub { font-size: 0.72rem; }
   .cardWrapper { margin-top: 0 !important; }
   /* 2-column grid — same as SpeakersSection */
   .speakersGrid {
@@ -94,16 +104,29 @@
     align-items: unset;
     padding-bottom: 32px;
   }
+  /* Last card alone — center it */
+  .cardWrapper:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc(50% - 7px);
+  }
 }
 
 /* ─── Small Mobile ─── */
 @media (max-width: 480px) {
   .section { padding: 40px 12px 40px; }
   .welcomeText { font-size: 0.95rem; }
-  .qtLogoImg { height: 36px; }
-  .qtLogoSub { font-size: 0.78rem; }
+  .qtLogoImg { height: 60px; }
+  .qtLogoSub { font-size: 0.65rem; }
   .speakersGrid {
     grid-template-columns: 1fr 1fr;
     gap: 10px;
   }
+  /* Last card alone — center it */
+  .cardWrapper:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc(50% - 5px);
+  }
 }
+

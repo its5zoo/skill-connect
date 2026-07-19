@@ -65,7 +65,7 @@
   line-height: 1.3;
 }
 
-/* ─── Static Staggered Layout ─── */
+/* ─── Scroll-reveal Layout ─── */
 .speakersGrid {
   display: flex;
   flex-wrap: wrap;
@@ -77,6 +77,15 @@
   padding-bottom: 60px;
 }
 
+@keyframes cardReveal {
+  from { opacity: 0; transform: translateY(44px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.cardWrapper { opacity: 0; }
+.cardWrapper[data-visible="true"] {
+  animation: cardReveal 0.85s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
 
 /* ─── Tablet ─── */
 @media (max-width: 1024px) {
@@ -90,8 +99,9 @@
   .container { padding: 0; }
   .welcomeText { font-size: 1.1rem; margin-bottom: 18px; }
   .qtFoundationLogo { gap: 10px; margin-bottom: 30px; }
-  .qtLogoImg { height: 58px; }
-  .qtLogoSub { font-size: 1.25rem; }
+  /* Logo bigger, heading text smaller */
+  .qtLogoImg { height: 70px; }
+  .qtLogoSub { font-size: 0.72rem; }
   .cardWrapper { margin-top: 0 !important; }
   /* Strict 2-col grid — consistent with all other sections */
   .speakersGrid {
@@ -102,16 +112,29 @@
     align-items: unset;
     padding-bottom: 32px;
   }
+  /* Last card alone — center it */
+  .cardWrapper:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc(50% - 7px);
+  }
 }
 
 /* ─── Small Mobile ─── */
 @media (max-width: 480px) {
   .section { padding: 40px 12px 40px; }
   .welcomeText { font-size: 0.95rem; }
-  .qtLogoImg { height: 46px; }
-  .qtLogoSub { font-size: 1rem; }
+  .qtLogoImg { height: 60px; }
+  .qtLogoSub { font-size: 0.65rem; }
   .speakersGrid {
     grid-template-columns: 1fr 1fr;
     gap: 10px;
   }
+  /* Last card alone — center it */
+  .cardWrapper:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc(50% - 5px);
+  }
 }
+

@@ -31,17 +31,48 @@ const PartnersSection: React.FC = () => {
         <div className={styles.categoryBlock}>
           <h3 className={styles.categoryLabel}>Ecosystem &amp; Skill Partners</h3>
 
-          <div className={styles.marqueeWrapper} aria-label="Partner logos">
+          {/* DESKTOP (Single Row) */}
+          <div className={`${styles.marqueeWrapper} ${styles.desktopMarquee}`} aria-label="Partner logos">
             <div className={styles.marqueeTrack}>
               {marqueeLogos.map((partner, idx) => (
-                <div key={`${partner.id}-${idx}`} className={styles.marqueeCard}>
+                <div key={`desktop-${partner.id}-${idx}`} className={styles.marqueeCard}>
                   {partner.logo && !failedLogos.has(partner.id) ? (
                     <img
                       src={partner.logo}
                       alt={partner.name}
                       className={styles.logoImg}
                       onError={() => handleImgError(partner.id)}
+                      loading="lazy"
+                      decoding="async"
                     />
+                  ) : (
+                    <span className={styles.logoFallback}>{partner.name}</span>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* MOBILE/TABLET (Double Row, Opposite Directions) */}
+          <div className={`${styles.marqueeWrapper} ${styles.mobileMarquee}`} aria-hidden="true">
+            {/* Row 1 (Moves Left) */}
+            <div className={styles.marqueeTrack}>
+              {[...ecosystemPartners.slice(0, 7), ...ecosystemPartners.slice(0, 7), ...ecosystemPartners.slice(0, 7), ...ecosystemPartners.slice(0, 7)].map((partner, idx) => (
+                <div key={`mobile-r1-${partner.id}-${idx}`} className={styles.marqueeCard}>
+                  {partner.logo && !failedLogos.has(partner.id) ? (
+                    <img src={partner.logo} alt={partner.name} className={styles.logoImg} onError={() => handleImgError(partner.id)} loading="lazy" decoding="async" />
+                  ) : (
+                    <span className={styles.logoFallback}>{partner.name}</span>
+                  )}
+                </div>
+              ))}
+            </div>
+            {/* Row 2 (Moves Right) */}
+            <div className={`${styles.marqueeTrack} ${styles.marqueeTrackReverse}`}>
+              {[...ecosystemPartners.slice(7), ...ecosystemPartners.slice(7), ...ecosystemPartners.slice(7), ...ecosystemPartners.slice(7)].map((partner, idx) => (
+                <div key={`mobile-r2-${partner.id}-${idx}`} className={styles.marqueeCard}>
+                  {partner.logo && !failedLogos.has(partner.id) ? (
+                    <img src={partner.logo} alt={partner.name} className={styles.logoImg} onError={() => handleImgError(partner.id)} loading="lazy" decoding="async" />
                   ) : (
                     <span className={styles.logoFallback}>{partner.name}</span>
                   )}
@@ -65,6 +96,8 @@ const PartnersSection: React.FC = () => {
                     alt={partner.name}
                     className={styles.mediaLogoImg}
                     onError={() => handleImgError(partner.id)}
+                    loading="lazy"
+                    decoding="async"
                   />
                 ) : (
                   <span className={styles.mediaLogoFallback}>{partner.name}</span>

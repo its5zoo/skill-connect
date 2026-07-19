@@ -74,10 +74,10 @@ const Hero: React.FC = () => {
           <div className={`${styles.logosStrip} ${styles.topLogos}`} data-animate data-delay="2">
             <div className={styles.logosRow}>
               <div className={styles.logoItem}>
-                <img src="/logos/brics_logo.png" alt="BRICS Culture Media Forum" className={styles.stripLogo} />
+                <img src="/logos/brics_logo.webp" alt="BRICS Culture Media Forum" className={styles.stripLogo} />
               </div>
               <div className={styles.logoItem}>
-                <img src="/logos/qt_logo.png" alt="Quality Thought" className={styles.stripLogoQT} />
+                <img src="/logos/qt_logo.webp" alt="Quality Thought" className={styles.stripLogoQT} />
               </div>
             </div>
           </div>
@@ -86,10 +86,10 @@ const Hero: React.FC = () => {
           <div className={`${styles.logosStrip} ${styles.bottomLogos}`} data-animate data-delay="2">
             <div className={styles.logosRow}>
               <div className={styles.logoItem}>
-                <img src="/logos/ikon_logo.png" alt="IKON Foundation" className={styles.stripLogo} />
+                <img src="/logos/ikon_logo.webp" alt="IKON Foundation" className={styles.stripLogo} />
               </div>
               <div className={styles.logoItem}>
-                <img src="/logos/vallas_logo.png" alt="Vallas Technology" className={styles.stripLogo} />
+                <img src="/logos/vallas_logo.webp" alt="Vallas Technology" className={styles.stripLogo} />
               </div>
             </div>
           </div>
@@ -168,3 +168,4 @@ const Hero: React.FC = () => {
 };
 
 export default Hero;
+

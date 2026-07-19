@@ -1,20 +1,21 @@
 // ============================================================
-// Chapter Heads Section (image 5)
+// Chapter Heads Section
 // ============================================================
-import React from 'react';
-import type { Speaker } from '../../types';
-import { chapterHeadGroups } from '../../data/eventData';
-import SpeakerCard from '../SpeakerCard/SpeakerCard';
+import React, { useRef } from "react";
+import type { Speaker } from "../../types";
+import { chapterHeadGroups } from "../../data/eventData";
+import SpeakerCard from "../SpeakerCard/SpeakerCard";
+import { useScrollReveal } from "../../hooks/useScrollReveal";
+import styles from "./ChapterHeadsSection.module.css";
 
-import styles from './ChapterHeadsSection.module.css';
-
-// QT Foundation Logo using generated image
 const QTFoundationLogo: React.FC = () => (
   <div className={styles.qtFoundationLogo}>
     <img
-      src="/logos/qt_logo.png"
-      alt="Quality Thought Future Skills Foundation"
+      src="/logos/qt_logo.webp"
+      alt="Quality Thought"
       className={styles.qtLogoImg}
+      loading="lazy"
+      decoding="async"
     />
     <div className={styles.qtLogoText}>
       <span className={styles.qtLogoSub}>Future Skills Foundation</span>
@@ -22,7 +23,6 @@ const QTFoundationLogo: React.FC = () => (
   </div>
 );
 
-// ── Per-group component with its OWN observer ──────────────────
 interface GroupSectionProps {
   id: string;
   speakers: Speaker[];
@@ -30,6 +30,9 @@ interface GroupSectionProps {
 }
 
 const ChapterGroupSection: React.FC<GroupSectionProps> = ({ id, speakers, showHeader }) => {
+  const gridRef = useRef<HTMLDivElement>(null);
+  useScrollReveal(gridRef);
+
   return (
     <section
       className={styles.section}
@@ -44,18 +47,14 @@ const ChapterGroupSection: React.FC<GroupSectionProps> = ({ id, speakers, showHe
           </>
         )}
 
-        <div className={styles.speakersGrid}>
+        <div className={styles.speakersGrid} ref={gridRef}>
           {speakers.map((head, idx) => (
             <div
               key={head.id}
               className={styles.cardWrapper}
-              data-card-reveal
-              data-card-index={idx}
+              style={{ animationDelay: `${idx * 85}ms` }}
             >
-              <SpeakerCard
-                speaker={head}
-                animationDelay={`${idx * 110}ms`}
-              />
+              <SpeakerCard speaker={head} />
             </div>
           ))}
         </div>
@@ -64,7 +63,6 @@ const ChapterGroupSection: React.FC<GroupSectionProps> = ({ id, speakers, showHe
   );
 };
 
-// ── Main export ────────────────────────────────────────────────
 const ChapterHeadsSection: React.FC = () => (
   <>
     {chapterHeadGroups.map((group) => (
@@ -79,3 +77,6 @@ const ChapterHeadsSection: React.FC = () => (
 );
 
 export default ChapterHeadsSection;
+
+
+
