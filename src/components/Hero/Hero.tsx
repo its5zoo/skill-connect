@@ -31,6 +31,14 @@ const Hero: React.FC = () => {
     );
 
     observer.observe(el);
+
+    // On page load: if hash is #register, scroll hero section into view
+    if (window.location.hash === '#register') {
+      setTimeout(() => {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
+
     return () => observer.disconnect();
   }, []);
 
@@ -43,11 +51,7 @@ const Hero: React.FC = () => {
       <div className={styles.bgShape3} aria-hidden="true" />
       <div className={styles.orb1} aria-hidden="true" />
       <div className={styles.orb2} aria-hidden="true" />
-      {/* Floating particle dots */}
-      <div className={styles.particle1} aria-hidden="true" />
-      <div className={styles.particle2} aria-hidden="true" />
-      <div className={styles.particle3} aria-hidden="true" />
-      <div className={styles.particle4} aria-hidden="true" />
+
 
       <div className={styles.heroGrid}>
 
@@ -150,14 +154,15 @@ const Hero: React.FC = () => {
 
             <div className={styles.ticketPerf} aria-hidden="true" />
 
-            <button
+            <a
+              href="#register"
               className={styles.ticketCta}
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               aria-label="Register for the Future Skills Summit"
+              style={{ textDecoration: 'none' }}
             >
               <span>REGISTER NOW</span>
               <ArrowForwardIcon sx={{ fontSize: 18 }} />
-            </button>
+            </a>
 
           </div>
         </div>

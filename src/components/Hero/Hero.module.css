@@ -119,9 +119,9 @@
   width: 100%;
   min-height: 100dvh;
   position: relative;
-  padding-top: 80px;
+  padding-top: 60px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   overflow: hidden;
 }
 
@@ -255,7 +255,7 @@
   display: grid;
   grid-template-columns: 1fr 380px;
   gap: 40px;
-  align-items: center;
+  align-items: start;
   max-width: 1280px;
   margin: 0 auto;
   padding: 24px 60px 24px;
@@ -270,7 +270,7 @@
 .heroLeft {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 8px;
 }
 
 .titleStack { order: 2; }
@@ -405,11 +405,14 @@
 }
 
 .topLogos {
-  margin-top: 12px;
+  margin-top: 28px;
+  margin-bottom: 8px;
+  padding-top: 8px;
 }
 
 .bottomLogos {
-  margin-top: 12px;
+  margin-top: 28px;
+  padding-bottom: 8px;
 }
 
 .logosLabel {
@@ -424,7 +427,7 @@
 .logosRow {
   display: flex;
   flex-wrap: wrap;
-  gap: 24px 60px;
+  gap: 16px 48px;
   align-items: center;
   justify-content: flex-start;
   position: relative;
@@ -432,29 +435,29 @@
 }
 
 .stripLogo {
-  height: 150px;
-  width: 240px;
+  height: 180px;
+  width: 280px;
   object-fit: contain;
   mix-blend-mode: multiply;
   transition: transform var(--transition-smooth, 0.3s);
   position: relative;
   z-index: 10;
-  transform: scale(1.15);
+  transform: scale(1.1);
 }
 
 .stripLogoQT {
-  height: 150px;
-  width: 240px;
+  height: 180px;
+  width: 280px;
   object-fit: contain;
   mix-blend-mode: multiply;
   transition: transform var(--transition-smooth, 0.3s);
   position: relative;
   z-index: 10;
-  transform: scale(1.15);
+  transform: scale(1.1);
 }
 
-.stripLogo:hover  { transform: scale(1.22) translateY(-4px); }
-.stripLogoQT:hover { transform: scale(1.22) translateY(-4px); }
+.stripLogo:hover  { transform: scale(1.18) translateY(-4px); }
+.stripLogoQT:hover { transform: scale(1.18) translateY(-4px); }
 
 .logoItem {
   display: flex;
@@ -462,7 +465,8 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  min-height: 100px;
+  min-height: 120px;
+  padding: 8px 0;
 }
 
 .logoLabelText {
@@ -480,6 +484,7 @@
     order: 1;
     margin-top: 0;
     margin-bottom: 8px;
+    padding-top: 0;
   }
 }
 
@@ -491,7 +496,8 @@
 .heroRight {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  margin-top: 80px;
 }
 
 .ticketCard {
@@ -784,9 +790,11 @@
   .mainTitleTeal { font-size: clamp(1.6rem, 6vw, 2.8rem); text-align: center; }
   .theTag { font-size: 0.85rem; padding: 2px 10px; top: -10px; left: -6px; }
 
-  .logosRow { gap: 30px 40px; justify-content: center; }
-  .stripLogo { height: 120px; width: 180px; transform: scale(1.15); }
-  .stripLogoQT { height: 120px; width: 180px; transform: scale(1.15); }
+  .logosRow { gap: 20px 32px; justify-content: center; }
+  .stripLogo { height: 150px; width: 220px; transform: scale(1.1); }
+  .stripLogoQT { height: 150px; width: 220px; transform: scale(1.1); }
+  .topLogos { margin-top: 20px; }
+  .bottomLogos { margin-top: 20px; }
 }
 
 /* Mobile */
@@ -797,7 +805,9 @@
   .tagline { font-size: 0.8rem; text-align: center; }
   .theTag { font-size: 0.65rem; padding: 1.5px 8px; top: -8px; left: -4px; border-radius: 2px; }
 
-  .logosRow { gap: 16px 24px; justify-content: center; }
-  .stripLogo { height: 80px; width: 130px; }
-  .stripLogoQT { height: 80px; width: 130px; }
+  .logosRow { gap: 12px 20px; justify-content: center; }
+  .stripLogo { height: 110px; width: 160px; transform: scale(1); }
+  .stripLogoQT { height: 110px; width: 160px; transform: scale(1); }
+  .topLogos { margin-top: 16px; }
+  .bottomLogos { margin-top: 16px; }
 }

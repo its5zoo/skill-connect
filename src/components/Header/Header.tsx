@@ -16,6 +16,16 @@ const NAV_ITEMS = [
 const Header: React.FC = () => {
   const [activeId, setActiveId]   = useState('hero');
   const [menuOpen, setMenuOpen]   = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // ── Scroll spy via IntersectionObserver ──────────────────
   useEffect(() => {
@@ -56,10 +66,8 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className={`${styles.header} ${menuOpen ? styles.headerOpen : ''}`} id="top">
+    <header className={`${styles.header} ${!isScrolled ? styles.headerAtTop : ''} ${menuOpen ? styles.headerOpen : ''}`} id="top">
       <div className={styles.headerInner}>
-        {/* Brand wordmark */}
-        <span className={styles.brandMark}>FUTURE <span>SKILLS</span> SUMMIT & AWARDS</span>
 
         {/* Desktop Navigation */}
         <nav className={styles.navMenu}>
@@ -77,12 +85,10 @@ const Header: React.FC = () => {
         {/* Desktop CTA */}
         <button className={styles.headerCta} onClick={() => scrollTo('register')} aria-label="Register">
           <span>REGISTER NOW</span>
-          <div className={styles.ctaIconBox}>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </div>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
         </button>
 
         {/* Hamburger (mobile only) */}
