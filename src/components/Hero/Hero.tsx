@@ -154,15 +154,15 @@ const Hero: React.FC = () => {
 
             <div className={styles.ticketPerf} aria-hidden="true" />
 
-            <a
-              href="#register"
+            <button
+              type="button"
+              onClick={(e) => e.preventDefault()}
               className={styles.ticketCta}
               aria-label="Register for the Future Skills Summit"
-              style={{ textDecoration: 'none' }}
             >
               <span>REGISTER NOW</span>
               <ArrowForwardIcon sx={{ fontSize: 18 }} />
-            </a>
+            </button>
 
           </div>
         </div>
