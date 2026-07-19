@@ -748,19 +748,36 @@
     gap: 40px;
   }
 
+  /* Centre the left column content on mobile */
+  .heroLeft {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
   .heroRight {
-    justify-content: flex-start;
+    justify-content: center;
   }
 
   .ticketCard {
     max-width: 100%;
   }
 
-  .mainTitle { font-size: clamp(2.4rem, 8vw, 4rem); white-space: normal; }
-  .mainTitleTeal { font-size: clamp(1.6rem, 6vw, 2.8rem); }
+  /* Tagline border should appear on the left for centered text */
+  .tagline {
+    border-left: none;
+    border-top: 2px solid rgba(0,0,0,0.12);
+    padding-left: 0;
+    padding-top: 12px;
+    text-align: center;
+  }
+
+  .mainTitle { font-size: clamp(2.4rem, 8vw, 4rem); white-space: normal; text-align: center; }
+  .mainTitleTeal { font-size: clamp(1.6rem, 6vw, 2.8rem); text-align: center; }
   .theTag { font-size: 0.85rem; padding: 2px 10px; top: -10px; left: -6px; }
 
-  .logosRow { gap: 30px 40px; }
+  .logosRow { gap: 30px 40px; justify-content: center; }
   .stripLogo { height: 120px; width: 180px; transform: scale(1.15); }
   .stripLogoQT { height: 120px; width: 180px; transform: scale(1.15); }
 }
@@ -768,9 +785,9 @@
 /* Mobile */
 @media (max-width: 520px) {
   .heroGrid { padding: 24px 16px 40px; gap: 32px; }
-  .mainTitle { font-size: clamp(2rem, 10vw, 3rem); white-space: normal; }
-  .mainTitleTeal { font-size: clamp(1.3rem, 7vw, 2rem); }
-  .tagline { font-size: 0.8rem; }
+  .mainTitle { font-size: clamp(2rem, 10vw, 3rem); white-space: normal; text-align: center; }
+  .mainTitleTeal { font-size: clamp(1.3rem, 7vw, 2rem); text-align: center; }
+  .tagline { font-size: 0.8rem; text-align: center; }
   .theTag { font-size: 0.65rem; padding: 1.5px 8px; top: -8px; left: -4px; border-radius: 2px; }
 
   .logosRow { gap: 16px 24px; justify-content: center; }
