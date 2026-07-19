@@ -1,6 +1,7 @@
 /* PageLayout.module.css */
 .pageMain {
-  /* Push content below the fixed header */
-  padding-top: 90px;
+  /* Sections already have 96px internal top padding — enough to clear the
+     fixed navbar (~60px tall). No extra offset needed. */
+  padding-top: 0;
   min-height: 100vh;
 }
