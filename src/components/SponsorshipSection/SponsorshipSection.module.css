@@ -1,34 +1,12 @@
 /* ============================================================
-   SponsorshipSection.module.css — Premium Sponsorship Table
+   SponsorshipSection.module.css — Premium Sponsorship Table (Light Theme)
    ============================================================ */
 
 .section {
   padding: 100px 24px;
-  background: #0a0a12;
+  background: var(--color-white, #ffffff);
   position: relative;
   overflow: hidden;
-}
-
-/* Background glow blobs */
-.section::before {
-  content: '';
-  position: absolute;
-  top: -200px;
-  left: -200px;
-  width: 700px;
-  height: 700px;
-  background: radial-gradient(circle, rgba(0,180,200,0.08) 0%, transparent 70%);
-  pointer-events: none;
-}
-.section::after {
-  content: '';
-  position: absolute;
-  bottom: -200px;
-  right: -200px;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(232,93,36,0.07) 0%, transparent 70%);
-  pointer-events: none;
 }
 
 .container {
@@ -58,7 +36,7 @@
   font-family: var(--font-primary, sans-serif);
   font-size: clamp(2rem, 4vw, 3.2rem);
   font-weight: 800;
-  color: #fff;
+  color: #111;
   margin-bottom: 16px;
   line-height: 1.15;
 }
@@ -69,7 +47,7 @@
 
 .subtitle {
   font-size: 1rem;
-  color: rgba(255,255,255,0.55);
+  color: rgba(0,0,0,0.6);
   line-height: 1.7;
 }
 
@@ -84,7 +62,7 @@
 .tableWrap {
   overflow-x: auto;
   border-radius: 20px;
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid rgba(0,0,0,0.08);
   margin-bottom: 60px;
   -webkit-overflow-scrolling: touch;
 }
@@ -93,12 +71,13 @@
   width: 100%;
   border-collapse: collapse;
   min-width: 640px;
+  background: #fff;
 }
 
 /* Column headers */
 .featureHeader {
-  background: #1a1a28;
-  color: rgba(255,255,255,0.5);
+  background: #33322E;
+  color: rgba(255,255,255,0.9);
   font-family: var(--font-accent, sans-serif);
   font-size: 0.72rem;
   font-weight: 700;
@@ -115,9 +94,9 @@
   vertical-align: middle;
 }
 
-.tierHeader.platinum { background: linear-gradient(135deg, #2a2a3d 0%, #1e1e30 100%); border-left: 1px solid rgba(192,192,220,0.15); }
-.tierHeader.gold     { background: linear-gradient(135deg, #2a2516 0%, #1e1c10 100%); border-left: 1px solid rgba(220,180,50,0.15); }
-.tierHeader.silver   { background: linear-gradient(135deg, #1a2528 0%, #131d20 100%); border-left: 1px solid rgba(0,180,200,0.15); }
+.tierHeader.platinum { background: #403C36; border-left: 1px solid rgba(255,255,255,0.1); }
+.tierHeader.gold     { background: #4B463E; border-left: 1px solid rgba(255,255,255,0.1); }
+.tierHeader.silver   { background: #37332C; border-left: 1px solid rgba(255,255,255,0.1); }
 
 .tierHeaderLabel {
   display: block;
@@ -127,10 +106,8 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
   margin-bottom: 6px;
+  color: rgba(255,255,255,0.9);
 }
-.tierHeader.platinum .tierHeaderLabel { color: #c8c8e8; }
-.tierHeader.gold     .tierHeaderLabel { color: #f0c040; }
-.tierHeader.silver   .tierHeaderLabel { color: #00C4D8; }
 
 .tierHeaderPrice {
   display: block;
@@ -141,55 +118,57 @@
 
 /* Table rows */
 .tableRow {
+  background: rgba(144, 196, 179, 0.35); /* Light sage green like the image */
   transition: background 0.2s ease;
 }
-.tableRow:hover { background: rgba(255,255,255,0.03); }
-.rowEven { background: rgba(255,255,255,0.015); }
+.tableRow:hover { background: rgba(144, 196, 179, 0.5); }
+.rowEven { background: rgba(144, 196, 179, 0.45); }
 
 .highlightRow td { background: transparent !important; }
 
 .featureCell {
   padding: 16px 28px;
-  color: rgba(255,255,255,0.75);
+  color: #222;
   font-size: 0.82rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(255,255,255,0.4);
 }
 
 .valueCell {
   padding: 14px 20px;
   text-align: center;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-  border-left: 1px solid rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255,255,255,0.4);
+  border-left: 1px solid rgba(255,255,255,0.4);
   vertical-align: middle;
 }
 
 /* Highlight row (speaking slot) */
-.highlight_platinum { background: rgba(192,192,220,0.12) !important; }
-.highlight_gold     { background: rgba(232,140,30,0.2) !important; }
-.highlight_silver   { background: rgba(0,180,200,0.12) !important; }
+.highlight_platinum { background: rgba(240, 110, 40, 0.9) !important; color: #fff; }
+.highlight_gold     { background: rgba(240, 110, 40, 0.9) !important; color: #fff; }
+.highlight_silver   { background: rgba(240, 110, 40, 0.9) !important; color: #fff; }
 
 /* Check icon */
 .checkIcon {
   width: 24px;
   height: 24px;
   display: inline-block;
+  color: #111;
 }
-.checkIcon.platinum { color: #a0a0cc; }
-.checkIcon.gold     { color: #f0c040; }
-.checkIcon.silver   { color: #00C4D8; }
 
 /* Cell text */
 .cellText {
   font-size: 0.9rem;
   font-weight: 700;
-  color: #fff;
+  color: #222;
+}
+.highlightRow .cellText {
+  color: #fff; /* White text for the highlighted orange row */
 }
 
 .cellDash {
-  color: rgba(255,255,255,0.2);
+  color: rgba(0,0,0,0.3);
   font-size: 1.1rem;
 }
 
@@ -209,7 +188,7 @@
 .partnersTitle {
   font-size: 1.1rem;
   font-weight: 700;
-  color: rgba(255,255,255,0.9);
+  color: #111;
   text-align: center;
   margin-bottom: 28px;
   font-family: var(--font-accent, sans-serif);
@@ -227,14 +206,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.1);
   border-radius: 12px;
   padding: 18px 24px;
   transition: background 0.2s ease, border-color 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
 }
 .partnerCard:hover {
-  background: rgba(255,255,255,0.07);
+  background: #f9f9f9;
   border-color: rgba(0,180,200,0.3);
 }
 
@@ -249,22 +229,23 @@
 .partnerPrice {
   font-size: 1rem;
   font-weight: 800;
-  color: #fff;
+  color: #111;
 }
 
 /* ── CTA ─────────────────────────────────────────────────── */
 .cta {
   text-align: center;
   padding: 40px;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.07);
+  background: #fdfdfd;
+  border: 1px solid rgba(0,0,0,0.06);
   border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
 }
 
 .ctaText {
   font-size: 1.1rem;
   font-weight: 600;
-  color: rgba(255,255,255,0.8);
+  color: #333;
   margin-bottom: 20px;
 }
 

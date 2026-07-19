@@ -33,7 +33,7 @@
     inset 0 0 0 1px rgba(255, 255, 255, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.4);
   width: 100%;
-  max-width: 710px;
+  max-width: 850px;
   border-radius: 50px;
   /* Entrance animation */
   animation: headerIn 0.7s 0.1s cubic-bezier(0.22, 1, 0.36, 1) both;
