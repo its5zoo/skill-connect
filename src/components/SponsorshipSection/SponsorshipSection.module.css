@@ -198,8 +198,8 @@
 
 .partnersGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 
 .partnerCard {
@@ -209,27 +209,32 @@
   background: #fff;
   border: 1px solid rgba(0,0,0,0.1);
   border-radius: 12px;
-  padding: 18px 24px;
-  transition: background 0.2s ease, border-color 0.2s ease;
+  padding: 20px 24px;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
   box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+  height: 100%;
 }
 .partnerCard:hover {
-  background: #f9f9f9;
-  border-color: rgba(0,180,200,0.3);
+  background: #fdfdfd;
+  border-color: rgba(0,180,200,0.4);
+  transform: translateY(-2px);
 }
 
 .partnerLabel {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-teal, #00B4C8);
+  line-height: 1.3;
+  padding-right: 12px;
 }
 
 .partnerPrice {
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 800;
   color: #111;
+  white-space: nowrap;
 }
 
 /* ── CTA ─────────────────────────────────────────────────── */
@@ -274,6 +279,10 @@
 }
 
 /* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .partnersGrid { grid-template-columns: repeat(2, 1fr); }
+}
+
 @media (max-width: 768px) {
   .section { padding: 64px 16px; }
   .tierCards { display: grid; grid-template-columns: repeat(3, 1fr); }
