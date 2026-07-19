@@ -13,9 +13,6 @@ interface PageLayoutProps {
 
 const PageLayout: React.FC<PageLayoutProps> = ({ children }) => {
   useEffect(() => {
-    // Scroll to top when entering a sub-page
-    window.scrollTo({ top: 0, behavior: 'instant' });
-
     // Scroll reveal observer for sub-pages
     const observer = new IntersectionObserver(
       (entries) => {
