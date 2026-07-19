@@ -65,7 +65,7 @@ const Header: React.FC = () => {
   const activeId = getActiveId();
 
   // ── Navigation handler ────────────────────────────────────
-  const handleNav = (path: string, id: string) => {
+  const handleNav = (path: string, _id: string) => {
     (document.activeElement as HTMLElement)?.blur();
     setMenuOpen(false);
 

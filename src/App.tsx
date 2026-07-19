@@ -2,7 +2,7 @@
 // App.tsx – Root Application with React Router Routes
 // ============================================================
 import React, { useEffect } from 'react';
-import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import './styles/globals.css';
 
 import HomePage from './pages/HomePage';
