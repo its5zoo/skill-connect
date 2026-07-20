@@ -1,4 +1,4 @@
-# Skill Connect
+# FUTURE SKILLS
 
 Welcome to the Skill Connect project! 
 
