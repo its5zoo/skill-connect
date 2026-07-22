@@ -1,5 +1,5 @@
 // ============================================================
-// Speaker Card Component — Premium Circular Style
+// Speaker Card Component — Clean Editorial Style
 // ============================================================
 import React from 'react';
 import type { Speaker } from '../../types';
@@ -14,20 +14,6 @@ interface SpeakerCardProps {
 const getInitials = (name: string): string => {
   const parts = name.replace(/^(DR\.|PROF\.|AMB\.|DR)\s+/i, '').split(' ');
   return parts.slice(0, 2).map((p) => p[0]).join('').toUpperCase();
-};
-
-// Format name into premium Title Case
-const formatName = (name: string): string => {
-  return name
-    .toLowerCase()
-    .split(' ')
-    .map((word) => {
-      if (word.startsWith('dr.')) return 'Dr.' + word.slice(3).toUpperCase();
-      if (word.startsWith('prof.')) return 'Prof.' + word.slice(5).toUpperCase();
-      if (word.startsWith('amb.')) return 'Amb.' + word.slice(4).toUpperCase();
-      return word.charAt(0).toUpperCase() + word.slice(1);
-    })
-    .join(' ');
 };
 
 // Simple person silhouette SVG
@@ -46,23 +32,22 @@ const PersonSilhouette: React.FC<{ color: string }> = ({ color }) => (
 
 const silhouetteColorMap: Record<Speaker['cardColor'], string> = {
   yellow: 'rgba(0,0,0,0.12)',
-  teal:   'rgba(0,0,0,0.12)',
-  pink:   'rgba(0,0,0,0.12)',
-  gray:   'rgba(0,0,0,0.12)',
+  teal:   'rgba(255,255,255,0.25)',
+  pink:   'rgba(255,255,255,0.25)',
+  gray:   'rgba(255,255,255,0.20)',
 };
 
 const SpeakerCard: React.FC<SpeakerCardProps> = ({ speaker, animationDelay }) => {
   const initials = getInitials(speaker.name);
   const silColor = silhouetteColorMap[speaker.cardColor];
-  const formattedName = formatName(speaker.name);
 
   return (
     <article
       className={styles.card}
       style={animationDelay ? { animationDelay } : undefined}
     >
-      {/* Circular Photo Wrapper */}
-      <div className={styles.photoWrapper}>
+      {/* Photo / placeholder */}
+      <div className={`${styles.photoWrapper} ${styles[`photoWrapper--${speaker.cardColor}`]}`}>
         {speaker.image ? (
           <img
             src={speaker.image}
@@ -79,9 +64,9 @@ const SpeakerCard: React.FC<SpeakerCardProps> = ({ speaker, animationDelay }) =>
         )}
       </div>
 
-      {/* Info details */}
+      {/* Info */}
       <div className={styles.info}>
-        <h3 className={styles.name}>{formattedName}</h3>
+        <p className={styles.name}>{speaker.name}</p>
         <p className={styles.title}>{speaker.title}</p>
         {speaker.organization && (
           <p className={styles.org}>{speaker.organization}</p>

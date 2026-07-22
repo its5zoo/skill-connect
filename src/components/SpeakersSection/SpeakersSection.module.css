@@ -74,7 +74,7 @@
 .speakersGrid {
   display: flex;
   justify-content: center;
-  align-items: stretch;
+  align-items: flex-start;
   gap: 24px;
   flex-wrap: wrap;
   position: relative;
@@ -100,9 +100,6 @@
 /* Hidden by default — animation-fill-mode: backwards keeps it hidden during delay */
 .cardWrapper {
   opacity: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
 }
 
 /* When IntersectionObserver fires, the clean cascade begins */
