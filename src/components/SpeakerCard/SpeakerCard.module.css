@@ -1,134 +1,104 @@
 /* ============================================================
-   Speaker Card — Clean Minimalist Editorial Style
+   Speaker Card — Premium Glass Reflection & Circular Avatar
    ============================================================ */
 
-/* ── Scroll-reveal base (hidden until in viewport) ─────────── */
-/* No keyframes needed — we use CSS transitions + data attributes */
-/* data-reveal="up"    → slides from below  */
-/* data-reveal="left"  → slides from left   */
-/* data-reveal="scale" → fades + scales in  */
-@keyframes cardShine {
-  0%   { transform: translateX(-130%) skewX(-20deg); }
-  100% { transform: translateX(320%) skewX(-20deg); }
-}
-
-/* ── Card base ────────────────────────────────────────────────── */
 .card {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  width: 210px;
-  min-width: 160px;
-  max-width: 240px;
-  flex-shrink: 0;
+  align-items: center;
+  text-align: center;
+  width: 220px;
+  height: 100%;
+  background: #FFFFFF;
+  border-radius: 28px; /* Smooth large rounded corners */
+  padding: 32px 20px 28px 20px;
+  box-shadow: 
+    0 10px 35px rgba(0, 0, 0, 0.03), 
+    0 1px 3px rgba(0, 0, 0, 0.01);
+  border: 1px solid rgba(230, 230, 230, 0.65);
+  transition: 
+    transform 0.45s cubic-bezier(0.25, 0.8, 0.25, 1),
+    box-shadow 0.45s cubic-bezier(0.25, 0.8, 0.25, 1),
+    border-color 0.3s ease;
   cursor: pointer;
-  background: transparent;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Hover: Lift the photo wrapper with spring */
+/* Premium diagonal reflection line overlay */
+.card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0) 45%,
+    rgba(255, 255, 255, 0.22) 48%,
+    rgba(255, 255, 255, 0.26) 50%,
+    rgba(255, 255, 255, 0) 52%
+  );
+  transform: rotate(-12deg);
+  pointer-events: none;
+  z-index: 5;
+  transition: transform 0.65s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Hover: Lift card and slide the glossy reflection */
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 
+    0 24px 48px rgba(0, 0, 0, 0.07), 
+    0 6px 16px rgba(0, 0, 0, 0.03);
+  border-color: rgba(197, 168, 128, 0.35); /* Subtle gold border on hover */
+}
+
+.card:hover::before {
+  transform: translate(25%, 25%) rotate(-12deg);
+}
+
+/* Photo Wrapper: Circular Avatar with thick white frame */
+.photoWrapper {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 20px;
+  background: #FFFFFF;
+  border: 4px solid #FFFFFF; /* Thick white frame */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06), inset 0 0 0 1px rgba(0, 0, 0, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: border-color 0.4s ease, transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
 .card:hover .photoWrapper {
-  transform: translateY(-10px) scale(1.01);
-  box-shadow:
-    0 24px 48px rgba(0, 0, 0, 0.12),
-    0 6px 16px rgba(0, 0, 0, 0.06);
+  transform: scale(1.04);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(0, 0, 0, 0.04);
 }
 
-/* Zoom effect on photo */
+/* Photo Image */
+.speakerPhoto {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+  object-position: bottom center;
+  border-radius: 50%;
+  transition: transform 0.45s ease;
+  display: block;
+}
+
+
 .card:hover .speakerPhoto {
   transform: scale(1.06);
 }
 
-/* Name color on hover */
-.card:hover .name {
-  color: var(--color-teal, #00B4C8);
-}
-
-/* Active press */
-.card:active .photoWrapper {
-  transform: translateY(-4px) scale(0.99);
-}
-
-/* ── Photo wrapper ──────────────────────────────────────────── */
-.photoWrapper {
-  width: 100%;
-  height: 290px;
-  border-radius: 16px;
-  overflow: hidden;
-  position: relative;
-  z-index: 0;
-  flex-shrink: 0;
-  margin-bottom: 14px;
-  background: #F3F4F6;
-  border: 1px solid rgba(0, 0, 0, 0.04);
-  will-change: transform, box-shadow;
-  transition:
-    box-shadow 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
-    transform  0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-/* Shine effect on hover */
-.photoWrapper::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 45%;
-  height: 100%;
-  background: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.6) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  transform: translateX(-130%) skewX(-20deg);
-  z-index: 3;
-  pointer-events: none;
-}
-
-.card:hover .photoWrapper::before {
-  animation: cardShine 0.75s ease-in-out;
-}
-
-/* Color gradients per card color prop */
-.photoWrapper--yellow { background: linear-gradient(160deg, #FFD700 0%, #F5A623 100%); }
-.photoWrapper--teal   { background: linear-gradient(160deg, #00E5FF 0%, #00869A 100%); }
-.photoWrapper--pink   { background: linear-gradient(160deg, #FF4DB8 0%, #E83472 100%); }
-.photoWrapper--gray   { background: linear-gradient(160deg, #BAC8D0 0%, #7E909A 100%); }
-
-/* Bottom gradient overlay */
-.photoWrapper::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 35%;
-  background: linear-gradient(to top, rgba(0,0,0,0.3) 0%, transparent 100%);
-  pointer-events: none;
-  z-index: 2;
-  transition: height 0.35s ease;
-}
-
-.card:hover .photoWrapper::after {
-  height: 45%;
-}
-
-/* Photo image */
-.speakerPhoto {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  /* center 25%: horizontal center, slightly above mid — best for most headshots */
-  object-position: center 25%;
-  display: block;
-  position: relative;
-  z-index: 1;
-  will-change: transform;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* ── Avatar placeholder ─────────────────────────────────────── */
+/* Avatar placeholder */
 .avatarPlaceholder {
   width: 100%;
   height: 100%;
@@ -144,77 +114,104 @@
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 110px;
-  height: 145px;
-  opacity: 0.25;
+  width: 80px;
+  height: 110px;
+  opacity: 0.12;
 }
 
 .avatarInitials {
   font-family: var(--font-primary);
   font-weight: 800;
-  font-size: 2.8rem;
-  color: rgba(255, 255, 255, 0.95);
+  font-size: 2.2rem;
+  color: rgba(0, 0, 0, 0.35);
   letter-spacing: -0.02em;
   position: relative;
   z-index: 2;
 }
 
-/* ── Info below the card ────────────────────────────────────── */
+/* Gold Divider Dash from Mockup */
+.goldDivider {
+  width: 20px;
+  height: 2px;
+  background: #C5A880; /* Premium mockup gold */
+  border-radius: 2px;
+  margin-bottom: 20px;
+  opacity: 0.8;
+  transition: width 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  z-index: 2;
+}
+
+.card:hover .goldDivider {
+  width: 32px; /* Expands slightly on hover */
+}
+
+/* Info container */
 .info {
-  padding: 0 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
   width: 100%;
+  z-index: 2;
 }
 
 .name {
   font-family: var(--font-primary);
-  font-weight: 700;
-  font-size: 0.9rem;
-  color: var(--color-ink, #0A0A0F);
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
+  font-weight: 800;
+  font-size: 1.08rem;
+  color: #111827;
   line-height: 1.3;
-  margin-bottom: 4px;
+  margin: 0;
   transition: color 0.3s ease;
 }
 
+.card:hover .name {
+  color: #C5A880; /* Transitions to gold on hover */
+}
+
 .title {
-  font-size: 0.8rem;
-  color: var(--color-muted, #6B7280);
-  font-weight: 500;
-  line-height: 1.4;
-  margin-bottom: 2px;
+  font-family: var(--font-secondary, 'Inter', sans-serif);
+  font-size: 0.68rem;
+  color: #6B7280;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  line-height: 1.45;
+  margin: 0;
+  max-width: 190px;
 }
 
 .org {
+  font-family: var(--font-secondary, 'Inter', sans-serif);
   font-size: 0.76rem;
-  color: rgba(107, 114, 128, 0.75);
-  font-weight: 400;
+  color: #374151;
+  font-weight: 500;
   line-height: 1.35;
+  margin: 6px 0 0 0;
 }
 
-/* ─── Tablet ─── */
-@media (max-width: 1024px) {
-  .card { width: 180px; }
-  .photoWrapper { height: 250px; }
-}
-
-/* ─── Mobile ─── */
+/* ─── Responsive Adjustments ─── */
 @media (max-width: 768px) {
-  /* Fill the grid column — don't constrain by fixed px width */
-  .card { width: 100%; }
-  .photoWrapper { height: 280px; border-radius: 12px; margin-bottom: 10px; }
-  .name { font-size: 0.78rem; }
-  .title { font-size: 0.7rem; }
-  .org { font-size: 0.68rem; }
-  .avatarInitials { font-size: 2.2rem; }
-}
-
-/* ─── Small Mobile ─── */
-@media (max-width: 480px) {
-  .card { width: 100%; }
-  .photoWrapper { height: 250px; border-radius: 10px; margin-bottom: 8px; }
-  .name { font-size: 0.72rem; }
-  .title { font-size: 0.66rem; }
-  .org { font-size: 0.64rem; }
-  .avatarSilhouette { width: 80px; height: 105px; }
+  .card {
+    width: 100%;
+    padding: 28px 16px 24px 16px;
+    border-radius: 20px;
+  }
+  .photoWrapper {
+    width: 105px;
+    height: 105px;
+    border-width: 3px;
+  }
+  .name {
+    font-size: 0.95rem;
+  }
+  .title {
+    font-size: 0.65rem;
+  }
+  .org {
+    font-size: 0.72rem;
+  }
+  .goldDivider {
+    margin-bottom: 16px;
+  }
 }

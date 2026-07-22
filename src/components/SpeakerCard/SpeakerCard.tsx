@@ -1,5 +1,5 @@
 // ============================================================
-// Speaker Card Component — Clean Editorial Style
+// Speaker Card Component — Premium Card Refinement (Mockup Match)
 // ============================================================
 import React from 'react';
 import type { Speaker } from '../../types';
@@ -16,6 +16,20 @@ const getInitials = (name: string): string => {
   return parts.slice(0, 2).map((p) => p[0]).join('').toUpperCase();
 };
 
+// Format name into premium Title Case
+const formatName = (name: string): string => {
+  return name
+    .toLowerCase()
+    .split(' ')
+    .map((word) => {
+      if (word.startsWith('dr.')) return 'Dr.' + word.slice(3).toUpperCase();
+      if (word.startsWith('prof.')) return 'Prof.' + word.slice(5).toUpperCase();
+      if (word.startsWith('amb.')) return 'Amb.' + word.slice(4).toUpperCase();
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    })
+    .join(' ');
+};
+
 // Simple person silhouette SVG
 const PersonSilhouette: React.FC<{ color: string }> = ({ color }) => (
   <svg
@@ -30,43 +44,80 @@ const PersonSilhouette: React.FC<{ color: string }> = ({ color }) => (
   </svg>
 );
 
-const silhouetteColorMap: Record<Speaker['cardColor'], string> = {
-  yellow: 'rgba(0,0,0,0.12)',
-  teal:   'rgba(255,255,255,0.25)',
-  pink:   'rgba(255,255,255,0.25)',
-  gray:   'rgba(255,255,255,0.20)',
+// Custom crop configuration per speaker to zoom/position them independently
+const speakerCropConfig: Record<string, React.CSSProperties> = {
+  'dr. jaan nissar lone': {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    objectPosition: 'center 18%',
+  },
+  'dr. sergei dvorianov': {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    objectPosition: 'center 10%', // Shifted further down (from 22% to 10%)
+  },
+  'vladimir kedrinsky': {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    objectPosition: '40% 50%', // Zoomed in and shifted further left (from 54% to 58%)
+  },
+  'kevin feng': {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    objectPosition: 'center 10%', // Zoomed in on face
+  },
+};
+
+// Default fallback style (90% contain centered)
+const defaultCropStyle: React.CSSProperties = {
+  width: '90%',
+  height: '90%',
+  objectFit: 'contain',
+  objectPosition: 'bottom center',
 };
 
 const SpeakerCard: React.FC<SpeakerCardProps> = ({ speaker, animationDelay }) => {
   const initials = getInitials(speaker.name);
-  const silColor = silhouetteColorMap[speaker.cardColor];
+  const formattedName = formatName(speaker.name);
+  
+  // Fetch custom styles for this speaker, or fall back to default
+  const configKey = speaker.name.toLowerCase().trim();
+  const cropStyle = speakerCropConfig[configKey] || defaultCropStyle;
 
   return (
     <article
       className={styles.card}
       style={animationDelay ? { animationDelay } : undefined}
     >
-      {/* Photo / placeholder */}
-      <div className={`${styles.photoWrapper} ${styles[`photoWrapper--${speaker.cardColor}`]}`}>
+      {/* Premium Circular Photo Wrapper */}
+      <div className={styles.photoWrapper}>
         {speaker.image ? (
           <img
             src={speaker.image}
             alt={speaker.name}
             className={styles.speakerPhoto}
+            style={cropStyle}
             loading="lazy"
             decoding="async"
           />
         ) : (
           <div className={styles.avatarPlaceholder}>
-            <PersonSilhouette color={silColor} />
+            <PersonSilhouette color="rgba(0,0,0,0.12)" />
             <span className={styles.avatarInitials}>{initials}</span>
           </div>
         )}
       </div>
 
-      {/* Info */}
+      {/* Gold Divider Dash from Mockup */}
+      <div className={styles.goldDivider} aria-hidden="true" />
+
+      {/* Info Details */}
       <div className={styles.info}>
-        <p className={styles.name}>{speaker.name}</p>
+        <h3 className={styles.name}>{formattedName}</h3>
         <p className={styles.title}>{speaker.title}</p>
         {speaker.organization && (
           <p className={styles.org}>{speaker.organization}</p>
