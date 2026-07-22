@@ -76,14 +76,17 @@ const HomePage: React.FC = () => {
       <Header />
       <main>
         <Hero />
-        {speakerGroups.map((group, index) => (
-          <SpeakersSection key={group.id} group={group} groupIndex={index} />
-        ))}
+        <SpeakersSection 
+          key={speakerGroups[0].id} 
+          group={speakerGroups[0]} 
+          groupIndex={0} 
+          showViewAll={true} 
+        />
         <FoundationSection />
-        <ChapterHeadsSection />
+        <ChapterHeadsSection isHomePage={true} />
         <PartnersSection />
         <SponsorshipSection />
-        <AgendaSection />
+        <AgendaSection isHomePage />
       </main>
       <Footer />
     </>

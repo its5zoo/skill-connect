@@ -10,7 +10,6 @@ import styles from './Header.module.css';
 const NAV_ITEMS = [
   { label: 'Home',          id: 'hero',                       path: '/' },
   { label: 'Speakers',      id: 'speakers-group-1',           path: '/speakers' },
-  { label: 'QT Foundation', id: 'foundation',                 path: '/qt-foundation' },
   { label: 'Chapter Heads', id: 'chapter-heads-ch-group-1',   path: '/chapter-heads' },
   { label: 'Partners',      id: 'partners',                   path: '/partners' },
   { label: 'Sponsor',       id: 'sponsorship',                path: '/sponsorship' },

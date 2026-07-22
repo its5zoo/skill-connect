@@ -33,7 +33,7 @@
     inset 0 0 0 1px rgba(255, 255, 255, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.4);
   width: 100%;
-  max-width: 850px;
+  max-width: 740px;
   border-radius: 50px;
   /* Entrance animation */
   animation: headerIn 0.7s 0.1s cubic-bezier(0.22, 1, 0.36, 1) both;
@@ -160,7 +160,7 @@
 
 /* ─── CTA Button ─── */
 .headerCta {
-  background: linear-gradient(135deg, var(--color-coral, #E85D24) 0%, var(--color-pink, #E83472) 100%);
+  background: var(--color-coral, #E85D24);
   color: var(--color-white);
   border: none;
   padding: 10px 24px;
@@ -180,7 +180,7 @@
   align-items: center;
   justify-content: center;
   gap: 6px;
-  box-shadow: 0 4px 14px rgba(232, 52, 114, 0.28);
+  box-shadow: 0 4px 14px rgba(232, 93, 36, 0.25);
   margin-left: 4px;
 }
 
@@ -317,7 +317,7 @@
 
 .mobileCta {
   margin-top: 6px;
-  background: linear-gradient(135deg, var(--color-coral) 0%, var(--color-pink) 100%);
+  background: var(--color-coral, #E85D24);
   color: white;
   border: none;
   padding: 12px 20px;
@@ -329,7 +329,7 @@
   letter-spacing: 0.05em;
   width: 100%;
   text-align: center;
-  box-shadow: 0 4px 15px rgba(232, 52, 114, 0.25);
+  box-shadow: 0 4px 15px rgba(232, 93, 36, 0.22);
   transition: all 0.2s;
 }
 

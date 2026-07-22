@@ -2,6 +2,7 @@
 // Chapter Heads Section
 // ============================================================
 import React, { useRef } from "react";
+import { Link } from "react-router-dom";
 import type { Speaker } from "../../types";
 import { chapterHeadGroups } from "../../data/eventData";
 import SpeakerCard from "../SpeakerCard/SpeakerCard";
@@ -27,9 +28,10 @@ interface GroupSectionProps {
   id: string;
   speakers: Speaker[];
   showHeader?: boolean;
+  showViewAll?: boolean;
 }
 
-const ChapterGroupSection: React.FC<GroupSectionProps> = ({ id, speakers, showHeader }) => {
+const ChapterGroupSection: React.FC<GroupSectionProps> = ({ id, speakers, showHeader, showViewAll }) => {
   const gridRef = useRef<HTMLDivElement>(null);
   useScrollReveal(gridRef);
 
@@ -58,23 +60,44 @@ const ChapterGroupSection: React.FC<GroupSectionProps> = ({ id, speakers, showHe
             </div>
           ))}
         </div>
+
+        {showViewAll && (
+          <div className={styles.viewMoreContainer}>
+            <Link to="/chapter-heads" className={styles.viewMoreBtn}>
+              <span>View All Chapter Heads</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );
 };
 
-const ChapterHeadsSection: React.FC = () => (
-  <>
-    {chapterHeadGroups.map((group) => (
-      <ChapterGroupSection
-        key={group.id}
-        id={group.id}
-        speakers={group.speakers}
-        showHeader={true}
-      />
-    ))}
-  </>
-);
+interface ChapterHeadsSectionProps {
+  isHomePage?: boolean;
+}
+
+const ChapterHeadsSection: React.FC<ChapterHeadsSectionProps> = ({ isHomePage }) => {
+  const displayGroups = isHomePage ? chapterHeadGroups.slice(0, 1) : chapterHeadGroups;
+
+  return (
+    <>
+      {displayGroups.map((group, index) => (
+        <ChapterGroupSection
+          key={group.id}
+          id={group.id}
+          speakers={group.speakers}
+          showHeader={index === 0}
+          showViewAll={isHomePage && index === 0}
+        />
+      ))}
+    </>
+  );
+};
 
 export default ChapterHeadsSection;
 

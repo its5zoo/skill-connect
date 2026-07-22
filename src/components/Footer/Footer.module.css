@@ -20,24 +20,47 @@
 }
 
 .footer {
-  background: var(--color-ink, #0A0A0F);
+  width: 100%;
   color: var(--color-white);
   position: relative;
+  overflow: hidden;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(to bottom, 
+      rgba(10, 10, 15, 0.45) 0%, 
+      rgba(10, 10, 15, 0.45) 100%), 
+    url('/footer-bg.png') no-repeat center center;
+  background-size: cover;
+  filter: blur(4px);
+  transform: scale(1.05);
+  z-index: 0;
 }
 
 /* Clean single-line top divider */
 .topDivider {
   height: 1px;
   background: rgba(255,255,255,0.06);
+  position: relative;
+  z-index: 1;
 }
 
 .inner {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 96px 40px 48px;
+  padding: 80px 40px 40px;
   display: flex;
   flex-direction: column;
-  gap: 64px;
+  gap: 48px;
+  position: relative;
+  z-index: 1;
 }
 
 /* ─── CTA Block ─── */
@@ -63,20 +86,7 @@
   font-family: var(--font-primary, sans-serif);
   font-size: clamp(2.8rem, 6vw, 5rem);
   font-weight: 900;
-  /* Animated gradient heading */
-  background: linear-gradient(
-    270deg,
-    #ffffff 0%,
-    #a8edff 30%,
-    #ffffff 60%,
-    #ffd6e8 85%,
-    #ffffff 100%
-  );
-  background-size: 300% 300%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: footerHeadingShimmer 7s ease infinite;
+  color: #FFFFFF;
   line-height: 1.05;
   letter-spacing: -0.02em;
   margin: 0;
@@ -196,7 +206,7 @@
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.3);
+  color: var(--color-white, #FFFFFF);
   margin-bottom: 4px;
 }
 
@@ -204,14 +214,14 @@
   font-family: var(--font-primary);
   font-size: 1.05rem;
   font-weight: 700;
-  color: var(--color-white);
+  color: var(--color-teal, #00B4C8);
   line-height: 1.3;
 }
 
 .colSub {
   font-family: var(--font-primary);
   font-size: 0.85rem;
-  color: rgba(255,255,255,0.45);
+  color: rgba(255,255,255,0.7);
   font-weight: 400;
 }
 
@@ -261,7 +271,7 @@
 .copyright {
   font-family: var(--font-primary);
   font-size: 0.78rem;
-  color: rgba(255,255,255,0.25);
+  color: var(--color-white, #FFFFFF);
   text-align: center;
   line-height: 1.5;
 }
