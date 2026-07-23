@@ -177,6 +177,10 @@
 @media (max-width: 1024px) {
   .section { padding: 64px 24px 64px; }
   .speakersGrid { gap: 24px 20px; }
+  .groupTitle { font-size: 1.2rem; }
+  .groupLogoWrap { width: 80px; height: 36px; }
+  .groupBlock { margin-top: 56px; }
+  .groupHeader { margin-bottom: 28px; }
 }
 
 /* ─── Mobile ─── */
@@ -204,6 +208,12 @@
     justify-self: center;
     width: calc(50% - 7px);
   }
+  .groupBlock { margin-top: 44px; }
+  .groupHeader { margin-bottom: 24px; }
+  .groupTitleRow { flex-direction: column; gap: 8px; text-align: center; }
+  .groupLogoWrap { width: 72px; height: 32px; }
+  .groupTitle { font-size: 1.1rem; line-height: 1.3; padding: 0 12px; }
+  .groupDescription { font-size: 0.8rem; line-height: 1.4; padding: 0 16px; margin-bottom: 12px; }
 }
 
 /* ─── Small Mobile ─── */

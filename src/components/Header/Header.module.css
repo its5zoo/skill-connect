@@ -389,29 +389,46 @@
   .brandMark { font-size: 0.65rem; }
 }
 
-/* ─── Small Tablet ─── */
-@media (max-width: 780px) {
-  .navLink { font-size: 0.72rem; padding: 5px 8px; }
-  .headerInner { gap: 2px; }
-  .brandMark { display: none; }
-}
-
 /* ─── Mobile: hamburger ─── */
-@media (max-width: 620px) {
-  .header {
-    top: 10px;
-    width: calc(100% - 24px);
-    max-width: calc(100% - 24px);
-    border-radius: 20px;
+@media (max-width: 840px) {
+  .header,
+  .header.headerAtTop {
+    top: 12px !important;
+    width: calc(100% - 24px) !important;
+    max-width: calc(100% - 24px) !important;
+    border-radius: 30px !important; /* Curved pill look always on mobile/tablet */
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.08) !important;
+    background: rgba(255, 255, 255, 0.92) !important; /* Symmetrical background always */
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
   }
-  .headerOpen { border-radius: 20px; }
-  .headerInner { padding: 10px 16px; justify-content: space-between; gap: 0; }
+
+  .header.headerAtTop .headerInner {
+    padding: 10px 16px 10px 20px !important;
+  }
+
+  .headerOpen,
+  .headerOpen.headerAtTop {
+    border-radius: 20px !important;
+  }
+
+  .headerInner {
+    padding: 10px 16px 10px 20px;
+    justify-content: space-between;
+    gap: 0;
+  }
   .navMenu, .headerCta { display: none; }
   .hamburger { display: flex; }
   .brandMark { display: block; font-size: 0.7rem; }
 }
 
 @media (max-width: 380px) {
-  .header { width: calc(100% - 16px); top: 8px; }
+  .header,
+  .header.headerAtTop {
+    width: calc(100% - 16px) !important;
+    max-width: calc(100% - 16px) !important;
+    top: 8px !important;
+  }
   .headerInner { padding: 9px 12px; }
 }
