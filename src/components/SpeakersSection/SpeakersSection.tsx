@@ -12,6 +12,7 @@ interface SpeakersSectionProps {
   group: SpeakerGroup;
   groupIndex: number;
   showViewAll?: boolean;
+  isDetailPage?: boolean;
 }
 
 const groupTitles: Record<number, { line1: string; line2?: string }> = {
@@ -35,8 +36,15 @@ const groupSubtitles: Record<number, string> = {
 };
 
 
-const SpeakersSection: React.FC<SpeakersSectionProps> = ({ group, groupIndex, showViewAll }) => {
+const SpeakersSection: React.FC<SpeakersSectionProps> = ({ group, groupIndex, showViewAll, isDetailPage }) => {
   const titleData = groupTitles[groupIndex] || { line1: 'Featured', line2: 'Speakers' };
+  
+  let line1 = titleData.line1;
+  let line2 = titleData.line2 ?? '';
+  if (isDetailPage && line2 === 'Speakers') {
+    line2 = 'Leaders';
+  }
+
   const subtitle  = groupSubtitles[groupIndex] || 'Eminent leaders and visionaries';
   const bgClass   = groupIndex % 2 === 0 ? styles.sectionCream : styles.sectionWhite;
 
@@ -48,15 +56,15 @@ const SpeakersSection: React.FC<SpeakersSectionProps> = ({ group, groupIndex, sh
     <section
       className={`${styles.section} ${bgClass}`}
       id={`speakers-group-${groupIndex + 1}`}
-      aria-label={`${titleData.line1} ${titleData.line2 ?? ''}`}
+      aria-label={`${line1} ${line2}`}
     >
       <div className={styles.container}>
         {/* ── Header ── */}
         <div className={styles.header} data-reveal>
           <div className={styles.headerContent}>
-            <span className={styles.sectionTag}>Speakers</span>
+            {!isDetailPage && <span className={styles.sectionTag}>Speakers</span>}
             <h2 className={styles.sectionTitle}>
-              {titleData.line1}{' '}{titleData.line2 ?? ''}
+              {line1}{' '}{line2}
             </h2>
             <p className={styles.sectionSubtitle}>{subtitle}</p>
           </div>

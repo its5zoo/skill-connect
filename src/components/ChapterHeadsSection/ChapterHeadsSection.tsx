@@ -107,10 +107,12 @@ const ChapterHeadsSection: React.FC<ChapterHeadsSectionProps> = ({ isHomePage })
       <div className={styles.container}>
         
         {/* Main Section Header */}
-        <div className={styles.mainHeader}>
-          <p className={styles.welcomeText}>Welcome to the Chapter Heads</p>
-          <QTFoundationLogo />
-        </div>
+        {isHomePage && (
+          <div className={styles.mainHeader}>
+            <p className={styles.welcomeText}>Welcome to the Chapter Heads</p>
+            <QTFoundationLogo />
+          </div>
+        )}
 
         {/* Groups */}
         {displayGroups.map((group, index) => {

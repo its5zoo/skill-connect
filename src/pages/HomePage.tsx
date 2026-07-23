@@ -75,7 +75,10 @@ const HomePage: React.FC = () => {
     <>
       <Header />
       <main>
+        {/* 1. Home / Hero */}
         <Hero />
+
+        {/* 2. Speakers */}
         <SpeakersSection 
           key={speakerGroups[0].id} 
           group={speakerGroups[0]} 
@@ -83,10 +86,18 @@ const HomePage: React.FC = () => {
           showViewAll={true} 
         />
         <FoundationSection />
+
+        {/* 3. Chapter Heads */}
         <ChapterHeadsSection isHomePage={true} />
-        <PartnersSection />
-        <SponsorshipSection />
+
+        {/* 4. Agenda */}
         <AgendaSection isHomePage />
+
+        {/* 5. Partners */}
+        <PartnersSection />
+
+        {/* 6. Sponsor */}
+        <SponsorshipSection />
       </main>
       <Footer />
     </>

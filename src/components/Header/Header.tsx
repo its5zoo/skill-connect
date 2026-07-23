@@ -8,12 +8,12 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import styles from './Header.module.css';
 
 const NAV_ITEMS = [
-  { label: 'Home',          id: 'hero',                       path: '/' },
-  { label: 'Speakers',      id: 'speakers-group-1',           path: '/speakers' },
-  { label: 'Chapter Heads', id: 'chapter-heads-ch-group-1',   path: '/chapter-heads' },
-  { label: 'Agenda',        id: 'agenda',                     path: '/agenda' },
-  { label: 'Partners',      id: 'partners',                   path: '/partners' },
-  { label: 'Sponsor',       id: 'sponsorship',                path: '/sponsorship' },
+  { label: 'Home',          id: 'hero',           path: '/' },
+  { label: 'Speakers',      id: 'speakers-group-1', path: '/speakers' },
+  { label: 'Chapter Heads', id: 'chapter-heads',  path: '/chapter-heads' },
+  { label: 'Agenda',        id: 'agenda',          path: '/agenda' },
+  { label: 'Partners',      id: 'partners',        path: '/partners' },
+  { label: 'Sponsor',       id: 'sponsorship',     path: '/sponsorship' },
 ];
 
 const Header: React.FC = () => {

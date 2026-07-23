@@ -176,6 +176,12 @@
   background: rgba(197, 168, 128, 0.05) !important;
 }
 
+/* Active sponsor link styling (black pill with gold text) */
+.navLinkActive.navLinkSponsor {
+  background: var(--color-ink, #0A0A0F) !important;
+  color: #C5A880 !important;
+}
+
 .mobileNavLinkSponsor {
   color: #C5A880 !important;
   font-weight: 700 !important;
@@ -184,6 +190,12 @@
 .mobileNavLinkSponsor:hover {
   color: #B39268 !important;
   background: rgba(197, 168, 128, 0.05) !important;
+}
+
+/* Active mobile sponsor link styling (black background with gold text) */
+.mobileNavLinkActive.mobileNavLinkSponsor {
+  background: var(--color-ink, #0A0A0F) !important;
+  color: #C5A880 !important;
 }
 
 /* ─── CTA Button ─── */

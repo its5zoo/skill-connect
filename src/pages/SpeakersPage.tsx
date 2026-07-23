@@ -27,11 +27,11 @@ const SpeakersPage: React.FC = () => {
 
       {/* 1. Distinguished / Industry / Innovation Speakers */}
       {speakerGroups.map((group, index) => (
-        <SpeakersSection key={group.id} group={group} groupIndex={index} />
+        <SpeakersSection key={group.id} group={group} groupIndex={index} isDetailPage={true} />
       ))}
 
       {/* 2. Quality Thought Foundation Team */}
-      <SpeakersSection key={foundationGroup.id} group={foundationGroup} groupIndex={3} />
+      <SpeakersSection key={foundationGroup.id} group={foundationGroup} groupIndex={3} isDetailPage={true} />
     </PageLayout>
   );
 };
