@@ -21,10 +21,16 @@ const Footer: React.FC = () => (
           Join 500+ leaders, innovators &amp; policymakers shaping<br />
           the future of skills across industries.
         </p>
-        <button className={styles.ctaBtn} aria-label="Register for the Future Skills Summit">
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSd1oYj_0hxg_1BejlxJWkKjyrAajwh9s5k4zZNtUKRY0-zvQw/viewform"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.ctaBtn}
+          aria-label="Register for the Future Skills Summit"
+        >
           REGISTER NOW
           <span className={styles.ctaBtnArrow}>→</span>
-        </button>
+        </a>
       </div>
 
       {/* ── Info Columns ── */}

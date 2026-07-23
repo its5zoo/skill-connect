@@ -152,7 +152,7 @@ const Hero: React.FC = () => {
                 <CalendarIcon />
               </div>
               <div className={styles.pillTextGroup}>
-                <span className={styles.pillLabel}>SATURDAY</span>
+                <span className={styles.pillLabel}>{eventDetails.day}</span>
                 <span className={styles.pillValue}>{eventDetails.date}</span>
               </div>
             </div>
@@ -169,13 +169,10 @@ const Hero: React.FC = () => {
               </div>
             </div>
 
-            <button
-              type="button"
-              onClick={(e) => {
-                e.preventDefault();
-                const el = document.getElementById('contact');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-              }}
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSd1oYj_0hxg_1BejlxJWkKjyrAajwh9s5k4zZNtUKRY0-zvQw/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
               className={styles.pillCta}
               aria-label="Register for the Future Skills Summit"
             >
@@ -183,7 +180,7 @@ const Hero: React.FC = () => {
               <span className={styles.ctaArrowCircle}>
                 <ArrowIcon />
               </span>
-            </button>
+            </a>
           </div>
         </div>
       </div>

@@ -6,7 +6,7 @@ import type { Speaker, SpeakerGroup, EventDetails } from '../types';
 
 export const eventDetails: EventDetails = {
   date: '08 August, 2026',
-  day: 'SATURDAY',
+  day: 'SATURDAY · 10:00 AM',
   venue: 'T - WORKS',
   city: 'Hyderabad',
   phone1: '7981532054',

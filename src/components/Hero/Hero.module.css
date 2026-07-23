@@ -275,8 +275,8 @@
 }
 
 .sponsorLogo {
-  height: 150px;
-  max-width: 280px;
+  height: 195px; /* Increased from 150px */
+  max-width: 320px; /* Increased from 280px */
   object-fit: contain;
   mix-blend-mode: multiply;
   transition: transform var(--transition-smooth, 0.3s) ease;
@@ -285,8 +285,8 @@
 }
 
 .sponsorLogoQT {
-  height: 135px;
-  max-width: 280px;
+  height: 175px; /* Increased from 135px */
+  max-width: 320px; /* Increased from 280px */
   object-fit: contain;
   mix-blend-mode: multiply;
   transition: transform var(--transition-smooth, 0.3s) ease;
@@ -509,6 +509,7 @@
   gap: 16px;
   box-shadow: 0 4px 14px rgba(232, 93, 36, 0.22);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+  text-decoration: none;
 }
 
 .pillCta:hover {
@@ -550,12 +551,12 @@
     flex: none;
   }
   .sponsorLogo {
-    height: 110px;
-    max-width: 200px;
+    height: 145px; /* Increased from 110px */
+    max-width: 250px;
   }
   .sponsorLogoQT {
-    height: 100px;
-    max-width: 200px;
+    height: 130px; /* Increased from 100px */
+    max-width: 250px;
   }
 }
 
@@ -590,12 +591,12 @@
     gap: 24px;
   }
   .sponsorLogo {
-    height: 80px;
-    max-width: 140px;
+    height: 105px; /* Increased from 80px */
+    max-width: 180px;
   }
   .sponsorLogoQT {
-    height: 72px;
-    max-width: 140px;
+    height: 95px; /* Increased from 72px */
+    max-width: 180px;
   }
   .theTag {
     top: -12px;

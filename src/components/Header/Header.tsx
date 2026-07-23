@@ -104,13 +104,19 @@ const Header: React.FC = () => {
         </nav>
 
         {/* Desktop CTA */}
-        <button className={styles.headerCta} onClick={() => navigate('/')} aria-label="Register">
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSd1oYj_0hxg_1BejlxJWkKjyrAajwh9s5k4zZNtUKRY0-zvQw/viewform"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.headerCta}
+          aria-label="Register"
+        >
           <span>REGISTER NOW</span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <line x1="5" y1="12" x2="19" y2="12"></line>
             <polyline points="12 5 19 12 12 19"></polyline>
           </svg>
-        </button>
+        </a>
 
         {/* Hamburger (mobile only) */}
         <button
@@ -135,9 +141,15 @@ const Header: React.FC = () => {
             {label}
           </button>
         ))}
-        <button className={styles.mobileCta} onClick={() => { navigate('/'); setMenuOpen(false); }}>
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSd1oYj_0hxg_1BejlxJWkKjyrAajwh9s5k4zZNtUKRY0-zvQw/viewform"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.mobileCta}
+          onClick={() => setMenuOpen(false)}
+        >
           REGISTER NOW →
-        </button>
+        </a>
       </div>
     </header>
   );
