@@ -70,14 +70,98 @@ const speakerCropConfig: Record<string, React.CSSProperties> = {
     objectFit: 'cover',
     objectPosition: 'center 10%', // Zoomed in on face
   },
+  'krish chintaluri': {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    objectPosition: 'center 20%', // Center the headshot
+  },
+  'ramana bhupathi': {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    objectPosition: 'center 15%', // Zoom in on face and center it
+  },
+  'dr. pavani kadiyala': {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    objectPosition: 'center 5%', // Shift down to show top of head
+  },
+  'geetha murthy': {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    objectPosition: 'center 5%', // Shift down to show top of head
+  },
+  'sashank karri': {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    objectPosition: 'center 15%', // Zoom in on face and center it
+  },
+  'vijay kumar ks': {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    objectPosition: 'center 10%', // Zoom in on face and center it
+  },
+  'shreya jaiswal': {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    objectPosition: 'center 55%', // Shift down slightly to center her headshot
+  },
+  'nithin kumar reddy': {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    objectPosition: 'center 20%', // Zoom in on face
+  },
+  'inderjeet aidhi': {
+    width: '96%',
+    height: '96%',
+    objectFit: 'contain',
+    objectPosition: 'center center',
+  },
+  'dr. m satya prasad': {
+    width: '95%',
+    height: '95%',
+    objectFit: 'contain',
+    objectPosition: 'center center',
+  },
+  'viswanadh raju': {
+    width: '95%',
+    height: '95%',
+    objectFit: 'contain',
+    objectPosition: 'center center',
+  },
+  'venkata ramana k': {
+    width: '95%',
+    height: '95%',
+    objectFit: 'contain',
+    objectPosition: 'center center',
+  },
+  'surya prakasa rao': {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    objectPosition: 'center 30%', // Shift up to show chin/mouth
+  },
+  'amb. dunston pereira': {
+    width: '95%',
+    height: '95%',
+    objectFit: 'contain',
+    objectPosition: 'center center',
+  },
 };
 
-// Default fallback style (90% contain centered)
+// Default fallback style (100% cover centered to zoom in on faces)
 const defaultCropStyle: React.CSSProperties = {
-  width: '90%',
-  height: '90%',
-  objectFit: 'contain',
-  objectPosition: 'bottom center',
+  width: '100%',
+  height: '100%',
+  objectFit: 'cover',
+  objectPosition: 'center 10%',
 };
 
 const SpeakerCard: React.FC<SpeakerCardProps> = ({ speaker, animationDelay }) => {

@@ -15,48 +15,51 @@
   box-shadow: 
     0 10px 35px rgba(0, 0, 0, 0.03), 
     0 1px 3px rgba(0, 0, 0, 0.01);
-  border: 1px solid rgba(230, 230, 230, 0.65);
+  border: 1px solid #E2E8F0; /* Clear slate border outline */
   transition: 
-    transform 0.45s cubic-bezier(0.25, 0.8, 0.25, 1),
-    box-shadow 0.45s cubic-bezier(0.25, 0.8, 0.25, 1),
-    border-color 0.3s ease;
+    transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 0.4s ease;
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  transform-style: preserve-3d;
+  perspective: 1000px;
 }
 
 /* Premium diagonal reflection line overlay */
 .card::before {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
+  top: 0;
+  left: -150%;
+  width: 150%;
+  height: 100%;
   background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0) 45%,
-    rgba(255, 255, 255, 0.22) 48%,
-    rgba(255, 255, 255, 0.26) 50%,
-    rgba(255, 255, 255, 0) 52%
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.25) 50%,
+    rgba(255, 255, 255, 0) 100%
   );
-  transform: rotate(-12deg);
+  transform: skewX(-25deg);
   pointer-events: none;
   z-index: 5;
-  transition: transform 0.65s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: left 0.75s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-/* Hover: Lift card and slide the glossy reflection */
+/* Hover: Lift card with 3D tilt and slide the glossy reflection */
 .card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-10px) scale(1.03) rotateX(2deg) rotateY(-1deg);
   box-shadow: 
-    0 24px 48px rgba(0, 0, 0, 0.07), 
-    0 6px 16px rgba(0, 0, 0, 0.03);
-  border-color: rgba(197, 168, 128, 0.35); /* Subtle gold border on hover */
+    0 20px 40px rgba(0, 0, 0, 0.05), 
+    0 30px 60px rgba(0, 0, 0, 0.03),
+    0 1px 3px rgba(0, 0, 0, 0.01);
+  border-color: var(--color-teal, #00B4C8); /* Brand teal border outline on hover */
+  background: linear-gradient(180deg, #FFFFFF 0%, #FAFCFC 100%);
 }
 
 .card:hover::before {
-  transform: translate(25%, 25%) rotate(-12deg);
+  left: 150%;
 }
 
 /* Photo Wrapper: Circular Avatar with thick white frame */
@@ -74,12 +77,17 @@
   align-items: center;
   justify-content: center;
   z-index: 2;
-  transition: border-color 0.4s ease, transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: 
+    border-color 0.4s ease, 
+    transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+    box-shadow 0.4s ease;
 }
 
 .card:hover .photoWrapper {
-  transform: scale(1.04);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(0, 0, 0, 0.04);
+  transform: scale(1.05);
+  border-color: #FFFFFF; /* Keep frame clean white */
+  box-shadow: 
+    0 8px 20px rgba(0, 0, 0, 0.08); /* Sophisticated shadow instead of colored ring */
 }
 
 /* Photo Image */
@@ -89,13 +97,13 @@
   object-fit: contain;
   object-position: bottom center;
   border-radius: 50%;
-  transition: transform 0.45s ease;
+  transition: transform 0.45s cubic-bezier(0.25, 0.8, 0.25, 1);
   display: block;
 }
 
 
 .card:hover .speakerPhoto {
-  transform: scale(1.06);
+  transform: scale(1.08); /* Zoom in on face slightly */
 }
 
 /* Avatar placeholder */
@@ -137,12 +145,17 @@
   border-radius: 2px;
   margin-bottom: 20px;
   opacity: 0.8;
-  transition: width 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: 
+    width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
   z-index: 2;
 }
 
 .card:hover .goldDivider {
-  width: 32px; /* Expands slightly on hover */
+  width: 45px; /* Expands more dynamically */
+  background: var(--color-teal, #00B4C8); /* Brand teal divider line */
+  box-shadow: 0 0 6px rgba(0, 180, 200, 0.3); /* Subtle teal glow */
 }
 
 /* Info container */
@@ -153,6 +166,11 @@
   gap: 5px;
   width: 100%;
   z-index: 2;
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.card:hover .info {
+  transform: translateY(2px); /* Parallax depth effect */
 }
 
 .name {
@@ -166,7 +184,7 @@
 }
 
 .card:hover .name {
-  color: #C5A880; /* Transitions to gold on hover */
+  color: var(--color-teal, #00B4C8); /* Transitions to brand Teal on hover */
 }
 
 .title {

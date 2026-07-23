@@ -13,70 +13,69 @@ const SpeakerIcon = () => (
   </svg>
 );
 
-const MouIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="m11 17 2 2 5-5" />
-    <path d="m14 14 2.5 2.5" />
-    <path d="M8 14h.01" />
-    <path d="M16 8h.01" />
-    <path d="M20.8 13.5a1.8 1.8 0 0 0-2.3-2.3l-2.5 2.5-3.5-3.5a1.8 1.8 0 0 0-2.5 2.5l3.5 3.5-2.5 2.5a1.8 1.8 0 0 0 2.5 2.5l2.5-2.5 3.5 3.5a1.8 1.8 0 0 0 2.5-2.5l-3.5-3.5Z" />
+const MouIllustration = () => (
+  <svg width="100%" height="100%" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="mouGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#4F46E5" />
+        <stop offset="100%" stopColor="#06B6D4" />
+      </linearGradient>
+      <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#F59E0B" />
+        <stop offset="100%" stopColor="#D97706" />
+      </linearGradient>
+      <filter id="mouShadow" x="0" y="0" width="100" height="100" filterUnits="userSpaceOnUse">
+        <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor="#000000" floodOpacity="0.15" />
+      </filter>
+    </defs>
+
+    {/* Background */}
+    <rect width="100" height="100" fill="url(#mouGrad)" />
+
+    {/* Decorative background grid/waves */}
+    <path d="M-10 80 C 20 60, 40 90, 110 70 L 110 110 L -10 110 Z" fill="rgba(255,255,255,0.06)" />
+    <path d="M-10 90 C 30 75, 60 95, 110 85 L 110 110 L -10 110 Z" fill="rgba(255,255,255,0.04)" />
+
+    {/* Document Group */}
+    <g filter="url(#mouShadow)">
+      {/* Behind sheet (angled slightly) */}
+      <rect x="33" y="22" width="34" height="46" rx="2.5" fill="#E2E8F0" transform="rotate(-3 50 45)" />
+      {/* Front sheet */}
+      <rect x="32" y="24" width="34" height="46" rx="2.5" fill="#FFFFFF" />
+    </g>
+
+    {/* Document details (lines of text) */}
+    <line x1="38" y1="33" x2="60" y2="33" stroke="#94A3B8" strokeWidth="2.5" strokeLinecap="round" />
+    <line x1="38" y1="40" x2="60" y2="40" stroke="#CBD5E1" strokeWidth="1.8" strokeLinecap="round" />
+    <line x1="38" y1="46" x2="52" y2="46" stroke="#CBD5E1" strokeWidth="1.8" strokeLinecap="round" />
+    
+    {/* Stamp/Badge on document */}
+    <circle cx="56" cy="56" r="3.5" fill="url(#goldGrad)" />
+    <path d="M54 59 L56 62 L58 59 Z" fill="#D97706" />
+
+    {/* Swiggle Signature */}
+    <path d="M38 58 Q 42 56, 44 58 T 48 56" stroke="#2563EB" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+
+    {/* Fountain Pen */}
+    <path d="M72 18 L51 45 L47 47 L49 43 L70 16 Z" fill="url(#goldGrad)" />
+    <path d="M47 47 L44 51 L49 49 Z" fill="#1E293B" />
+    <line x1="68" y1="21" x2="71" y2="24" stroke="#FFFFFF" strokeWidth="1" />
   </svg>
 );
 
-const BookIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-  </svg>
-);
 
-const OathIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-    <path d="m9 11 2 2 4-4" />
-  </svg>
-);
 
-const LunchIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M17 8h1a4 4 0 1 1 0 8h-1" />
-    <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8z" />
-    <path d="M6 2v4M10 2v4M14 2v4" />
-  </svg>
-);
 
-const PresentationIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-    <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-    <line x1="8" y1="21" x2="16" y2="21" />
-    <line x1="12" y1="17" x2="12" y2="21" />
-  </svg>
-);
 
-const AwardsIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
-    <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
-    <path d="M4 22h16" />
-    <path d="M10 14.66V17c0 .55-.45 1-1 1H4v2h16v-2h-5c-.55 0-1-.45-1-1v-2.34" />
-    <path d="M12 2a6 6 0 0 1 6 6v5a6 6 0 0 1-6 6 6 6 0 0 1-6-6V8a6 6 0 0 1 6-6z" />
-  </svg>
-);
 
-const CulturalIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M9 18V5l12-2v13" />
-    <circle cx="6" cy="18" r="3" />
-    <circle cx="18" cy="16" r="3" />
-  </svg>
-);
 
-const ClosingIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-    <polyline points="22 4 12 14.01 9 11.01" />
-  </svg>
-);
+
+
+
+
+
+
+
 
 const DefaultIcon = () => (
   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
@@ -102,8 +101,8 @@ const getAgendaMedia = (id: string) => {
       return { type: 'image', path: '/speakers/inauguration.jpg' };
     case 'a2': // Welcome Speech (Ramana Bupathi)
       return { type: 'image', path: '/speakers/ramana.webp' };
-    case 'a3': // Intro Speech (Krish Chintaluri) - use icon
-      return { type: 'icon', component: <SpeakerIcon /> };
+    case 'a3': // Intro Speech (Krish Chintaluri)
+      return { type: 'image', path: '/chapter-heads/krish.webp' };
     case 'a4': // Keynote Speech (Chief Guest) - use icon
       return { type: 'icon', component: <SpeakerIcon /> };
     case 'a5': // Panel (International Perspective) - group panel photo
@@ -111,29 +110,29 @@ const getAgendaMedia = (id: string) => {
     case 'a6': // Presentation (Vladimir Kedrinsky)
       return { type: 'image', path: '/speakers/vladimir.webp' };
     case 'a7': // MoUs
-      return { type: 'icon', component: <MouIcon /> };
+      return { type: 'component', component: <MouIllustration /> };
     case 'a8': // Book Launch
-      return { type: 'icon', component: <BookIcon /> };
+      return { type: 'image', path: '/chapter-heads/pavani.webp' };
     case 'a9': // Oath Ceremony
-      return { type: 'icon', component: <OathIcon /> };
+      return { type: 'image', path: '/speakers/oath_ceremony.png' };
     case 'a10': // Networking Lunch
-      return { type: 'icon', component: <LunchIcon /> };
+      return { type: 'image', path: '/speakers/coffee_break.png' };
     case 'a11': // Panel (Is India Ready?) - custom uploaded panel photo
       return { type: 'image', path: '/speakers/group_panel_2.jpg' };
     case 'a12': // Presentation (Partners)
-      return { type: 'icon', component: <PresentationIcon /> };
+      return { type: 'image', path: '/speakers/partner_presentation.png' };
     case 'a13': // Indo Japan Connect (Shreya Jaiswal)
       return { type: 'image', path: '/speakers/shreya.webp' };
     case 'a14': // Panel (Disruptions in AI) - group panel photo
       return { type: 'image', path: '/speakers/group_panel.png' };
     case 'a15': // Awards BRICS
-      return { type: 'icon', component: <AwardsIcon /> };
+      return { type: 'image', path: '/speakers/awards_stage.png' };
     case 'a16': // Cultural Performances
-      return { type: 'icon', component: <CulturalIcon /> };
+      return { type: 'image', path: '/speakers/cultural_performances.png' };
     case 'a17': // Awards QT
-      return { type: 'icon', component: <AwardsIcon /> };
+      return { type: 'image', path: '/speakers/awards_stage_blue.png' };
     case 'a18': // Vote of Thanks
-      return { type: 'icon', component: <ClosingIcon /> };
+      return { type: 'image', path: '/speakers/vote_of_thanks.png' };
     default:
       return { type: 'icon', component: <DefaultIcon /> };
   }
@@ -195,7 +194,20 @@ const AgendaSection: React.FC<AgendaSectionProps> = ({ isHomePage }) => {
                 <div className={styles.imgCol}>
                   {media.type === 'image' ? (
                     <div className={styles.roundImgContainer}>
-                      <img src={media.path} alt={item.title} className={styles.agendaImg} />
+                      <img
+                        src={media.path}
+                        alt={item.title}
+                        className={styles.agendaImg}
+                        style={
+                          item.id === 'a2' || item.id === 'a3' || item.id === 'a8'
+                            ? { objectPosition: 'center 15%' }
+                            : undefined
+                        }
+                      />
+                    </div>
+                  ) : media.type === 'component' ? (
+                    <div className={styles.roundImgContainer}>
+                      {media.component}
                     </div>
                   ) : (
                     <div className={`${styles.agendaIconCircle} ${meta.className}`}>
