@@ -5,6 +5,7 @@ import React from 'react';
 import PageLayout from './PageLayout';
 import SpeakersSection from '../components/SpeakersSection/SpeakersSection';
 import { speakerGroups, foundationTeam } from '../data/eventData';
+import styles from './SpeakersPage.module.css';
 
 const SpeakersPage: React.FC = () => {
   // Wrap the foundationTeam array in a SpeakerGroup-like object
@@ -15,6 +16,15 @@ const SpeakersPage: React.FC = () => {
 
   return (
     <PageLayout>
+      {/* ── Dedicated Page Gold-Sepia Full-Width Rectangular Banner ── */}
+      <div className={styles.headerBanner}>
+        <div className={styles.headerContainer}>
+          <h2 className={styles.bannerTitle}>
+            Speakers
+          </h2>
+        </div>
+      </div>
+
       {/* 1. Distinguished / Industry / Innovation Speakers */}
       {speakerGroups.map((group, index) => (
         <SpeakersSection key={group.id} group={group} groupIndex={index} />
