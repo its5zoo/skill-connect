@@ -93,6 +93,86 @@
   animation: cardReveal 0.85s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
+/* Group block and spacing */
+.groupBlock {
+  margin-top: 80px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.groupBlock:first-of-type {
+  margin-top: 48px;
+}
+
+.groupHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 40px;
+  width: 100%;
+}
+
+.groupTitleRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.groupLogoWrap {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.groupLogoImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
+.groupTitle {
+  font-family: var(--font-display, 'Space Grotesk', sans-serif);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-ink, #0A0A0F);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.groupDescription {
+  font-family: var(--font-primary, sans-serif);
+  font-size: 0.9rem;
+  color: #6B7280;
+  margin: 0 0 16px 0;
+  max-width: 600px;
+  line-height: 1.5;
+}
+
+.groupHeaderLine {
+  width: 50px;
+  height: 3px;
+  background: var(--color-teal, #00B4C8);
+  border-radius: 2px;
+  opacity: 0.8;
+}
+
+/* Main Section Header styling */
+.mainHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
 /* ─── Tablet ─── */
 @media (max-width: 1024px) {
   .section { padding: 64px 24px 64px; }

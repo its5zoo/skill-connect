@@ -15,7 +15,7 @@
   box-shadow: 
     0 10px 35px rgba(0, 0, 0, 0.03), 
     0 1px 3px rgba(0, 0, 0, 0.01);
-  border: 1px solid #E2E8F0; /* Clear slate border outline */
+  border: 1px solid rgba(197, 168, 128, 0.35); /* Soft premium gold-beige outline */
   transition: 
     transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
     box-shadow 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
@@ -54,8 +54,8 @@
     0 20px 40px rgba(0, 0, 0, 0.05), 
     0 30px 60px rgba(0, 0, 0, 0.03),
     0 1px 3px rgba(0, 0, 0, 0.01);
-  border-color: var(--color-teal, #00B4C8); /* Brand teal border outline on hover */
-  background: linear-gradient(180deg, #FFFFFF 0%, #FAFCFC 100%);
+  border-color: #C5A880; /* Richer gold border on hover */
+  background: linear-gradient(180deg, #FFFFFF 0%, #FCF9F5 100%);
 }
 
 .card:hover::before {
@@ -154,8 +154,8 @@
 
 .card:hover .goldDivider {
   width: 45px; /* Expands more dynamically */
-  background: var(--color-teal, #00B4C8); /* Brand teal divider line */
-  box-shadow: 0 0 6px rgba(0, 180, 200, 0.3); /* Subtle teal glow */
+  background: #A28052; /* Richer gold on hover */
+  box-shadow: 0 0 6px rgba(197, 168, 128, 0.4); /* Subtle gold glow */
 }
 
 /* Info container */
@@ -177,14 +177,14 @@
   font-family: var(--font-primary);
   font-weight: 800;
   font-size: 1.08rem;
-  color: #111827;
+  color: #B39268; /* Premium gold name from mockup */
   line-height: 1.3;
   margin: 0;
   transition: color 0.3s ease;
 }
 
 .card:hover .name {
-  color: var(--color-teal, #00B4C8); /* Transitions to brand Teal on hover */
+  color: #8A6739; /* Richer bronze-gold on hover */
 }
 
 .title {

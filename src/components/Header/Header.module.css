@@ -165,6 +165,27 @@
   color: var(--color-white) !important;
 }
 
+/* Sponsor link gold coloring */
+.navLinkSponsor {
+  color: #C5A880 !important; /* Premium gold color */
+  font-weight: 700 !important;
+}
+
+.navLinkSponsor:hover {
+  color: #B39268 !important;
+  background: rgba(197, 168, 128, 0.05) !important;
+}
+
+.mobileNavLinkSponsor {
+  color: #C5A880 !important;
+  font-weight: 700 !important;
+}
+
+.mobileNavLinkSponsor:hover {
+  color: #B39268 !important;
+  background: rgba(197, 168, 128, 0.05) !important;
+}
+
 /* ─── CTA Button ─── */
 .headerCta {
   background: var(--color-coral, #E85D24);

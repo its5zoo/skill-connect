@@ -4,7 +4,7 @@
 import React from 'react';
 import PageLayout from './PageLayout';
 import SpeakersSection from '../components/SpeakersSection/SpeakersSection';
-import { speakerGroups, foundationTeam, chapterHeadGroups } from '../data/eventData';
+import { speakerGroups, foundationTeam } from '../data/eventData';
 
 const SpeakersPage: React.FC = () => {
   // Wrap the foundationTeam array in a SpeakerGroup-like object
@@ -22,11 +22,6 @@ const SpeakersPage: React.FC = () => {
 
       {/* 2. Quality Thought Foundation Team */}
       <SpeakersSection key={foundationGroup.id} group={foundationGroup} groupIndex={3} />
-
-      {/* 3. Chapter Heads Groups */}
-      {chapterHeadGroups.map((group, index) => (
-        <SpeakersSection key={group.id} group={group} groupIndex={4 + index} />
-      ))}
     </PageLayout>
   );
 };
