@@ -12,7 +12,7 @@ import styles from "./ChapterHeadsSection.module.css";
 const QTFoundationLogo: React.FC = () => (
   <div className={styles.qtFoundationLogo}>
     <img
-      src="/logos/qt_logo.webp"
+      src="/other/logos/qt_logo.webp"
       alt="Quality Thought"
       className={styles.qtLogoImg}
       loading="lazy"
@@ -42,7 +42,7 @@ const ChapterGroupBlock: React.FC<ChapterGroupBlockProps> = ({ group, meta, show
       <div className={styles.groupHeader}>
         <div className={styles.groupTitleRow}>
           <div className={styles.groupLogoWrap}>
-            <img src="/logos/qt_logo.webp" alt="QT Logo" className={styles.groupLogoImg} />
+            <img src="/other/logos/qt_logo.webp" alt="QT Logo" className={styles.groupLogoImg} />
           </div>
           <h3 className={styles.groupTitle}>{meta.title}</h3>
         </div>

@@ -325,4 +325,3 @@ export const chapterHeadGroups: SpeakerGroup[] = [
     ],
   },
 ];
-

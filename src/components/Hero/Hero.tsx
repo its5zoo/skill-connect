@@ -122,25 +122,25 @@ const Hero: React.FC = () => {
           <div className={styles.sponsorBlock}>
 
             <div className={styles.logoItem}>
-              <img src="/logos/brics_logo.webp" alt="BRICS Culture Media Forum" className={styles.sponsorLogo} />
+              <img src="/other/logos/brics_logo.webp" alt="BRICS Culture Media Forum" className={styles.sponsorLogo} />
             </div>
           </div>
 
           <div className={styles.sponsorBlockQT}>
             <div className={styles.logoItem}>
-              <img src="/logos/qt_logo.webp" alt="Quality Thought" className={styles.sponsorLogoQT} />
+              <img src="/other/logos/qt_logo.webp" alt="Quality Thought" className={styles.sponsorLogoQT} />
             </div>
           </div>
 
           <div className={styles.sponsorBlock}>
             <div className={styles.logoItem}>
-              <img src="/logos/ikon_logo.webp" alt="IKON" className={styles.sponsorLogo} />
+              <img src="/other/logos/ikon_logo.webp" alt="IKON" className={styles.sponsorLogo} />
             </div>
           </div>
 
           <div className={styles.sponsorBlock}>
             <div className={styles.logoItem}>
-              <img src="/logos/vallas_logo.webp" alt="Vallas Technology" className={styles.sponsorLogo} />
+              <img src="/other/logos/vallas_logo.webp" alt="Vallas Technology" className={styles.sponsorLogo} />
             </div>
           </div>
         </div>

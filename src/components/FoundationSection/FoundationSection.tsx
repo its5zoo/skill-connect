@@ -10,7 +10,7 @@ import styles from "./FoundationSection.module.css";
 const QTFoundationLogo: React.FC = () => (
   <div className={styles.qtFoundationLogo}>
     <img
-      src="/logos/qt_logo.webp"
+      src="/other/logos/qt_logo.webp"
       alt="Quality Thought"
       className={styles.qtLogoImg}
       loading="lazy"
