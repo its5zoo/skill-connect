@@ -25,6 +25,9 @@ const formatName = (name: string): string => {
       if (word.startsWith('dr.')) return 'Dr.' + word.slice(3).toUpperCase();
       if (word.startsWith('prof.')) return 'Prof.' + word.slice(5).toUpperCase();
       if (word.startsWith('amb.')) return 'Amb.' + word.slice(4).toUpperCase();
+      if (word === 'ips' || word === 'ips,') return word.toUpperCase();
+      if (word === '(retd)' || word === '(retd),') return '(Retd)';
+      if (word === 'vc') return 'VC';
       return word.charAt(0).toUpperCase() + word.slice(1);
     })
     .join(' ');
@@ -46,6 +49,125 @@ const PersonSilhouette: React.FC<{ color: string }> = ({ color }) => (
 
 // Custom crop configuration per speaker to zoom/position them independently
 const speakerCropConfig: Record<string, React.CSSProperties> = {
+  'satya narayanan r': {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    objectPosition: 'center 0%',
+    transform: 'scale(1.35) translateY(2%)',
+  },
+  'satyanarayanan r': {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    objectPosition: 'center 0%',
+    transform: 'scale(1.35) translateY(2%)',
+  },
+  'sujatha kshirsagar': {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    objectPosition: 'center 0%',
+    transform: 'scale(1.35) translateY(2%)',
+  },
+  'sreedevi devireddy': {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    objectPosition: 'center 0%',
+    transform: 'scale(1.35) translateY(2%)',
+  },
+  'anil ayroor': {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    objectPosition: 'center 0%',
+    transform: 'scale(1.35) translateY(2%)',
+  },
+  'venu': {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    objectPosition: 'center 0%',
+    transform: 'scale(1.35) translateY(2%)',
+  },
+  'madhu yalla': {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    objectPosition: 'center 0%',
+    transform: 'scale(1.35) translateY(2%)',
+  },
+  'bhagya lakshmi yalla': {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    objectPosition: 'center 0%',
+    transform: 'scale(1.35) translateY(2%)',
+  },
+  'svetlana valeryevna pchelnikova': {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    objectPosition: 'center 0%',
+    transform: 'scale(1.35) translateY(2%)',
+  },
+  'jagan mohan reddy': {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    objectPosition: 'center 0%',
+    transform: 'scale(1.35) translateY(2%)',
+  },
+  'kavitha rajesh': {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    objectPosition: 'center 0%',
+    transform: 'scale(1.35) translateY(2%)',
+  },
+  'tamiko sam': {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    objectPosition: 'center 0%',
+    transform: 'scale(1.35) translateY(2%)',
+  },
+  'j. a. choudhary': {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    objectPosition: 'center 0%',
+    transform: 'scale(1.35) translateY(2%)',
+  },
+  'vivek venkataswamy': {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    objectPosition: 'center 0%',
+    transform: 'scale(1.35) translateY(2%)',
+  },
+  'v. v. lakshmi narayana, ips (retd.)': {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    objectPosition: 'center 0%',
+    transform: 'scale(1.35) translateY(2%)',
+  },
+  'v. v. lakshminarayana, ips (retd)': {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    objectPosition: 'center 0%',
+    transform: 'scale(1.35) translateY(2%)',
+  },
+  'vc sajjanar, ips': {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    objectPosition: 'center 0%',
+    transform: 'scale(1.35) translateY(2%)',
+  },
   'dr. jaan nissar lone': {
     width: '100%',
     height: '100%',
@@ -110,7 +232,8 @@ const speakerCropConfig: Record<string, React.CSSProperties> = {
     width: '100%',
     height: '100%',
     objectFit: 'cover',
-    objectPosition: 'center 55%', // Shift down slightly to center her headshot
+    objectPosition: 'center 0%',
+    transform: 'scale(1.35) translateY(2%)',
   },
   'nithin kumar reddy': {
     width: '100%',

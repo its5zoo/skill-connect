@@ -4,8 +4,10 @@
 import React, { useEffect } from 'react';
 import Header from '../components/Header/Header';
 import Hero from '../components/Hero/Hero';
+import GuestsSection from '../components/GuestsSection/GuestsSection';
 import SpeakersSection from '../components/SpeakersSection/SpeakersSection';
-import FoundationSection from '../components/FoundationSection/FoundationSection';
+
+
 import ChapterHeadsSection from '../components/ChapterHeadsSection/ChapterHeadsSection';
 import PartnersSection from '../components/PartnersSection/PartnersSection';
 import SponsorshipSection from '../components/SponsorshipSection/SponsorshipSection';
@@ -78,16 +80,19 @@ const HomePage: React.FC = () => {
         {/* 1. Home / Hero */}
         <Hero />
 
-        {/* 2. Speakers */}
-        <SpeakersSection 
-          key={speakerGroups[0].id} 
-          group={speakerGroups[0]} 
-          groupIndex={0} 
-          showViewAll={true} 
+        {/* 2. Speakers (1 Row of 5 Cards) */}
+        <SpeakersSection
+          key={speakerGroups[0].id}
+          group={speakerGroups[0]}
+          groupIndex={0}
+          limitCount={5}
+          showViewAll={true}
         />
-        <FoundationSection />
 
-        {/* 3. Chapter Heads */}
+        {/* 3. Honored Guests (1 Row of 5 Cards) */}
+        <GuestsSection isHomePage={true} initialCount={5} />
+
+        {/* 4. Chapter Heads (1 Row of 5 Cards) */}
         <ChapterHeadsSection isHomePage={true} />
 
         {/* 4. Agenda */}

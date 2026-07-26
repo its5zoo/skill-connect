@@ -6,12 +6,8 @@ import styles from './AgendaSection.module.css';
 // SVG Icons for different session types
 
 
-const SpeakerIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" />
-    <path d="M19 10v1a7 7 0 0 1-14 0v-1M12 19v4M8 23h8" />
-  </svg>
-);
+
+
 
 const MouIllustration = () => (
   <svg width="100%" height="100%" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -97,42 +93,52 @@ const typeMeta: Record<AgendaType, { label: string; className: string }> = {
 
 const getAgendaMedia = (id: string) => {
   switch (id) {
-    case 'a1': // Inauguration
-      return { type: 'image', path: '/speakers/inauguration.jpg' };
-    case 'a2': // Welcome Speech (Ramana Bupathi)
+    case 'a1': // Registration & Hi-Tea
+      return { type: 'image', path: '/coffee_break.png' };
+    case 'a2': // Inauguration & Lighting of the Lamp
+      return { type: 'image', path: '/inauguration.jpg' };
+    case 'a3': // Welcome Speech (Ramana Bupathi)
       return { type: 'image', path: '/speakers/ramana.webp' };
-    case 'a3': // Intro Speech (Krish Chintaluri)
-      return { type: 'image', path: '/chapter-heads/krish.webp' };
-    case 'a4': // Keynote Speech (Chief Guest) - use icon
-      return { type: 'icon', component: <SpeakerIcon /> };
-    case 'a5': // Panel (International Perspective) - group panel photo
-      return { type: 'image', path: '/speakers/group_panel.png' };
-    case 'a6': // Presentation (Vladimir Kedrinsky)
-      return { type: 'image', path: '/speakers/vladimir.webp' };
-    case 'a7': // MoUs
-      return { type: 'component', component: <MouIllustration /> };
-    case 'a8': // Book Launch
+    case 'a4': // Fireside Chat with Chief Guests
+      return { type: 'image', path: '/fireside_chat_custom.png' };
+    case 'a5': // Intro Speech
+      return { type: 'image', path: '/felicitation_custom.png' };
+    case 'a6': // Book Launch (Dr. Pavanani Kadiyala)
       return { type: 'image', path: '/chapter-heads/pavani.webp' };
-    case 'a9': // Oath Ceremony
-      return { type: 'image', path: '/speakers/oath_ceremony.png' };
-    case 'a10': // Networking Lunch
-      return { type: 'image', path: '/speakers/coffee_break.png' };
-    case 'a11': // Panel (Is India Ready?) - custom uploaded panel photo
-      return { type: 'image', path: '/speakers/group_panel_2.jpg' };
-    case 'a12': // Presentation (Partners)
-      return { type: 'image', path: '/speakers/partner_presentation.png' };
-    case 'a13': // Indo Japan Connect (Shreya Jaiswal)
-      return { type: 'image', path: '/speakers/shreya.webp' };
-    case 'a14': // Panel (Disruptions in AI) - group panel photo
-      return { type: 'image', path: '/speakers/group_panel.png' };
-    case 'a15': // Awards BRICS
-      return { type: 'image', path: '/speakers/awards_stage.png' };
-    case 'a16': // Cultural Performances
-      return { type: 'image', path: '/speakers/cultural_performances.png' };
-    case 'a17': // Awards QT
-      return { type: 'image', path: '/speakers/awards_stage_blue.png' };
-    case 'a18': // Vote of Thanks
-      return { type: 'image', path: '/speakers/vote_of_thanks.png' };
+    case 'a7': // Keynote Address by Satya Narayanan R
+      return { type: 'image', path: '/speakers/satya.webp' };
+    case 'a8': // Address by VC Sajjanar, IPS
+      return { type: 'image', path: '/guests/sajjanar.png' };
+    case 'a9': // Address by V. V. Lakshminarayana, IPS (Retd)
+      return { type: 'image', path: '/guests/Narayana.png' };
+    case 'a10': // Address by Krish Chintaluri
+      return { type: 'image', path: '/chapter-heads/krish.webp' };
+    case 'a11': // Panel Discussion: International Perspective
+      return { type: 'image', path: '/group_panel.png' };
+    case 'a12': // Signing of MOUs
+      return { type: 'component', component: <MouIllustration /> };
+    case 'a13': // Networking Lunch & Music
+      return { type: 'image', path: '/networking_lunch_custom.png' };
+    case 'a14': // Panel Discussion: Is India Ready?
+      return { type: 'image', path: '/group_panel_2.jpg' };
+    case 'a15': // Oath Ceremony – Chapter Heads
+      return { type: 'image', path: '/oath_ceremony.png' };
+    case 'a16': // Launch of Indo Japan Connect (Shreya Jaiswal)
+      return { type: 'image', path: '/speakers/jaiswal.png' };
+    case 'a17': // Presentation (Vladimir Kedrinsky)
+      return { type: 'image', path: '/guests/vladimir.webp' };
+    case 'a18': // Presentations by Event Partners
+      return { type: 'image', path: '/partner_presentation.png' };
+    case 'a19': // Panel Discussion: Disruptions in AI Era
+      return { type: 'image', path: '/group_panel.png' };
+    case 'a20': // Cultural Performances
+      return { type: 'image', path: '/cultural_performances.png' };
+    case 'a21': // Awards – BRICS Culture Media Forum
+      return { type: 'image', path: '/awards_stage.png' };
+    case 'a22': // Awards – Quality Thought Future Skills Foundation
+      return { type: 'image', path: '/qt_awards_custom.png' };
+    case 'a23': // Vote of Thanks
+      return { type: 'image', path: '/vote_of_thanks.png' };
     default:
       return { type: 'icon', component: <DefaultIcon /> };
   }
@@ -199,7 +205,9 @@ const AgendaSection: React.FC<AgendaSectionProps> = ({ isHomePage }) => {
                         alt={item.title}
                         className={styles.agendaImg}
                         style={
-                          item.id === 'a2' || item.id === 'a3' || item.id === 'a8'
+                          ['a8', 'a9'].includes(item.id)
+                            ? { objectPosition: 'center 0%', transform: 'scale(1.35) translateY(2%)' }
+                            : ['a3', 'a6', 'a7', 'a10'].includes(item.id)
                             ? { objectPosition: 'center 15%' }
                             : undefined
                         }

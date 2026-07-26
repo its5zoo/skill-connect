@@ -6,6 +6,7 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import './styles/globals.css';
 
 import HomePage from './pages/HomePage';
+import GuestsPage from './pages/GuestsPage';
 import SpeakersPage from './pages/SpeakersPage';
 import FoundationPage from './pages/FoundationPage';
 import ChapterHeadsPage from './pages/ChapterHeadsPage';
@@ -37,6 +38,7 @@ const App: React.FC = () => {
       <ScrollToTop />
       <Routes>
         <Route path="/"               element={<HomePage />} />
+        <Route path="/guests"         element={<GuestsPage />} />
         <Route path="/speakers"       element={<SpeakersPage />} />
         <Route path="/qt-foundation"  element={<FoundationPage />} />
         <Route path="/chapter-heads"  element={<ChapterHeadsPage />} />

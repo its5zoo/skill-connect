@@ -14,6 +14,7 @@ export interface Speaker {
 export interface SpeakerGroup {
   id: string;
   title?: string;
+  subtitle?: string;
   speakers: Speaker[];
 }
 

@@ -13,6 +13,7 @@ interface SpeakersSectionProps {
   groupIndex: number;
   showViewAll?: boolean;
   isDetailPage?: boolean;
+  limitCount?: number;
 }
 
 const groupTitles: Record<number, { line1: string; line2?: string }> = {
@@ -28,7 +29,7 @@ const groupTitles: Record<number, { line1: string; line2?: string }> = {
 const groupSubtitles: Record<number, string> = {
   0: 'Global visionaries shaping the future of skills and innovation',
   1: 'Eminent personalities from education, industry and government',
-  2: 'Pioneers driving growth in technology and entrepreneurship',
+  2: 'Pioneers driving growth in technology, entrepreneurship and corporate innovation',
   3: 'Visionaries driving change through the Future Skills Foundation',
   4: 'Eminent leaders representing regional and thematic chapters',
   5: 'Eminent leaders representing regional and thematic chapters',
@@ -36,7 +37,7 @@ const groupSubtitles: Record<number, string> = {
 };
 
 
-const SpeakersSection: React.FC<SpeakersSectionProps> = ({ group, groupIndex, showViewAll, isDetailPage }) => {
+const SpeakersSection: React.FC<SpeakersSectionProps> = ({ group, groupIndex, showViewAll, isDetailPage, limitCount }) => {
   const titleData = groupTitles[groupIndex] || { line1: 'Featured', line2: 'Speakers' };
   
   let line1 = titleData.line1;
@@ -51,6 +52,8 @@ const SpeakersSection: React.FC<SpeakersSectionProps> = ({ group, groupIndex, sh
   // Attach IntersectionObserver to the grid — reveals children as they scroll in
   const gridRef = useRef<HTMLDivElement>(null);
   useScrollReveal(gridRef);
+
+  const displayedSpeakers = limitCount ? group.speakers.slice(0, limitCount) : group.speakers;
 
   return (
     <section
@@ -73,7 +76,7 @@ const SpeakersSection: React.FC<SpeakersSectionProps> = ({ group, groupIndex, sh
 
         {/* ── Speaker Cards ── */}
         <div className={styles.speakersGrid} ref={gridRef}>
-          {group.speakers.map((speaker, idx) => (
+          {displayedSpeakers.map((speaker, idx) => (
             <div
               key={speaker.id}
               className={styles.cardWrapper}
