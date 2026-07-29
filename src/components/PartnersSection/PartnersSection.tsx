@@ -119,40 +119,16 @@ const PartnersSection: React.FC = () => {
             </div>
           </div>
 
-          {/* MOBILE/TABLET (Double Row, Opposite Directions) */}
+          {/* MOBILE/TABLET (Single Row, Moves Left) */}
           <div
             ref={mobileMarqueeRef}
             className={`${styles.marqueeWrapper} ${styles.mobileMarquee}`}
             aria-hidden="true"
           >
-            {/* Row 1 (Moves Left) */}
             <div className={styles.marqueeTrack}>
-              {[...marqueePartners.slice(0, 10), ...marqueePartners.slice(0, 10), ...marqueePartners.slice(0, 10), ...marqueePartners.slice(0, 10)].map((partner, idx) => (
+              {marqueeLogos.map((partner, idx) => (
                 <div
-                  key={`mobile-r1-${partner.id}-${idx}`}
-                  className={styles.marqueeCard}
-                  data-category={partner.category}
-                >
-                  {partner.logo && !failedLogos.has(partner.id) ? (
-                    <img
-                      src={partner.logo}
-                      alt={partner.name}
-                      className={styles.logoImg}
-                      onError={() => handleImgError(partner.id)}
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  ) : (
-                    <span className={styles.logoFallback}>{partner.name}</span>
-                  )}
-                </div>
-              ))}
-            </div>
-            {/* Row 2 (Moves Right) */}
-            <div className={`${styles.marqueeTrack} ${styles.marqueeTrackReverse}`}>
-              {[...marqueePartners.slice(10), ...marqueePartners.slice(10), ...marqueePartners.slice(10), ...marqueePartners.slice(10)].map((partner, idx) => (
-                <div
-                  key={`mobile-r2-${partner.id}-${idx}`}
+                  key={`mobile-${partner.id}-${idx}`}
                   className={styles.marqueeCard}
                   data-category={partner.category}
                 >
