@@ -21,7 +21,7 @@ export interface SpeakerGroup {
 export interface Partner {
   id: string;
   name: string;
-  category: 'ecosystem' | 'skilling' | 'media';
+  category: 'international' | 'skill' | 'academic' | 'corporate' | 'medical' | 'media';
   logo?: string;
 }
 
