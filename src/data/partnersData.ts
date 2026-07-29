@@ -20,6 +20,13 @@ export const partners: Partner[] = [
   { id: 'ncogn',     name: 'NCOIGN', category: 'ecosystem', logo: '/partners/ncoign_logo.webp' },
   { id: 'elevate',   name: 'Elevate Career.AI', category: 'ecosystem', logo: '/partners/elevate_logo.webp' },
   { id: 'techforce',  name: 'TechForce Consulting Services', category: 'ecosystem', logo: '/partners/techforce_logo.webp' },
+  { id: 'braincode',  name: 'Braincode Boost-A-Brain', category: 'ecosystem', logo: '/partners/braincode_logo.webp' },
+  { id: 'musicchamps', name: 'Music Champs', category: 'ecosystem', logo: '/partners/musicchamps_logo.webp' },
+  { id: 'klabs',       name: 'K Labs', category: 'ecosystem', logo: '/partners/klabs_logo.webp' },
+  { id: 'medicover',   name: 'Medicover Hospitals', category: 'ecosystem', logo: '/partners/medicover_logo.webp' },
+  { id: 'vairis',      name: 'Vairis Everyday Diamond Wear', category: 'ecosystem', logo: '/partners/vairis_logo.webp' },
+  { id: 'ttpoa',       name: 'Telangana Training and Placement Officers Association', category: 'ecosystem', logo: '/partners/ttpoa_logo.webp' },
+  { id: 'reward',      name: 'Recognizing and Empowering Widows Association for Rural Development', category: 'ecosystem', logo: '/partners/reward_logo.webp' },
 
   // Media Partners
   { id: 'bigtv',      name: 'BIG TV', category: 'media', logo: '/partners/bigtv_logo.webp' },
