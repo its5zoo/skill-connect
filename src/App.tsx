@@ -2,7 +2,7 @@
 // App.tsx – Root Application with React Router Routes
 // ============================================================
 import React, { useEffect } from 'react';
-import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import './styles/globals.css';
 
 import HomePage from './pages/HomePage';
@@ -19,6 +19,11 @@ const ScrollToTop = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
+    // Disable browser scroll restoration to prevent landing at random spots on refresh
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+
     // Reset standard window scroll
     window.scrollTo({ top: 0, behavior: 'instant' });
     
@@ -33,16 +38,6 @@ const ScrollToTop = () => {
 };
 
 const App: React.FC = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  useEffect(() => {
-    // Redirect to home page on mount/refresh if pathname is not '/'
-    if (location.pathname !== '/') {
-      navigate('/', { replace: true });
-    }
-  }, []);
-
   return (
     <>
       <ScrollToTop />
