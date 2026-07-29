@@ -2,10 +2,11 @@
 // GuestsSection.tsx — Dedicated Honored Guests Section
 // ============================================================
 
-import React from 'react';
+import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { guestsData } from '../../data/guestsData';
 import SpeakerCard from '../SpeakerCard/SpeakerCard';
+import { useScrollReveal } from '../../hooks/useScrollReveal';
 import styles from './GuestsSection.module.css';
 
 interface GuestsSectionProps {
@@ -15,6 +16,8 @@ interface GuestsSectionProps {
 
 const GuestsSection: React.FC<GuestsSectionProps> = ({ isHomePage = false, initialCount = 5 }) => {
   const navigate = useNavigate();
+  const gridRef = useRef<HTMLDivElement>(null);
+  useScrollReveal(gridRef);
 
   const displayedGuests = isHomePage ? guestsData.slice(0, initialCount) : guestsData;
 
@@ -35,9 +38,13 @@ const GuestsSection: React.FC<GuestsSectionProps> = ({ isHomePage = false, initi
         </div>
 
         {/* Guests Grid */}
-        <div className={styles.guestsGrid}>
-          {displayedGuests.map((guest) => (
-            <div key={guest.id} className={styles.cardWrapper}>
+        <div className={styles.guestsGrid} ref={gridRef}>
+          {displayedGuests.map((guest, idx) => (
+            <div
+              key={guest.id}
+              className={styles.cardWrapper}
+              style={{ animationDelay: `${idx * 85}ms` }}
+            >
               <SpeakerCard
                 speaker={{
                   id: guest.id,
