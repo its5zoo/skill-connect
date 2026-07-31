@@ -138,7 +138,7 @@
       rgba(255, 255, 255, 0.45) 42%, 
       rgba(255, 255, 255, 0.45) 58%, 
       rgba(255, 255, 255, 1) 100%), 
-    url('/other/hero-bg.png') no-repeat center center;
+    url('/other/hero-bg.webp') no-repeat center center;
   background-size: cover;
   filter: blur(6px);
   transform: scale(1.05);

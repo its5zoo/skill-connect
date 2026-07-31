@@ -35,7 +35,7 @@ export const speakerGroups: SpeakerGroup[] = [
         title: 'Chairperson, Indo American Chamber of Commerce AP & TG',
         organization: 'VP-HR & Corporate Communication, ASIP Technologies',
         cardColor: 'teal',
-        image: '/speakers/shreedevi.png',
+        image: '/speakers/shreedevi.webp',
       },
       {
         id: 'ayroor',
@@ -43,7 +43,7 @@ export const speakerGroups: SpeakerGroup[] = [
         title: 'Managing Director and Founder Director',
         organization: 'BIG TV Malayalam',
         cardColor: 'yellow',
-        image: '/speakers/ayroor.png',
+        image: '/speakers/ayroor.webp',
       },
       {
         id: 'sujhata',
@@ -51,7 +51,7 @@ export const speakerGroups: SpeakerGroup[] = [
         title: 'President & Chief Business Officer',
         organization: 'CL Educate',
         cardColor: 'yellow',
-        image: '/speakers/sujhata.png',
+        image: '/speakers/sujhata.webp',
       },
       {
         id: 'satyanarayanan',
@@ -59,7 +59,7 @@ export const speakerGroups: SpeakerGroup[] = [
         title: 'Chairman',
         organization: 'CL Educate',
         cardColor: 'pink',
-        image: '/speakers/satya.png',
+        image: '/speakers/satya.webp',
       },
     ],
   },
@@ -121,7 +121,7 @@ export const speakerGroups: SpeakerGroup[] = [
         title: 'Advisor',
         organization: 'Indo Japan Connect',
         cardColor: 'yellow',
-        image: '/speakers/jaiswal.png',
+        image: '/speakers/jaiswal.webp',
       },
       {
         id: 'ram',

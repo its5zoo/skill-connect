@@ -94,51 +94,51 @@ const typeMeta: Record<AgendaType, { label: string; className: string }> = {
 const getAgendaMedia = (id: string) => {
   switch (id) {
     case 'a1': // Registration & Hi-Tea
-      return { type: 'image', path: '/other/coffee_break.png' };
+      return { type: 'image', path: '/other/coffee_break.webp' };
     case 'a2': // Inauguration & Lighting of the Lamp
-      return { type: 'image', path: '/other/inauguration.jpg' };
+      return { type: 'image', path: '/other/inauguration.webp' };
     case 'a3': // Welcome Speech (Ramana Bupathi)
       return { type: 'image', path: '/speakers/ramana.webp' };
     case 'a4': // Fireside Chat with Chief Guests
-      return { type: 'image', path: '/other/fireside_chat_custom.png' };
+      return { type: 'image', path: '/other/fireside_chat_custom.webp' };
     case 'a5': // Intro Speech
-      return { type: 'image', path: '/other/felicitation_custom.png' };
+      return { type: 'image', path: '/other/felicitation_custom.webp' };
     case 'a6': // Book Launch (Dr. Pavanani Kadiyala)
       return { type: 'image', path: '/chapter-heads/pavani.webp' };
     case 'a7': // Keynote Address by Satya Narayanan R
       return { type: 'image', path: '/speakers/satya.webp' };
     case 'a8': // Address by VC Sajjanar, IPS
-      return { type: 'image', path: '/guests/sajjanar.png' };
+      return { type: 'image', path: '/guests/sajjanar.webp' };
     case 'a9': // Address by V. V. Lakshminarayana, IPS (Retd)
-      return { type: 'image', path: '/guests/Narayana.png' };
+      return { type: 'image', path: '/guests/Narayana.webp' };
     case 'a10': // Address by Krish Chintaluri
       return { type: 'image', path: '/chapter-heads/krish.webp' };
     case 'a11': // Panel Discussion: International Perspective
-      return { type: 'image', path: '/other/group_panel.png' };
+      return { type: 'image', path: '/other/group_panel.webp' };
     case 'a12': // Signing of MOUs
       return { type: 'component', component: <MouIllustration /> };
     case 'a13': // Networking Lunch & Music
-      return { type: 'image', path: '/other/networking_lunch_custom.png' };
+      return { type: 'image', path: '/other/networking_lunch_custom.webp' };
     case 'a14': // Panel Discussion: Is India Ready?
-      return { type: 'image', path: '/other/group_panel_2.jpg' };
+      return { type: 'image', path: '/other/group_panel_2.webp' };
     case 'a15': // Oath Ceremony – Chapter Heads
-      return { type: 'image', path: '/other/oath_ceremony.png' };
+      return { type: 'image', path: '/other/oath_ceremony.webp' };
     case 'a16': // Launch of Indo Japan Connect (Shreya Jaiswal)
-      return { type: 'image', path: '/speakers/jaiswal.png' };
+      return { type: 'image', path: '/speakers/jaiswal.webp' };
     case 'a17': // Presentation (Vladimir Kedrinsky)
       return { type: 'image', path: '/guests/vladimir.webp' };
     case 'a18': // Presentations by Event Partners
-      return { type: 'image', path: '/other/partner_presentation.png' };
+      return { type: 'image', path: '/other/partner_presentation.webp' };
     case 'a19': // Panel Discussion: Disruptions in AI Era
-      return { type: 'image', path: '/other/group_panel.png' };
+      return { type: 'image', path: '/other/group_panel.webp' };
     case 'a20': // Cultural Performances
-      return { type: 'image', path: '/other/cultural_performances.png' };
+      return { type: 'image', path: '/other/cultural_performances.webp' };
     case 'a21': // Awards – BRICS Culture Media Forum
-      return { type: 'image', path: '/other/awards_stage.png' };
+      return { type: 'image', path: '/other/awards_stage.webp' };
     case 'a22': // Awards – Quality Thought Future Skills Foundation
-      return { type: 'image', path: '/other/qt_awards_custom.png' };
+      return { type: 'image', path: '/other/qt_awards_custom.webp' };
     case 'a23': // Vote of Thanks
-      return { type: 'image', path: '/other/vote_of_thanks.png' };
+      return { type: 'image', path: '/other/vote_of_thanks.webp' };
     default:
       return { type: 'icon', component: <DefaultIcon /> };
   }
